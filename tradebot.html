@@ -4,40 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Multi-Symbol Trade Bot Details</title>
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Load Mermaid library -->
   <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true });
   </script>
   <style>
+    /* Global Styles */
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f4f4f4, #eaeaea);
       color: #333;
-      padding: 2rem;
+      margin: 0;
+      padding: 0;
     }
     header, footer {
-      background: #333;
+      background: linear-gradient(135deg, #333, #555);
       color: #fff;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     .container {
       max-width: 800px;
-      margin: auto;
-      background: #fff;
+      margin: 3rem auto;
+      background: rgba(255,255,255,0.95);
       padding: 2rem;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      overflow: hidden;
+      position: relative;
     }
-    button {
-      padding: 0.5rem 1rem;
-      margin: 1rem 0;
-      border: none;
-      background: #333;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 3px;
+    h1, h2, h3 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
     }
     ul {
       margin: 1rem 0;
@@ -49,31 +55,53 @@
     a {
       color: #333;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #555;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      margin: 1rem 0;
+      border: none;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.3s;
+    }
+    button:hover {
+      background: #555;
+      transform: scale(1.02);
     }
     /* Mermaid Diagram container styling */
     .mermaid {
       background: #fafafa;
       border: 1px solid #ddd;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 1rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       overflow-x: auto;
+      transition: transform 0.3s;
+    }
+    .mermaid:hover {
+      transform: scale(1.01);
     }
     /* Page transition animations */
     #page {
-      animation: fadeIn 0.5s;
+      animation: fadeIn 0.7s;
     }
     .fade-out {
-      animation: fadeOut 0.5s forwards;
+      animation: fadeOut 0.7s forwards;
     }
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-20px); }
     }
   </style>
 </head>
@@ -107,28 +135,27 @@
             A -->|Provides Data| B[SignalProcessing]
             A -->|Provides Data| D[Feature Extraction]
             A -->|Updates health and fetches data| F[RealtimeDealer]
-        
+
             %% Model & Signal Processing
             B -->|Provides processed data| C
             %% Strategy
             C -->|Provides predictions| E[Strategy]
             B -->|Processes signals for| E
             D -->|Supplies features to| E
-        
+
             %% Risk Manager
             subgraph RiskManagement
                 D -->|Provides features| G[RiskManager]
                 E -->|Consults and listens to stop loss/take profit etc.| G
-                C -->|Providese predictions| G
+                C -->|Provides predictions| G
             end
-        
+
             %% Strategy Integration with Risk Manager
             G -->|Provides risk guidelines| F
             E -->|Generates buy/sell signals| F
-        
+
             %% Trade Execution Loop
             F -->|Executes trades in real-time| A
-    
       </div>
       
       <button id="toggleStructure">Show Structure Bullet Points</button>
@@ -170,7 +197,7 @@
         page.classList.add('fade-out');
         setTimeout(() => {
           window.location.href = href;
-        }, 500);
+        }, 700);
       });
     });
   </script>

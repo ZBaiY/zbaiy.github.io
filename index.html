@@ -4,24 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zhaoyu Bai Portfolio</title>
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Basic Reset */
-    * {
+    /* Global Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f4f4f4, #eaeaea);
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f4f4f4;
       color: #333;
     }
-    header {
-      background: #333;
+    header, footer {
+      background: linear-gradient(135deg, #333, #555);
       color: #fff;
-      padding: 1rem 2rem;
       text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
     nav {
       margin-top: 1rem;
@@ -30,68 +29,75 @@
       color: #fff;
       margin: 0 1rem;
       text-decoration: none;
-      font-size: 1.1rem;
+      font-weight: 600;
+      transition: color 0.3s;
     }
-    section {
-      padding: 2rem;
+    nav a:hover {
+      color: #ddd;
+    }
+    .container {
       max-width: 1000px;
-      margin: auto;
+      margin: 3rem auto;
+      background: rgba(255,255,255,0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
     }
-    h2 {
+    h1, h2, h3 {
       margin-bottom: 1rem;
-      color: #333;
+      font-weight: 600;
     }
-    .project {
-      background: #fff;
-      padding: 1rem;
+    p {
+      line-height: 1.6;
       margin-bottom: 1rem;
-      border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .project h3 {
-      margin-bottom: 0.5rem;
-    }
-    .project a {
-      color: #333;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
     }
     ul {
-      margin: 0.5rem 0;
+      margin: 1rem 0;
       padding-left: 1.5rem;
     }
     li {
       margin-bottom: 0.5rem;
     }
-    @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
+    .project {
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .project a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .project a:hover {
+      color: #555;
     }
     /* Page transition animations */
     #page {
-      animation: fadeIn 0.5s;
+      animation: fadeIn 0.7s;
     }
     .fade-out {
-      animation: fadeOut 0.5s forwards;
+      animation: fadeOut 0.7s forwards;
     }
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-20px); }
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
   </style>
 </head>
@@ -105,70 +111,56 @@
         <a href="#contact">Contact</a>
       </nav>
     </header>
-
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I am a PhD candidate in Theoretical Physics at the Weizmann Institute of Science with a passion for applying advanced analytical and machine learning techniques to solve real-world challenges. My academic and project experiences have equipped me with strong quantitative, programming, and problem-solving skills.
-      </p>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="project">
-        <h3>Multi-Symbol Trade Bot</h3>
+    <div class="container">
+      <section id="about">
+        <h2>About Me</h2>
         <p>
-          I developed a Python-based cryptocurrency trading bot that integrates with the Binance API. It leverages an event-driven architecture and a modular design to ensure real-time responsiveness, scalability, and ease of future enhancements.
+          I am a PhD candidate in Theoretical Physics at the Weizmann Institute of Science. My passion lies in applying advanced analytical and machine learning techniques to solve real-world challenges. My academic and project experiences have honed my quantitative, programming, and problem-solving skills.
         </p>
-        <ul>
-          <li><strong>Key Functionalities:</strong> Data handling, feature engineering, model development, signal processing, strategy and risk management, backtesting, and live/mock trading.</li>
-          <li><strong>Architecture Highlights:</strong>
-            <ul>
-              <li>Real-time data flows for immediate market response</li>
-              <li>Modular design for scalable and flexible system upgrades</li>
-            </ul>
-          </li>
-          <li><strong>Performance:</strong> Backtesting results demonstrate robust performance with high ROI and controlled drawdowns.</li>
-          <li><strong>Future Enhancements:</strong>
-            <ul>
-              <li>Optimized data storage</li>
-              <li>Shorting capabilities</li>
-              <li>Expanded strategy portfolio</li>
-              <li>Trade Bot Version 4 improvements: cleaner modular design, better data storage, and enhanced configuration file structures</li>
-            </ul>
-          </li>
-        </ul>
-        <p>
-          <a href="tradebot.html">View Project Details</a>
-        </p>
-      </div>
-      <div class="project">
-        <h3>Deep Learning Course Project</h3>
-        <p>
-          For my deep learning course project, I built a system to analyze and classify data using a U-Net model developed in PyTorch. This project enhanced my understanding of model development and practical AI applications.
-        </p>
-        <p>
-          <a href="https://github.com/ZBaiY/WIS_Deeplearning.git" target="_blank">View Deep Learning Project on GitHub</a>
-        </p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:zbaiy.imsoion@yahoo.com">zbaiy.imsoion@yahoo.com</a></p>
-      <p>LinkedIn: <a href="http://www.linkedin.com/in/zhaoyu-bai-153677238" target="_blank">Zhaoyu Bai</a></p>
-    </section>
-
+      </section>
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+          <h3>Multi-Symbol Trade Bot</h3>
+          <p>
+            A Python-based cryptocurrency trading bot integrating with the Binance API. Featuring an event-driven architecture and modular design, this bot processes real-time data and supports advanced trading strategies.
+          </p>
+          <ul>
+            <li>Data handling & cleaning</li>
+            <li>Feature/indicator engineering</li>
+            <li>Model development & evaluation</li>
+            <li>Signal processing & strategy generation</li>
+            <li>Risk management & backtesting</li>
+            <li>Live and mock trading</li>
+          </ul>
+          <p>
+            <a href="tradebot.html">View Project Details</a>
+          </p>
+        </div>
+        <div class="project">
+          <h3>Deep Learning Course Project</h3>
+          <p>
+            A project that analyzes and classifies data using a U-Net model built in PyTorch. This work improved data analysis efficiency by automating the extraction of key features from complex datasets.
+          </p>
+          <p>
+            <a href="https://github.com/ZBaiY/WIS_Deeplearning.git" target="_blank">View on GitHub</a>
+          </p>
+        </div>
+      </section>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:zbaiy.imsoion@yahoo.com">zbaiy.imsoion@yahoo.com</a></p>
+        <p>LinkedIn: <a href="http://www.linkedin.com/in/zhaoyu-bai-153677238" target="_blank">Zhaoyu Bai</a></p>
+      </section>
+    </div>
     <footer>
       &copy; 2025 Zhaoyu Bai. All rights reserved.
     </footer>
   </div>
-
   <script>
     // Animate page transitions on link clicks
     document.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', function(e) {
-        // Skip animation for external links
         if (this.getAttribute('target') === '_blank' || this.getAttribute('href').startsWith('#')) return;
         e.preventDefault();
         const href = this.getAttribute('href');
@@ -176,7 +168,7 @@
         page.classList.add('fade-out');
         setTimeout(() => {
           window.location.href = href;
-        }, 500);
+        }, 700);
       });
     });
   </script>
