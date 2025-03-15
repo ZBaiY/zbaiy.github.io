@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Multi-Symbol Trade Bot Details</title>
+  <!-- Load Mermaid library -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -46,44 +51,103 @@
       text-decoration: none;
       font-weight: bold;
     }
+    /* Mermaid Diagram container styling */
+    .mermaid {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    /* Page transition animations */
+    #page {
+      animation: fadeIn 0.5s;
+    }
+    .fade-out {
+      animation: fadeOut 0.5s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Multi-Symbol Trade Bot</h1>
-  </header>
-  <div class="container">
-    <h2>Project Overview</h2>
-    <p>
-      This project is a Python-based cryptocurrency trading bot that integrates with the Binance API. It features an event-driven architecture, modular design, and real-time data processing to deliver a scalable and responsive trading system.
-    </p>
-    <h3>Key Features</h3>
-    <ul>
-      <li>Data handling and cleaning (historical and real-time)</li>
-      <li>Feature/indicator engineering and selection</li>
-      <li>Model development, training, and evaluation</li>
-      <li>Signal processing and strategy generation</li>
-      <li>Risk management at both single asset and portfolio levels</li>
-      <li>Backtesting with detailed performance metrics</li>
-      <li>Live and mock trading execution</li>
-    </ul>
-    
-    <button id="toggleStructure">Show Structure Bullet Points</button>
-    <div id="structureSection" style="display:none;">
-      <h3>Structure Overview</h3>
+  <div id="page">
+    <header>
+      <h1>Multi-Symbol Trade Bot</h1>
+    </header>
+    <div class="container">
+      <h2>Project Overview</h2>
+      <p>
+        This project is a Python-based cryptocurrency trading bot that integrates with the Binance API. It features an event-driven architecture, modular design, and real-time data processing to deliver a scalable and responsive trading system.
+      </p>
+      <h3>Key Features</h3>
       <ul>
-        <li><strong>Real-Time Data Flows:</strong> Enables immediate market response and event-driven interactions.</li>
-        <li><strong>Modular Design:</strong> Facilitates scalability, flexibility, and easy replacement or upgrade of individual components.</li>
+        <li>Data handling and cleaning (historical and real-time)</li>
+        <li>Feature/indicator engineering and selection</li>
+        <li>Model development, training, and evaluation</li>
+        <li>Signal processing and strategy generation</li>
+        <li>Risk management at both single asset and portfolio levels</li>
+        <li>Backtesting with detailed performance metrics</li>
+        <li>Live and mock trading execution</li>
       </ul>
+      
+      <h3>Architecture Diagram</h3>
+      <div class="mermaid">
+        graph TD
+            %% Real-Time Data Handling
+            A[RealTimeDataHandler]
+            A -->|Provides Data| C[Model]
+            A -->|Provides Data| B[SignalProcessing]
+            A -->|Provides Data| D[Feature Extraction]
+            A -->|Updates health and fetches data| F[RealtimeDealer]
+
+            %% Model & Signal Processing
+            B -->|Provides processed data| C
+            %% Strategy
+            C -->|Provides predictions| E[Strategy]
+            B -->|Processes signals for| E
+            D -->|Supplies features to| E
+
+            %% Risk Manager
+            subgraph RiskManagement
+                D -->|Provides features| G[RiskManager]
+                E -->|Consults and listens to stop loss/take profit etc.| G
+                C -->|Provides predictions| G
+            end
+
+            %% Strategy Integration with Risk Manager
+            G -->|Provides risk guidelines| F
+            E -->|Generates buy/sell signals| F
+
+            %% Trade Execution Loop
+            F -->|Executes trades in real-time| A
+      </div>
+      
+      <button id="toggleStructure">Show Structure Bullet Points</button>
+      <div id="structureSection" style="display:none;">
+        <h3>Structure Overview</h3>
+        <ul>
+          <li><strong>Real-Time Data Flows:</strong> Enables immediate market response and event-driven interactions.</li>
+          <li><strong>Modular Design:</strong> Facilitates scalability, flexibility, and easy upgrades of individual components.</li>
+        </ul>
+      </div>
+      
+      <button onclick="window.location.href='index.html'">Back to Portfolio</button>
     </div>
-    
-    <button onclick="window.location.href='index.html'">Back to Portfolio</button>
+    <footer>
+      &copy; 2025 Zhaoyu Bai. All rights reserved.
+    </footer>
   </div>
-  <footer>
-    &copy; 2025 Zhaoyu Bai. All rights reserved.
-  </footer>
   
   <script>
+    // Toggle structure bullet points
     document.getElementById("toggleStructure").addEventListener("click", function() {
       var section = document.getElementById("structureSection");
       if (section.style.display === "none") {
@@ -93,6 +157,20 @@
         section.style.display = "none";
         this.textContent = "Show Structure Bullet Points";
       }
+    });
+    
+    // Animate page transitions on link clicks
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (this.getAttribute('target') === '_blank') return;
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const page = document.getElementById('page');
+        page.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 500);
+      });
     });
   </script>
 </body>

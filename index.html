@@ -78,75 +78,108 @@
         margin: 0.5rem 0;
       }
     }
+    /* Page transition animations */
+    #page {
+      animation: fadeIn 0.5s;
+    }
+    .fade-out {
+      animation: fadeOut 0.5s forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Zhaoyu Bai Portfolio</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div id="page">
+    <header>
+      <h1>Zhaoyu Bai Portfolio</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I am a PhD candidate in Theoretical Physics at the Weizmann Institute of Science with a passion for applying advanced analytical and machine learning techniques to solve real-world challenges. My academic and project experiences have equipped me with strong quantitative, programming, and problem-solving skills.
-    </p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    
-    <div class="project">
-      <h3>Multi-Symbol Trade Bot</h3>
+    <section id="about">
+      <h2>About Me</h2>
       <p>
-        I developed a Python-based cryptocurrency trading bot that integrates with the Binance API. It leverages an event-driven architecture and a modular design to ensure real-time responsiveness, scalability, and ease of future enhancements.
+        I am a PhD candidate in Theoretical Physics at the Weizmann Institute of Science with a passion for applying advanced analytical and machine learning techniques to solve real-world challenges. My academic and project experiences have equipped me with strong quantitative, programming, and problem-solving skills.
       </p>
-      <ul>
-        <li><strong>Key Functionalities:</strong> Data handling, feature engineering, model development, signal processing, strategy and risk management, backtesting, and live/mock trading.</li>
-        <li><strong>Architecture Highlights:</strong>
-          <ul>
-            <li>Real-time data flows for immediate market response</li>
-            <li>Modular design for scalable and flexible system upgrades</li>
-          </ul>
-        </li>
-        <li><strong>Performance:</strong> Backtesting results demonstrate robust performance with high ROI and controlled drawdowns.</li>
-        <li><strong>Future Enhancements:</strong>
-          <ul>
-            <li>Optimized data storage</li>
-            <li>Shorting capabilities</li>
-            <li>Expanded strategy portfolio</li>
-            <li>Trade Bot Version 4 improvements: cleaner modular design, better data storage, and enhanced configuration file structures</li>
-          </ul>
-        </li>
-      </ul>
-      <p>
-        <a href="tradebot.html" target="_blank">View Project Details</a>
-      </p>
-    </div>
+    </section>
 
-    <div class="project">
-      <h3>Deep Learning Course Project</h3>
-      <p>
-        For my deep learning course project, I built a system to analyze and classify data using a U-Net model developed in PyTorch. This project enhanced my understanding of model development and practical AI applications.
-      </p>
-      <p>
-        <a href="https://github.com/ZBaiY/WIS_Deeplearning.git" target="_blank">View Deep Learning Project on GitHub</a>
-      </p>
-    </div>
-  </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>Multi-Symbol Trade Bot</h3>
+        <p>
+          I developed a Python-based cryptocurrency trading bot that integrates with the Binance API. It leverages an event-driven architecture and a modular design to ensure real-time responsiveness, scalability, and ease of future enhancements.
+        </p>
+        <ul>
+          <li><strong>Key Functionalities:</strong> Data handling, feature engineering, model development, signal processing, strategy and risk management, backtesting, and live/mock trading.</li>
+          <li><strong>Architecture Highlights:</strong>
+            <ul>
+              <li>Real-time data flows for immediate market response</li>
+              <li>Modular design for scalable and flexible system upgrades</li>
+            </ul>
+          </li>
+          <li><strong>Performance:</strong> Backtesting results demonstrate robust performance with high ROI and controlled drawdowns.</li>
+          <li><strong>Future Enhancements:</strong>
+            <ul>
+              <li>Optimized data storage</li>
+              <li>Shorting capabilities</li>
+              <li>Expanded strategy portfolio</li>
+              <li>Trade Bot Version 4 improvements: cleaner modular design, better data storage, and enhanced configuration file structures</li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          <a href="project.html">View Project Details</a>
+        </p>
+      </div>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:zbaiy.imsoion@yahoo.com">zbaiy.imsoion@yahoo.com</a></p>
-    <p>LinkedIn: <a href="http://www.linkedin.com/in/zhaoyu-bai-153677238" target="_blank">Zhaoyu Bai</a></p>
-  </section>
+      <div class="project">
+        <h3>Deep Learning Course Project</h3>
+        <p>
+          For my deep learning course project, I built a system to analyze and classify data using a U-Net model developed in PyTorch. This project enhanced my understanding of model development and practical AI applications.
+        </p>
+        <p>
+          <a href="https://github.com/ZBaiY/WIS_Deeplearning.git" target="_blank">View Deep Learning Project on GitHub</a>
+        </p>
+      </div>
+    </section>
 
-  <footer>
-    &copy; 2025 Zhaoyu Bai. All rights reserved.
-  </footer>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:zbaiy.imsoion@yahoo.com">zbaiy.imsoion@yahoo.com</a></p>
+      <p>LinkedIn: <a href="http://www.linkedin.com/in/zhaoyu-bai-153677238" target="_blank">Zhaoyu Bai</a></p>
+    </section>
+
+    <footer>
+      &copy; 2025 Zhaoyu Bai. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Animate page transitions on link clicks
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Skip animation for external links
+        if (this.getAttribute('target') === '_blank' || this.getAttribute('href').startsWith('#')) return;
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        const page = document.getElementById('page');
+        page.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = href;
+        }, 500);
+      });
+    });
+  </script>
 </body>
 </html>
