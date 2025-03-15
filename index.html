@@ -65,6 +65,13 @@
       bottom: 0;
       width: 100%;
     }
+    ul {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
     @media (max-width: 600px) {
       nav a {
         display: block;
@@ -92,20 +99,39 @@
 
   <section id="projects">
     <h2>Projects</h2>
+    
     <div class="project">
       <h3>Multi-Symbol Trade Bot</h3>
       <p>
-        I developed a Python-based crypto trading bot using the Binance API for data collection, strategy development, and backtesting. By integrating classical technical indicators with machine learning models, the bot achieved a backtested performance of 150% ROI, an 18% maximum drawdown, and a 1.13 risk-reward ratio—mirroring the quantitative techniques used in algorithmic trading.
+        I developed a Python-based cryptocurrency trading bot that integrates with the Binance API. It leverages an event-driven architecture and a modular design to ensure real-time responsiveness, scalability, and ease of future enhancements.
       </p>
+      <ul>
+        <li><strong>Key Functionalities:</strong> Data handling, feature engineering, model development, signal processing, strategy and risk management, backtesting, and live/mock trading.</li>
+        <li><strong>Architecture Highlights:</strong>
+          <ul>
+            <li>Real-time data flows for immediate market response</li>
+            <li>Modular design for scalable and flexible system upgrades</li>
+          </ul>
+        </li>
+        <li><strong>Performance:</strong> Backtesting results demonstrate robust performance with high ROI and controlled drawdowns.</li>
+        <li><strong>Future Enhancements:</strong>
+          <ul>
+            <li>Optimized data storage</li>
+            <li>Shorting capabilities</li>
+            <li>Expanded strategy portfolio</li>
+            <li>Trade Bot Version 4 improvements: cleaner modular design, better data storage, and enhanced configuration file structures</li>
+          </ul>
+        </li>
+      </ul>
       <p>
-        <a href="https://github.com/ZBaiY/tradebotv3" target="_blank">View Trade Bot on GitHub</a>
+        <a href="tradebot.html" target="_blank">View Project Details</a>
       </p>
     </div>
 
     <div class="project">
       <h3>Deep Learning Course Project</h3>
       <p>
-        In my deep learning course project, I built a system to analyze and classify data using a U-Net model developed in PyTorch. This project enhanced my understanding of model development and practical AI applications, improving data analysis efficiency by automating the identification of key features from complex datasets.
+        For my deep learning course project, I built a system to analyze and classify data using a U-Net model developed in PyTorch. This project enhanced my understanding of model development and practical AI applications.
       </p>
       <p>
         <a href="https://github.com/ZBaiY/WIS_Deeplearning.git" target="_blank">View Deep Learning Project on GitHub</a>
