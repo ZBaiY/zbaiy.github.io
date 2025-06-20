@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Zhaoyu Bai — theoretical physicist, data scientist, and quantitative‑finance enthusiast.">
+  <meta property="og:title" content="Zhaoyu Bai • Portfolio">
+  <meta property="og:description" content="Selected projects in algorithmic trading, machine learning, and theoretical physics.">
+  <meta property="og:url" content="https://zbaiy.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://zbaiy.github.io/assets/og-banner.png">
   <title>Zhaoyu Bai Portfolio</title>
+  <!-- Preload Google Fonts -->
+  <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+        as="style" onload="this.rel='stylesheet'">
   <!-- Load Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
@@ -79,6 +89,39 @@
     .project a:hover {
       color: #555;
     }
+    /* CTA button */
+    .cta{
+      display:inline-block;
+      padding:0.4rem 0.9rem;
+      margin-top:0.5rem;
+      background:#ffbf00;
+      color:#000;
+      font-weight:600;
+      border-radius:6px;
+      transition:background 0.3s;
+      text-decoration:none;
+    }
+    .cta:hover{ background:#ffcf32; }
+
+    /* Mobile tweaks */
+    @media (max-width:600px){
+      .container{
+        margin:1rem 0.5rem;
+        padding:1.5rem;
+      }
+    }
+
+    /* Copy‑email button */
+    .copy-btn{
+      background:#555;
+      color:#fff;
+      border:none;
+      padding:0.3rem 0.8rem;
+      margin-left:0.5rem;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    .copy-btn:hover{ background:#777; }
     /* Page transition animations */
     #page {
       animation: fadeIn 0.7s;
@@ -105,11 +148,14 @@
   <div id="page">
     <header>
       <h1>Zhaoyu Bai Portfolio</h1>
-      <nav>
+      <nav role="navigation" aria-label="Main">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="cta" href="https://github.com/ZBaiY" target="_blank">GitHub ↗︎</a>
+      <img src="https://github.com/ZBaiY/zbaiy.github.io/actions/workflows/ci.yml/badge.svg"
+           alt="Build status" style="vertical-align:middle;margin-left:0.5rem;height:20px;">
     </header>
     <div class="container">
       <section id="about">
@@ -157,12 +203,13 @@
       </section>
       <section id="contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:zbaiy.imsoion@yahoo.com">zbaiy.imsoion@yahoo.com</a></p>
+        <p>Email: <a id="email-link" href="mailto:zbaiy.imsoion@yahoo.com">zbaiy.imsoion@yahoo.com</a>
+           <button class="copy-btn" onclick="copyEmail()">Copy</button></p>
         <p>LinkedIn: <a href="http://www.linkedin.com/in/zhaoyu-bai-153677238" target="_blank">Zhaoyu Bai</a></p>
       </section>
     </div>
     <footer>
-      &copy; 2025 Zhaoyu Bai. All rights reserved.
+      &copy; 2025 Zhaoyu Bai • <a href="mailto:zbaiy.imsoion@yahoo.com">Email</a> • <a href="https://github.com/ZBaiY" target="_blank">GitHub</a>
     </footer>
   </div>
   <script>
@@ -179,6 +226,10 @@
         }, 700);
       });
     });
+    function copyEmail(){
+      navigator.clipboard.writeText('zbaiy.imsoion@yahoo.com')
+        .then(()=>alert('Email copied to clipboard!'));
+    }
   </script>
 </body>
 </html>
