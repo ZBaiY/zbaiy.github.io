@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Multi‑symbol crypto trade bot with a modular back‑tester and real‑time engine on Binance.">
+  <meta property="og:title" content="Multi‑Symbol Trade Bot">
+  <meta property="og:description" content="Open‑source crypto trading bot with modular back‑tester and real‑time engine.">
+  <meta property="og:url" content="https://zbaiy.github.io/tradebot.html">
+  <meta property="og:type" content="website">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Multi-Symbol Trade Bot Details</title>
+  <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+        as="style" onload="this.rel='stylesheet'">
   <!-- Load Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Load Mermaid library -->
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-  </script>
   <style>
     /* Global Styles */
     body {
@@ -22,7 +24,7 @@
     }
     header, footer {
       background: linear-gradient(135deg, #333, #555);
-      color: #fff;
+      color: #f9f9f9;
       text-align: center;
       padding: 1.5rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
@@ -75,6 +77,26 @@
       background: #555;
       transform: scale(1.02);
     }
+    /* CTA button */
+    .cta{
+      display:inline-block;
+      padding:0.5rem 1rem;
+      margin-top:0.5rem;
+      background:#ffbf00;
+      color:#000;
+      font-weight:600;
+      border-radius:6px;
+      transition:background 0.3s;
+    }
+    .cta:hover{ background:#ffcf32; }
+
+    /* Mobile adjustments */
+    @media (max-width:600px){
+      .container{
+        margin:1rem 0.5rem;
+        padding:1.5rem;
+      }
+    }
     /* Mermaid Diagram container styling */
     .mermaid {
       background: #fafafa;
@@ -109,6 +131,9 @@
   <div id="page">
     <header>
       <h1>Multi-Symbol Trade Bot</h1>
+      <a class="cta" href="https://github.com/ZBaiY/tradebotv3" target="_blank">View on GitHub ↗︎</a>
+      <img alt="CI status" src="https://github.com/ZBaiY/tradebotv3/actions/workflows/ci.yml/badge.svg"
+           style="vertical-align:middle;margin-left:0.5rem;">
     </header>
     <div class="container">
       <h2>Project Overview</h2>
@@ -126,7 +151,7 @@
       </ul>
       
       <h3>Architecture Diagram</h3>
-      <div class="mermaid">
+      <div class="mermaid" aria-label="Tradebot architecture diagram">
         graph TD
             %% Real-Time Data Handling
             A[RealTimeDataHandler]
@@ -156,6 +181,15 @@
             %% Trade Execution Loop
             F -->|Executes trades in real-time| A
       </div>
+      <h3>Performance Snapshot</h3>
+      <p>Key highlights from the
+         <a href="https://github.com/ZBaiY/tradebotv3/blob/main/reports/StrategyReportMar_2025.pdf"
+            target="_blank">Strategy&nbsp;Report&nbsp;(Mar&nbsp;2025)</a>:</p>
+      <ul>
+        <li>Sharpe ratio: 1.4 vs 0.85 buy‑and‑hold</li>
+        <li>Max drawdown reduced from 35 % to 17 %</li>
+        <li>Portfolio ROI: 150 % over 18 months across eight pairs</li>
+      </ul>
       
       <button id="toggleStructure">Show Structure Bullet Points</button>
       <div id="structureSection" style="display:none;">
@@ -191,10 +225,14 @@
       <button onclick="window.location.href='index.html'">Back to Portfolio</button>
     </div>
     <footer>
-      &copy; 2025 Zhaoyu Bai. All rights reserved.
+      &copy; 2025 Zhaoyu Bai • <a href="mailto:zbaiy@example.com">Contact</a>
     </footer>
   </div>
   
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
   <script>
     // Toggle structure bullet points
     document.getElementById("toggleStructure").addEventListener("click", function() {
