@@ -147,8 +147,23 @@
         <li>Modular design for strategy evaluation and portfolio management</li>
         <li>Multi-symbol trading with asset-specific configuration</li>
         <li>Support for classical indicators and machine learning models</li>
-        <li>Docker-based setup with CI integration</li>
       </ul>
+
+      <h3>Quick Start</h3>
+      <p>Clone the repo and run:</p>
+      <pre><code># Local back‑test
+python scripts/backtest_v1.py
+
+# Local mock trade
+python scripts/mock_trade.py
+
+# Docker one‑liners
+docker compose up backtester   # back‑test
+docker compose up mocktrader   # mock trade
+</code></pre>
+
+      <h3>Continuous Integration</h3>
+      <p>Every push triggers GitHub Actions to build the Docker image and run smoke tests—<em>green badge in the header means the latest commit passes</em>.</p>
       
       <h3>Architecture Diagram</h3>
       <div class="mermaid" aria-label="Tradebot architecture diagram">
@@ -182,14 +197,16 @@
             F -->|Executes trades in real-time| A
       </div>
       <h3>Performance Snapshot</h3>
-      <p>Key highlights from the
-         <a href="https://github.com/ZBaiY/tradebotv3/blob/main/reports/StrategyReportMar_2025.pdf"
-            target="_blank">Strategy&nbsp;Report&nbsp;(Mar&nbsp;2025)</a>:</p>
-      <ul>
-        <li>Sharpe ratio: 1.4 vs 0.85 buy‑and‑hold</li>
-        <li>Max drawdown reduced from 35 % to 17 %</li>
-        <li>Portfolio ROI: 150 % over 18 months across eight pairs</li>
-      </ul>
+      <p>
+        For full performance analytics, see the
+        <a href="https://github.com/ZBaiY/tradebotv3/blob/main/reports/StrategyReportMar_2025.pdf" target="_blank">
+          Strategy&nbsp;Report&nbsp;(Mar&nbsp;2025)
+        </a>.
+        Component‑level architecture analysis is available in the
+        <a href="https://github.com/ZBaiY/tradebotv3/blob/main/reports/StructureReportMar_2025.pdf" target="_blank">
+          Structure&nbsp;Report&nbsp;(Mar&nbsp;2025)
+        </a>.
+      </p>
       
       <button id="toggleStructure">Show Structure Bullet Points</button>
       <div id="structureSection" style="display:none;">
@@ -200,7 +217,14 @@
         </ul>
       </div>
       
-      <h3>Strategy Configuration Example</h3>
+      <h3>Future Roadmap</h3>
+      <ul>
+        <li>Custom feature selector</li>
+        <li>Transformer‑based model exploration</li>
+        <li>Live-account integration once sandbox PnL stabilises</li>
+      </ul>
+
+      <h3>Add Your Own Strategy</h3>
       <pre><code>{
     "BTCUSDT": {
       "model": {
