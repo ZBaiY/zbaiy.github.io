@@ -113,17 +113,16 @@
     <div class="container">
       <h2>Project Overview</h2>
       <p>
-        This project is a Python-based cryptocurrency trading bot that integrates with the Binance API. It features an event-driven architecture, modular design, and real-time data processing to deliver a scalable and responsive trading system.
+        Tradebot v3 is a multi-symbol crypto trading bot that automates data collection, strategy backtesting, and live or mock trading using the Binance API. Scalers are refreshed weekly to maintain feature distribution integrity, and a custom feature selector is planned for the next release.
       </p>
       <h3>Key Features</h3>
       <ul>
-        <li>Data handling and cleaning (historical and real-time)</li>
-        <li>Feature/indicator engineering and selection</li>
-        <li>Model development, training, and evaluation</li>
-        <li>Signal processing and strategy generation</li>
-        <li>Risk management at both single asset and portfolio levels</li>
-        <li>Backtesting with detailed performance metrics</li>
-        <li>Live and mock trading execution</li>
+        <li>Backtesting engine with detailed performance reporting</li>
+        <li>Real-time and mock data handling</li>
+        <li>Modular design for strategy evaluation and portfolio management</li>
+        <li>Multi-symbol trading with asset-specific configuration</li>
+        <li>Support for classical indicators and machine learning models</li>
+        <li>Docker-based setup with CI integration</li>
       </ul>
       
       <h3>Architecture Diagram</h3>
@@ -167,6 +166,28 @@
         </ul>
       </div>
       
+      <h3>Strategy Configuration Example</h3>
+      <pre><code>{
+    "BTCUSDT": {
+      "model": {
+        "method":  "MACDwADX",
+        "params":  { "rsi_var_window": 23, "adx_threshold": 20 }
+      },
+      "decision_maker": {
+        "method": "ThresholdMode1",
+        "params": { "threshold": 0.002 }
+      },
+      "risk_manager": {
+        "stop_method":      "atr",
+        "take_method":      "risk_reward",
+        "position_method":  "none",
+        "stop_params":      { "atr_window": 14, "para1": 0.05 },
+        "take_params":      { "risk_reward_ratio": 4 },
+        "position_params":  { "fixed_fraction": 1.0 }
+      }
+    }
+  }</code></pre>
+
       <button onclick="window.location.href='index.html'">Back to Portfolio</button>
     </div>
     <footer>
