@@ -152,39 +152,34 @@
       
       <h3>Architecture Diagram</h3>
       <div class="mermaid" aria-label="Tradebot architecture diagram">
-        graph LR
-            %% Grouping
-            subgraph DataHandler
-                A[Real‑Time Data Handler]
-                F[Realtime Dealer]
+        graph TD
+            %% Real-Time Data Handling
+            A[RealTimeDataHandler]
+            A -->|Provides Data| C[Model]
+            A -->|Provides Data| B[SignalProcessing]
+            A -->|Provides Data| D[Feature Extraction]
+            A -->|Updates health and fetches data| F[RealtimeDealer]
+
+            %% Model & Signal Processing
+            B -->|Provides processed data| C
+            %% Strategy
+            C -->|Provides predictions| E[Strategy]
+            B -->|Processes signals for| E
+            D -->|Supplies features to| E
+
+            %% Risk Manager
+            subgraph RiskManagement
+                D -->|Provides features| G[RiskManager]
+                E -->|Consults and listens to stop loss/take profit etc.| G
+                C -->|Provides predictions| G
             end
 
-            D[Feature<br>Extractor]
-            B[Signal<br>Processing]
-            C[Model]
-            E[Strategy]
-            G[Risk<br>Manager]
+            %% Strategy Integration with Risk Manager
+            G -->|Provides risk guidelines| F
+            E -->|Generates buy/sell signals| F
 
-            %% Primary Data Flow
-            A -- data --> C
-            A -- data --> B
-            A -- data --> D
-            A -- update --> F
-
-            %% Intermediate
-            B -- proc. data --> C
-            D -- features --> E
-            B -- signals --> E
-            C -- preds --> E
-
-            %% Risk Management
-            D -- features --> G
-            C -- preds --> G
-            E -- controls --> G
-
-            G -- guidelines --> F
-            E -- orders --> F
-            F -- trades --> A
+            %% Trade Execution Loop
+            F -->|Executes trades in real-time| A
       </div>
       <h3>Performance Snapshot</h3>
       <p>Key highlights from the
