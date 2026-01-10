@@ -88,16 +88,16 @@ const OtherProjectsTab = () => (
   <div className="tab-content">
     <ul className="project-list">
       <li>
-        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">Project Name Placeholder 1</a>
-        <p>A one-line description placeholder for this project.</p>
+        <a href="https://github.com/ZBaiY/option-mini-lab.git" target="_blank" rel="noopener noreferrer">Option Mini Lab</a>
+        <p>A hands-on project connecting Itô calculus with working Python code for option pricing, iv surfaces, and more.</p>
       </li>
       <li>
-        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">Project Name Placeholder 2</a>
-        <p>A one-line description placeholder for this project.</p>
+        <a href="https://github.com/ZBaiY/WIS_Deeplearning.git" target="_blank" rel="noopener noreferrer">WIS Deeplearning</a>
+        <p>U-Net based deep learning models for noisy physics data matrix analysis.</p>
       </li>
       <li>
-        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">Project Name Placeholder 3</a>
-        <p>A one-line description placeholder for this project. This one might be a bit longer to see how text wraps.</p>
+        <a href="https://github.com/ZBaiY/tradebotv3" target="_blank" rel="noopener noreferrer">Legacy: Tradebot v3</a>
+        <p>Tradebot v3 is a multi-symbol crypto trading bot that automates data collection, strategy backtesting, and live trading using the Binance API. This repository includes code, documentation, and resources necessary to run, test, and further develop the bot.</p>
       </li>
     </ul>
   </div>
@@ -149,7 +149,7 @@ function App() {
       <footer className="App-footer">
         <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:placeholder@example.com">Email</a>
+        <a href="mailto:zbaiy.imsoion@yahoo.com">Email</a>
       </footer>
     </div>
   );
