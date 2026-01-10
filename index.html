@@ -165,19 +165,19 @@
       <section id="projects">
         <h2>Projects</h2>
         <div class="project">
-          <h3>Multi-Symbol Trade Bot</h3>
+          <h3>SoionLab (Quant Engine v4)</h3>
           <p>
-            Tradebot v3 is a self-initiated multi-symbol crypto trading bot that automates data collection, strategy backtesting, and live or mock trading using the Binance API. It includes real-time signal processing, modular strategy pipelines, and asset-specific configuration. Backtests yielded strong performance metrics and laid the groundwork for integrating ML-based risk control.
+            SoionLab is a contract-driven quant research & execution framework with one unified runtime semantics across backtest, mock (paper), and live trading. The core invariant is strict time ownership (driver as the single time authority) to prevent lookahead and ensure lifecycle-correct execution realism.
           </p>
           <ul>
-            <li>Backtesting engine with performance metrics</li>
-            <li>Real-time and mock trading via Binance API</li>
-            <li>Classical indicators and ML-based models</li>
-            <li>Modular plug-in design with strategy pipeline</li>
-            <li>Dockerized setup and CI integration</li>
+            <li>Contract-driven boundaries (Protocols) across data/feature/model/decision/risk/execution</li>
+            <li>Single time authority (Driver) for deterministic backtests and live parity</li>
+            <li>Execution simulation stack (policy/router/slippage/matching) with portfolio accounting</li>
+            <li>Append-only parquet data lake integration (ingestion lives outside runtime)</li>
+            <li>CI-tested unit + integration suite (local/private dataset tests opt-in)</li>
           </ul>
           <p>
-            <a href="tradebot.html">View Project Details</a>
+            <a href="https://github.com/ZBaiY/SoionLab" target="_blank">View on GitHub ↗︎</a>
           </p>
         </div>
         <div class="project">
