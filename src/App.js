@@ -5,10 +5,29 @@ import './App.css';
 
 const HomeTab = () => (
   <div className="tab-content">
-    <h1>A heading placeholder.</h1>
-    <p>A short placeholder line describing focus.</p>
-    <p className="worldview-hook">An emphasized “worldview hook” placeholder line.</p>
-    <p>A short bridge line that points to the main project.</p>
+    <h1>Bart Bai · Soion · Quantitative Research → Execution</h1>
+
+    <p>
+      I work on quantitative research, with a focus on making research results execution-valid
+      through explicit time semantics, execution modeling, and reproducibility.
+    </p>
+
+    <p className="worldview-hook">
+      Backtest, mock, and live trading share one runtime semantics — time is owned by the Driver
+      and never inferred by the model or strategy.
+    </p>
+
+    <p>
+      SoionLab is my personal research engine: strategies are treated as static research hypotheses,
+      ingestion is external, and execution is modeled explicitly so that research conclusions
+      survive live constraints.
+    </p>
+
+    <p>
+      I am a PhD student in theoretical physics at the Weizmann Institute of Science. My research
+      training emphasizes invariants, controlled assumptions, and a strict separation between
+      structure and dynamics.
+    </p>
   </div>
 );
 
