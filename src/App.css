@@ -1,51 +1,94 @@
 /* --- Global Styles & Theme --- */
 :root {
+  /* Colors */
   --bg-color: #121212;
   --primary-text-color: #e0e0e0;
   --secondary-text-color: #a0a0a0;
-  --accent-color: #4db6ac; /* A muted teal */
+  --accent-color: #4db6ac; /* Muted teal */
   --card-bg-color: #1e1e1e;
   --border-color: #333;
   --shadow-color: rgba(0, 0, 0, 0.2);
+
+  /* Typography Scale (Fluid) */
   --font-main: 'Inter', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
+  --fs-h1: clamp(24px, 2.2vw, 36px);
+  --fs-h2: clamp(18px, 1.6vw, 26px); /* Used for card titles/subheaders */
+  --fs-body: clamp(14px, 1.1vw, 18px);
+  --fs-small: clamp(12px, 0.95vw, 14px);
+
+  --fw-heading: 600;
+  --fw-body: 400;
+
+  /* Spacing Scale */
+  --container-max: 1200px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 64px;
+
+  /* Layout Padding (Responsive) */
+  --layout-padding: clamp(16px, 5vw, 64px);
 }
 
 body {
   margin: 0;
   font-family: var(--font-main);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  line-height: 1.6;
   background-color: var(--bg-color);
   color: var(--primary-text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2, h3 {
+  font-weight: var(--fw-heading);
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+h1 { font-size: var(--fs-h1); margin-bottom: var(--space-md); }
+h2 { font-size: var(--fs-h2); margin-bottom: var(--space-sm); }
+h3 { font-size: var(--fs-h2); margin-bottom: var(--space-sm); color: var(--accent-color); }
+
 /* --- Main App Layout --- */
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 0 2rem;
 }
 
 .App-header {
-  padding: 2rem 0;
-  text-align: center;
+  padding: var(--space-md) var(--layout-padding);
   border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center; /* Centered nav */
+}
+
+.App-header nav {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto; /* Allow scroll on very small screens */
+  white-space: nowrap;
 }
 
 .App-header nav button {
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: var(--fs-small);
   font-weight: 500;
   background: none;
   border: none;
   color: var(--secondary-text-color);
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  padding: var(--space-xs) var(--space-sm);
   cursor: pointer;
   transition: color 0.3s ease, border-bottom-color 0.3s ease;
   border-bottom: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .App-header nav button:hover,
@@ -61,22 +104,24 @@ body {
 
 .App-content {
   flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 4rem 0;
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto; /* Center the container */
+  padding: var(--space-xl) var(--layout-padding); /* Responsive horizontal padding */
+  box-sizing: border-box;
 }
 
 .App-footer {
-  padding: 2rem 0;
+  padding: var(--space-lg) var(--layout-padding);
   text-align: center;
   border-top: 1px solid var(--border-color);
+  font-size: var(--fs-small);
 }
 
 .App-footer a {
   color: var(--secondary-text-color);
   text-decoration: none;
-  margin: 0 1rem;
+  margin: 0 var(--space-sm);
   transition: color 0.3s ease;
 }
 
@@ -84,212 +129,257 @@ body {
   color: var(--accent-color);
 }
 
-/* --- Content & Transitions --- */
-.tab-content {
-  max-width: 800px;
-  width: 100%;
-}
-
-.fade-in {
-  animation: fadeIn 0.3s ease-in forwards;
-}
-
-.fade-out {
-  animation: fadeOut 0.3s ease-out forwards;
-}
+/* --- Transitions --- */
+.fade-in { animation: fadeIn 0.3s ease-in forwards; }
+.fade-out { animation: fadeOut 0.3s ease-out forwards; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fadeOut {
   from { opacity: 1; transform: translateY(0); }
   to { opacity: 0; transform: translateY(-10px); }
 }
 
-/* --- Specific Tab Content --- */
+/* --- Tab Content Generic --- */
+.tab-content {
+  width: 100%;
+  /* No fixed max-width here, handled by .App-content */
+}
 
-/* Home Tab */
-.home-tab h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+/* --- Home Tab --- */
+.home-tab {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 .worldview-hook {
   font-style: italic;
   color: var(--accent-color);
-  margin: 2rem 0;
+  margin: var(--space-lg) 0;
+  font-size: 1.1em;
 }
 
-/* SoionLab Tab */
+/* --- SoionLab Tab Layout --- */
 .soionlab-tab {
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: 240px 1fr; /* Fixed sidebar width, fluid content */
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
 }
 
+/* Navigation Side */
 .soionlab-nav {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  gap: var(--space-xs);
 }
 
 .soionlab-nav button {
   background: none;
-  border: 1px solid var(--border-color);
+  border: 1px solid transparent; /* Prepare for border */
   color: var(--secondary-text-color);
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 5px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 4px;
   cursor: pointer;
   text-align: left;
+  font-size: var(--fs-body);
+  font-weight: 500;
   transition: all 0.2s ease;
 }
 
 .soionlab-nav button:hover,
 .soionlab-nav button:focus {
-  background-color: var(--card-bg-color);
+  background-color: rgba(255, 255, 255, 0.05);
   color: var(--primary-text-color);
-  border-color: var(--accent-color);
   outline: none;
 }
 
 .soionlab-nav button.active {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
-  border-color: var(--accent-color);
-  font-weight: 700;
+  background-color: var(--card-bg-color);
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-color); /* Stronger active indicator */
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
+/* Content Panel Side */
 .soionlab-panel {
-  flex-grow: 1;
   background-color: var(--card-bg-color);
-  padding: 1.5rem;
+  padding: clamp(20px, 3vw, 40px); /* Fluid padding */
   border-radius: 8px;
   border: 1px solid var(--border-color);
-  min-height: 300px;
+  min-height: 400px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .soionlab-content h3 {
-  margin-top: 0;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.5rem;
-  color: var(--accent-color);
+  padding-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
-.soionlab-content ul { padding-left: 20px; }
 
-/* "How it Works" Diagram */
+.soionlab-content ul {
+  padding-left: var(--space-md);
+  margin-top: 0;
+}
+.soionlab-content li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Diagram */
 .system-diagram {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0;
+  gap: var(--space-xs);
+  padding: var(--space-md) 0;
 }
 
 .system-diagram .node {
   border: 1px solid var(--border-color);
-  padding: 0.5rem 1rem;
+  padding: var(--space-xs) var(--space-md);
   border-radius: 4px;
   font-family: var(--font-mono);
+  font-size: var(--fs-small);
   background-color: var(--bg-color);
   cursor: default;
   position: relative;
   transition: all 0.2s ease;
+  min-width: 120px;
+  text-align: center;
 }
 .system-diagram .node:hover,
 .system-diagram .node:focus {
   border-color: var(--accent-color);
-  transform: scale(1.05);
+  color: var(--accent-color);
+  transform: scale(1.02);
   outline: none;
 }
+/* Tooltip */
 .system-diagram .node:hover::after,
 .system-diagram .node:focus::after {
   content: attr(aria-label);
   position: absolute;
-  left: 105%;
+  left: calc(100% + 15px);
   top: 50%;
   transform: translateY(-50%);
-  background-color: #333;
+  background-color: #2a2a2a;
   color: var(--primary-text-color);
-  padding: 0.5rem;
+  padding: var(--space-xs) var(--space-sm);
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: var(--fs-small);
   white-space: nowrap;
   z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   font-family: var(--font-main);
+  pointer-events: none;
 }
-
 .system-diagram .connector {
   width: 2px;
-  height: 20px;
+  height: 24px;
   background-color: var(--border-color);
 }
 
-/* "Does it Run?" Section */
+/* Run Section */
 .backtest-card {
   border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 1rem;
+  border-radius: 6px;
+  padding: var(--space-md);
+  background: var(--bg-color);
 }
-
 .backtest-image-placeholder {
   width: 100%;
-  height: 150px;
-  background-color: #333;
+  height: 200px;
+  background-color: #2c2c2c;
   border-radius: 4px;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-text-color);
+  font-size: var(--fs-small);
 }
+.backtest-image-placeholder::before { content: "Image Placeholder"; }
 
 .expandable-section {
-  margin-top: 1rem;
+  margin-top: var(--space-md);
   border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 0.5rem;
+  border-radius: 6px;
+  padding: var(--space-sm);
 }
 .expandable-section summary {
   cursor: pointer;
   font-weight: 500;
   outline: none;
-}
-.expandable-section ul {
-  padding-top: 0.5rem;
+  color: var(--accent-color);
 }
 
 /* Other Projects Tab */
-.project-list {
-  list-style: none;
-  padding: 0;
-}
-
 .project-list li {
-  padding: 1rem;
+  padding: var(--space-md) 0;
   border-bottom: 1px solid var(--border-color);
 }
-.project-list li:last-child {
-  border-bottom: none;
-}
+.project-list li:last-child { border-bottom: none; }
 .project-list a {
+  font-size: var(--fs-h2);
+  font-weight: 500;
   color: var(--primary-text-color);
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
-  transition: color 0.2s;
+  display: inline-block;
+  margin-bottom: var(--space-xs);
 }
-.project-list a:hover {
-  color: var(--accent-color);
-}
-.project-list p {
-  color: var(--secondary-text-color);
-  margin: 0.5rem 0 0 0;
+.project-list a:hover { color: var(--accent-color); }
+
+/* --- Responsive Breakpoints --- */
+
+/* Tablet & Mobile */
+@media (max-width: 850px) {
+  .soionlab-tab {
+    grid-template-columns: 1fr; /* Stack vertically */
+    gap: var(--space-md);
+  }
+
+  .soionlab-nav {
+    flex-direction: row; /* Horizontal tabs */
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .soionlab-nav button {
+    white-space: nowrap;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: var(--space-sm);
+  }
+
+  .soionlab-nav button.active {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: none;
+    color: var(--accent-color);
+  }
+
+  /* Tooltip adjustment for small screens: show below instead of right */
+  .system-diagram .node:hover::after,
+  .system-diagram .node:focus::after {
+    left: 50%;
+    top: 110%;
+    transform: translateX(-50%);
+  }
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-  .App { padding: 0 1rem; }
-  .App-header nav {
-    display: flex;
-    justify-content: center;
-  }
-  .App-header nav button { font-size: 0.9rem; margin: 0 0.2rem; padding: 0.5rem; }
-  .soionlab-tab { flex-direction: column; }
+/* Mobile Small */
+@media (max-width: 480px) {
+  .App-header { padding: var(--space-md) var(--space-sm); }
+  .App-header nav button { padding: var(--space-xs); font-size: 11px; }
+
+  .soionlab-panel { padding: var(--space-md); }
+
+  /* Allow diagrams to shrink if needed, or scroll */
+  .system-diagram { width: 100%; }
 }
