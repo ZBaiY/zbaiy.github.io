@@ -1,38 +1,295 @@
+/* --- Global Styles & Theme --- */
+:root {
+  --bg-color: #121212;
+  --primary-text-color: #e0e0e0;
+  --secondary-text-color: #a0a0a0;
+  --accent-color: #4db6ac; /* A muted teal */
+  --card-bg-color: #1e1e1e;
+  --border-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --font-main: 'Inter', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--primary-text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Main App Layout --- */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0 2rem;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: 2rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.App-header nav button {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  background: none;
+  border: none;
+  color: var(--secondary-text-color);
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.App-header nav button:hover,
+.App-header nav button:focus {
+  color: var(--primary-text-color);
+  outline: none;
+}
+
+.App-header nav button.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+.App-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 0;
+}
+
+.App-footer {
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.App-footer a {
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  margin: 0 1rem;
+  transition: color 0.3s ease;
+}
+
+.App-footer a:hover {
+  color: var(--accent-color);
+}
+
+/* --- Content & Transitions --- */
+.tab-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* --- Specific Tab Content --- */
+
+/* Home Tab */
+.home-tab h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.worldview-hook {
+  font-style: italic;
+  color: var(--accent-color);
+  margin: 2rem 0;
+}
+
+/* SoionLab Tab */
+.soionlab-tab {
+  display: flex;
+  gap: 2rem;
+}
+
+.soionlab-nav {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.soionlab-nav button {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--secondary-text-color);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.soionlab-nav button:hover,
+.soionlab-nav button:focus {
+  background-color: var(--card-bg-color);
+  color: var(--primary-text-color);
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.soionlab-nav button.active {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border-color: var(--accent-color);
+  font-weight: 700;
+}
+
+.soionlab-panel {
+  flex-grow: 1;
+  background-color: var(--card-bg-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  min-height: 300px;
+}
+
+.soionlab-content h3 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+.soionlab-content ul { padding-left: 20px; }
+
+/* "How it Works" Diagram */
+.system-diagram {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.5rem;
+  padding: 1rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+.system-diagram .node {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  background-color: var(--bg-color);
+  cursor: default;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.system-diagram .node:hover,
+.system-diagram .node:focus {
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+  outline: none;
+}
+.system-diagram .node:hover::after,
+.system-diagram .node:focus::after {
+  content: attr(aria-label);
+  position: absolute;
+  left: 105%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: var(--primary-text-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
+  font-family: var(--font-main);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.system-diagram .connector {
+  width: 2px;
+  height: 20px;
+  background-color: var(--border-color);
+}
+
+/* "Does it Run?" Section */
+.backtest-card {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.backtest-image-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #333;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.expandable-section {
+  margin-top: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.expandable-section summary {
+  cursor: pointer;
+  font-weight: 500;
+  outline: none;
+}
+.expandable-section ul {
+  padding-top: 0.5rem;
+}
+
+/* Other Projects Tab */
+.project-list {
+  list-style: none;
+  padding: 0;
+}
+
+.project-list li {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.project-list li:last-child {
+  border-bottom: none;
+}
+.project-list a {
+  color: var(--primary-text-color);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.project-list a:hover {
+  color: var(--accent-color);
+}
+.project-list p {
+  color: var(--secondary-text-color);
+  margin: 0.5rem 0 0 0;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .App { padding: 0 1rem; }
+  .App-header nav {
+    display: flex;
+    justify-content: center;
   }
-  to {
-    transform: rotate(360deg);
-  }
+  .App-header nav button { font-size: 0.9rem; margin: 0 0.2rem; padding: 0.5rem; }
+  .soionlab-tab { flex-direction: column; }
 }
