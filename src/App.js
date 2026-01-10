@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 // --- Components for each tab ---
@@ -88,15 +88,15 @@ const OtherProjectsTab = () => (
   <div className="tab-content">
     <ul className="project-list">
       <li>
-        <a href="#" target="_blank" rel="noopener noreferrer">Project Name Placeholder 1</a>
+        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">Project Name Placeholder 1</a>
         <p>A one-line description placeholder for this project.</p>
       </li>
       <li>
-        <a href="#" target="_blank" rel="noopener noreferrer">Project Name Placeholder 2</a>
+        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">Project Name Placeholder 2</a>
         <p>A one-line description placeholder for this project.</p>
       </li>
       <li>
-        <a href="#" target="_blank" rel="noopener noreferrer">Project Name Placeholder 3</a>
+        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">Project Name Placeholder 3</a>
         <p>A one-line description placeholder for this project. This one might be a bit longer to see how text wraps.</p>
       </li>
     </ul>
@@ -147,8 +147,8 @@ function App() {
       </main>
 
       <footer className="App-footer">
-        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/ZBaiY" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="mailto:placeholder@example.com">Email</a>
       </footer>
     </div>
