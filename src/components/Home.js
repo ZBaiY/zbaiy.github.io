@@ -5,14 +5,13 @@ const Home = ({ onNavigate }) => {
     <div className="home-container fade-in">
       <section className="hero-section">
         <h1 className="hero-title">
-          Quantitative Research <br />
-          <span className="text-accent">→ Execution</span>
+          Quantitative Research <span className="text-accent">→ Execution Semantics</span>
         </h1>
         <p className="hero-subtitle">
-          Explicit time semantics. Execution modeling. Reproducibility.
+          Research on time semantics, execution modeling, and reproducibility.
         </p>
         <div className="hero-actions">
-          <button className="btn-primary" onClick={() => onNavigate('SOIONLAB')}>
+          <button className="btn-primary hero-cta" onClick={() => onNavigate('SOIONLAB')}>
             Explore SoionLab
           </button>
           <button className="btn-secondary" onClick={() => onNavigate('PROJECTS')}>
@@ -30,7 +29,7 @@ const Home = ({ onNavigate }) => {
             between structure and dynamics.
           </p>
           <p>
-            I build systems where backtest, mock, and live trading share one runtime semantics — 
+            I study systems where backtest and mock runs share one runtime semantics — 
             time is owned by the Driver and never inferred by the model.
           </p>
         </div>

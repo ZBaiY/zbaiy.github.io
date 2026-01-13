@@ -132,6 +132,7 @@ body {
 .hero-actions {
   display: flex;
   gap: 1.25rem;
+  flex-wrap: wrap;
 }
 
 .btn-primary, .btn-secondary {
@@ -160,6 +161,11 @@ body {
 }
 .btn-secondary:hover {
   background-color: var(--bg-card-hover);
+}
+
+.hero-cta {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 .about-card {
@@ -491,5 +497,20 @@ body {
   }
   .sidebar-nav button {
     white-space: nowrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: clamp(2.4rem, 8.5vw, 3.2rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    gap: 0.85rem;
   }
 }
