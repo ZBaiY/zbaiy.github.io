@@ -11,6 +11,12 @@ const Footer = () => {
           <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
+          <a href="https://scholar.google.com/citations?user=8GKj69MAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">
+            Google Scholar
+          </a>
+          <a href="https://inspirehep.net/authors/1895128?ui-citation-summary=true" target="_blank" rel="noopener noreferrer">
+            Inspire HEP
+          </a>
           <a href="mailto:zbaiy.imsoion@yahoo.com">
             zbaiy.imsoion@yahoo.com
           </a>

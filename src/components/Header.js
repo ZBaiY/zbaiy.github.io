@@ -25,6 +25,18 @@ const Header = ({ activeTab, onTabChange }) => {
         >
           Projects
         </button>
+        <button 
+          onClick={() => onTabChange('PUBLICATIONS')} 
+          className={activeTab === 'PUBLICATIONS' ? 'active' : ''}
+        >
+          Publications
+        </button>
+        {/* <button 
+          onClick={() => onTabChange('CV')} 
+          className={activeTab === 'CV' ? 'active' : ''}
+        >
+          CV */}
+        {/* </button> */}
       </nav>
     </header>
   );

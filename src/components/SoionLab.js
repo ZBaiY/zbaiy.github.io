@@ -74,7 +74,7 @@ const SoionLab = () => {
           <div className="content-block fade-in">
             <h3>Contract-Driven Quant Research</h3>
             <p className="lead">
-              SoionLab is a framework with <strong>one unified runtime semantics</strong> across Backtest, Mock, and Live trading.
+              SoionLab is a framework with <strong>one unified runtime semantics</strong> across Backtest, Mock, and Live.
             </p>
             
             <div className="principle-cards">

@@ -5,17 +5,17 @@ const Home = ({ onNavigate }) => {
     <div className="home-container fade-in">
       <section className="hero-section">
         <h1 className="hero-title">
-          Quantitative Research <span className="text-accent">→ Execution Semantics</span>
+          <span className="text-accent">Theory-Informed, <br /> </span>Execution-Aware Research
         </h1>
         <p className="hero-subtitle">
-          Research on time semantics, execution modeling, and reproducibility.
+          Structure, Time, and Constraints.
         </p>
         <div className="hero-actions">
           <button className="btn-primary hero-cta" onClick={() => onNavigate('SOIONLAB')}>
-            Explore SoionLab
+            Research Engine
           </button>
           <button className="btn-secondary" onClick={() => onNavigate('PROJECTS')}>
-            View Projects
+            More Projects
           </button>
         </div>
       </section>
@@ -24,13 +24,16 @@ const Home = ({ onNavigate }) => {
         <div className="about-card">
           <h2>About Me</h2>
           <p>
-            I am a PhD researcher in theoretical physics at the Weizmann Institute of Science. From particle and field-theoretic models to quantitative, time-dependent processes, my work has consistently focused on systems where structure, time, and dynamics matter. 
+            I am a <span className="text-accent">PhD researcher in theoretical physics</span> at the Weizmann Institute of Science. 
           </p>
           <p>
-            My work leads me to treat time semantics, execution constraints, and reproducibility as first-class objects when designing research systems.
+            From particle and field-theoretic models to quantitative, time-dependent processes, my work has consistently focused on systems where <span className="text-accent">structure, time, and dynamics</span> matter. 
           </p>
           <p>
-            This site documents a personal research lab and research engine built around that principle, and serves as a space for technical, research-level exploration and collaboration, with links to related research and selected projects provided for context.
+            This site documents a personal research lab and research engine built around that principle.
+          </p>
+          <p>
+            It is a space for <span className="text-accent">technical, research-level exploration and collaboration</span>, with links to related research and selected projects for context.
           </p>
         </div>
       </section>

@@ -1,4 +1,3 @@
-
 # Homepage Review: Red Team Audit
 
 Audience: **LLM reviewers only** (Red Team)
@@ -65,18 +64,16 @@ Scope: **Homepage only**. Section order and existence are fixed.
 
 | ID | Section | Observation (objective, quoted) | Why it matters |
 |---:|---|---|---|
-| 1 | Hero | `Quantitative Research <br /> <span className="text-accent">→ Execution</span>` | The visual weight on "Execution" and the arrow mimic startup/product "before/after" or "problem/solution" framing, which conflicts with Section B2 of the Identity Contract. |
-| 2 | About | `"...backtest, mock, and live trading share one runtime semantics..."` | Explicitly mentioning "live trading" on the homepage risks violating Section B1/B6 of the Identity Contract by implying operational scale or service capability. |
-| 3 | Header | `nav` buttons: "Home", "SoionLab", "Projects" | Absence of "CV", "Publications", or "Research" in the primary nav weakens the "PhD researcher" identity claim (Identity Contract A1). |
+| 1 | Hero | `Quantitative Research <br /> <span className="text-accent">→ Execution</span>` | **Visual Confirmation:** The "→ Execution" text is visually dominant and styled like a product feature benefit, which mimics startup/product framing and conflicts with Section B2 of the Identity Contract. |
+| 2 | Header | `nav` buttons: "Home", "SoionLab", "Projects" | Absence of "CV", "Publications", or "Research" in the primary nav weakens the "PhD researcher" identity claim (Identity Contract A1). |
+| 3 | Hero Actions | `Explore SoionLab` (Primary Button) | The primary CTA directs to an undefined entity ("SoionLab") rather than research artifacts (Papers, CV), reinforcing a product-first user journey. |
 
 ---
 
 ## 5) Risk Flags
 
-- **Performance / return implication:** No direct PnL mentioned, but "live trading" triggers proximity to this risk.
 - **Alpha / edge framing:** Low, but "Execution" emphasis leans towards "how to trade" rather than "how to research."
 - **Product / startup positioning:** **HIGH**. The CTA buttons and the "Research -> Execution" branding feel like a product value proposition.
-- **“Full-stack engineer” identity leakage:** Moderate. The focus on "runtime semantics" and "Driver" ownership sounds like system architecture/dev work rather than physics/math research.
 
 ---
 
