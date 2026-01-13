@@ -24,13 +24,13 @@ const Home = ({ onNavigate }) => {
         <div className="about-card">
           <h2>About Me</h2>
           <p>
-            I am a <strong>PhD student in theoretical physics</strong> at the Weizmann Institute of Science.
-            My work focuses on making research results execution-valid through a strict separation 
-            between structure and dynamics.
+            I am a PhD researcher in theoretical physics at the Weizmann Institute of Science. From particle and field-theoretic models to quantitative, time-dependent processes, my work has consistently focused on systems where structure, time, and dynamics matter. 
           </p>
           <p>
-            I study systems where backtest and mock runs share one runtime semantics — 
-            time is owned by the Driver and never inferred by the model.
+            My work leads me to treat time semantics, execution constraints, and reproducibility as first-class objects when designing research systems.
+          </p>
+          <p>
+            This site documents a personal research lab and research engine built around that principle, and serves as a space for technical, research-level exploration and collaboration, with links to related research and selected projects provided for context.
           </p>
         </div>
       </section>
