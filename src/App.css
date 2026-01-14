@@ -181,194 +181,343 @@ body {
   color: var(--text-accent); 
 }
 
-/* --- SoionLab Layout --- */
-.soionlab-container {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-
-.soionlab-sidebar {
-  position: sticky;
-  top: calc(var(--header-height) + 2rem);
-}
-
-.sidebar-header h2 {
-  font-family: var(--font-heading);
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
-}
-
-.badges {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  font-weight: 600;
-}
-.badge-blue { background-color: rgba(56, 189, 248, 0.1); color: #38bdf8; }
-.badge-green { background-color: rgba(74, 222, 128, 0.1); color: #4ade80; }
-
-.sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.sidebar-nav button {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 0.85rem 1.25rem;
-  color: var(--text-secondary);
-  cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.2s;
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.sidebar-nav button:hover {
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-}
-
-.sidebar-nav button.active {
-  background-color: var(--bg-card);
-  color: var(--text-accent);
-  box-shadow: inset 3px 0 0 var(--text-accent);
-}
-
-.soionlab-main {
-  min-height: 500px;
-}
-
-.content-block h3 {
-  font-family: var(--font-heading);
-  font-size: 2.25rem;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-}
-
-.lead {
-  font-size: 1.35rem;
-  color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-  font-weight: 300;
-}
-
-.principle-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-}
-
-.card {
-  background-color: var(--bg-card);
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-}
-.card h4 { 
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  margin-top: 0; 
-  color: var(--text-accent); 
-}
-
-/* Architecture Flow */
-.arch-flow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 3rem 0;
-}
-
-.arch-step {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 1.25rem 2.5rem;
-  border-radius: 12px;
-  text-align: center;
+/* --- SoionLab Docs Layout --- */
+.soionlab-docs-container {
   width: 100%;
-  max-width: 340px;
-  display: flex;
-  flex-direction: column;
-}
-.step-label {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-.arch-step strong { color: var(--text-primary); display: block; font-size: 1.1rem; }
-.arch-step small { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; }
-
-.arch-arrow {
-  color: var(--text-secondary);
-  font-size: 1.5rem;
 }
 
-.info-box {
-  background-color: rgba(56, 189, 248, 0.05);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  padding: 2rem;
-  border-radius: 12px;
-  margin-top: 3rem;
-}
-.info-box h5 { 
-  font-family: var(--font-heading);
-  margin-top: 0; 
-  color: var(--text-accent); 
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-}
-.info-box p { margin: 0; font-size: 1rem; }
-
-/* Code Window */
-.code-window {
-  background-color: #000;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  font-family: var(--font-mono);
-  margin-top: 2.5rem;
-}
-
-.code-header {
-  background-color: #1e293b;
-  padding: 0.75rem 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+.soionlab-page-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
 }
 
-.dot { width: 12px; height: 12px; border-radius: 50%; }
-.red { background-color: #ef4444; }
-.yellow { background-color: #eab308; }
-.green { background-color: #22c55e; }
-.code-header .title { margin-left: auto; font-size: 0.85rem; color: var(--text-secondary); }
+.soionlab-page-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.03em;
+}
 
-.code-window pre {
+.soionlab-page-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
   margin: 0;
-  padding: 2rem;
-  color: #e2e8f0;
+  font-weight: 400;
+}
+
+.soionlab-page-subtitle-secondary {
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.soionlab-banner {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--bg-card);
+  max-width: 70ch;
+}
+
+.banner-line {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.banner-line:last-child {
+  margin-bottom: 0;
+}
+
+.banner-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  margin-right: 0.5rem;
+}
+
+.soionlab-constraints {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.constraint-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--bg-card);
+}
+
+.constraint-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.constraint-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.soionlab-artifacts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.artifact-card {
+  border: 1px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background-color: transparent;
+}
+
+.artifact-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--text-primary);
+}
+
+.artifact-subtitle {
+  margin: 0 0 0.75rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.artifact-placeholder {
+  margin: 0;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.artifact-note {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.soionlab-entrypoints {
+  margin-bottom: 2.5rem;
+}
+
+.entrypoints-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.entrypoints-header p {
+  margin: 0 0 1.25rem 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.entrypoints-select-label {
+  display: none;
+}
+
+.entrypoints-select {
+  display: none;
+}
+
+.entrypoints-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.entrypoint-button {
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.8rem 0;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+
+.entrypoint-button:hover {
+  color: var(--text-primary);
+}
+
+.entrypoint-button.active {
+  color: var(--text-accent);
+  border-bottom-color: var(--text-accent);
+}
+
+.entrypoint-title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+.entrypoint-purpose {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.soionlab-docs-main {
+  min-height: 60vh;
+}
+
+.doc-article {
+  max-width: 70ch;
+}
+
+.doc-header {
+  margin-bottom: 2rem;
+}
+
+.doc-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
+}
+
+.doc-purpose {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.doc-body {
+  line-height: 1.75;
+}
+
+.doc-section {
+  margin-bottom: 2.5rem;
+}
+
+.doc-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: -0.01em;
+}
+
+.section-body {
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.section-code {
+  background-color: #0d1117;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1rem 0;
   overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #e6edf3;
+}
+
+.section-code code {
+  font-family: inherit;
+}
+
+/* Definition List Styling */
+.section-list {
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  margin-bottom: 1rem;
+  padding-left: 0;
+}
+
+.list-item:last-child {
+  margin-bottom: 0;
+}
+
+.list-item dt {
+  font-weight: 600;
+  color: var(--text-accent);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+}
+
+.list-item dd {
+  margin: 0;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* Table Styling */
+.section-table-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.section-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.section-table th,
+.section-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--bg-card);
+}
+
+.section-table td {
+  color: var(--text-primary);
+}
+
+.section-table tr:last-child td {
+  border-bottom: none;
+}
+
+.section-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 /* --- Projects --- */
@@ -484,19 +633,46 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .soionlab-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .doc-article {
+    max-width: 100%;
   }
-  .soionlab-sidebar {
-    position: static;
+
+  .doc-title {
+    font-size: 1.4rem;
   }
-  .sidebar-nav {
-    flex-direction: row;
-    overflow-x: auto;
+
+  .soionlab-banner {
+    margin: 1.5rem 0;
+    padding: 1rem 1.1rem;
   }
-  .sidebar-nav button {
-    white-space: nowrap;
+
+  .constraint-card,
+  .artifact-card,
+  .entrypoint-button {
+    padding: 1rem 1.1rem;
+  }
+
+  .entrypoints-select-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .entrypoints-select {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .entrypoints-list {
+    display: none;
   }
 }
 
