@@ -6,12 +6,12 @@ const DOCS = [
     title: "Semantics",
     shortTitle: "Semantics",
     content: {
-      purpose: "Rules for time, visibility, and step execution.",
+      purpose: "The minimal rules the runtime enforces (time, visibility, and step order).",
       sections: [
         {
           heading: "Time Model",
-          body: `SoionLab separates event time from arrival time.
-Only the Driver advances the execution clock (step_ts).`,
+          body: `SoionLab separates event time (what happened) from arrival time (when it reached the system).
+Only the Driver advances the step clock (step_ts).`,
         },
         {
           heading: "Visibility Rule",
@@ -28,8 +28,8 @@ Only the Driver advances the execution clock (step_ts).`,
           body: null,
           list: [
             { term: "Single clock", def: "Only the Driver sets step_ts." },
-            { term: "No lookahead", def: "Accessing future data is a contract violation." },
-            { term: "Monotonicity", def: "step_ts must strictly increase." },
+            { term: "No lookahead", def: "Future data is not exposed to the step (unless you explicitly opt into a relaxed mode)." },
+            { term: "Monotonicity", def: "step_ts moves forward monotonically within a run." },
           ],
         },
       ],
@@ -40,7 +40,7 @@ Only the Driver advances the execution clock (step_ts).`,
     title: "Boundaries",
     shortTitle: "Boundaries",
     content: {
-      purpose: "Where data enters, and where runs may block or degrade.",
+      purpose: "Where data enters the runtime, and how missing/late inputs are handled.",
       sections: [
         {
           heading: "Ingestion Boundary",
@@ -51,13 +51,13 @@ Only the Driver advances the execution clock (step_ts).`,
           heading: "Readiness Policy",
           body: null,
           list: [
-            { term: "Hard readiness", def: "Required grid data must be present." },
-            { term: "Soft readiness", def: "Optional domains may be missing; an event is logged." },
+            { term: "Hard readiness", def: "A step may block when required inputs are not available." },
+            { term: "Soft readiness", def: "A step may continue with a recorded warning when optional inputs are missing or stale." },
           ],
         },
         {
           heading: "Failure Modes",
-          body: "Failures are surfaced as explicit events, not silently absorbed.",
+          body: "When the runtime makes a fallback choice, it records that choice as an event.",
         },
       ],
     },
@@ -67,7 +67,7 @@ Only the Driver advances the execution clock (step_ts).`,
     title: "Artifacts",
     shortTitle: "Artifacts",
     content: {
-      purpose: "What you can inspect after a run.",
+      purpose: "Artifacts that let you reconstruct what the system saw and did.",
       sections: [
         {
           heading: "Step Traces",
@@ -86,7 +86,7 @@ Only the Driver advances the execution clock (step_ts).`,
         },
         {
           heading: "Reproducibility",
-          body: "Artifacts allow reconstructing what the system knew at each step.",
+          body: "Artifacts let you reconstruct inputs, decisions, and timing context per step.",
         },
       ],
     },
@@ -96,12 +96,12 @@ Only the Driver advances the execution clock (step_ts).`,
     title: "Strategy Templates",
     shortTitle: "Strategy",
     content: {
-      purpose: "Declarative templates for intent (no time, no I/O).",
+      purpose: "Templates for wiring: data needs + components (runtime owns time and I/O).",
       sections: [
         {
           heading: "Template Definition",
-          body: `Strategies declare structure and dependencies.
-They do not own time, I/O, or execution.`,
+          body: `Strategies declare structure and data dependencies.
+Time and I/O are owned by the runtime, so experiments stay comparable.`,
         },
         {
           heading: "Lifecycle",
@@ -196,16 +196,16 @@ const DocContent = ({ doc }) => {
 
 const MODES = {
   use: {
-    label: 'How to use',
+    label: 'Run an experiment',
     sections: [
   {
     id: "declared-surface",
     title: "Declaration surface",
-    summary: "Bind symbols/params to a strategy template in /apps/run_*.py.",
+    summary: "Pick a strategy and bind placeholders to concrete symbols/params.",
     bullets: [
-      "Select strategy name.",
-      "Bind placeholders to concrete values.",
-      "Set the replay window (start timestamp and end timestamp).",
+      "Choose a strategy by registry name.",
+      "Bind placeholders (e.g. {A}, {B}) to real symbols/params.",
+      "Set the replay window (START_TS, END_TS).",
     ],
     code: `STRATEGY_NAME = "EXAMPLE"
 BIND_SYMBOLS = {"A":"BTCUSDT","B":"ETHUSDT","PARAM1":14, "...":"..."}  # fills template placeholders
@@ -217,11 +217,11 @@ END_TS   = 1767052800000  # 2025-12-30 00:00:00 UTC (epoch ms)
   {
     id: "run-a-backtest",
     title: "Run a backtest",
-    summary: "Execute the run and inspect artifacts.",
+    summary: "Run the entry script; artifacts are written automatically.",
     bullets: [
-      "Run the entry script.",
-      "Per-step traces/logs are written for audit.",
-      "Outputs: /artifacts/run/<run_id>/*.jsonl",
+      "Start the run from an entry script under /apps/.",
+      "Each step writes a trace row (inputs + decisions + timing context).",
+      "Outputs land under /artifacts/run/<run_id>/*.jsonl",
     ],
     code: `python apps/run_backtest.py`,
   },
@@ -229,11 +229,11 @@ END_TS   = 1767052800000  # 2025-12-30 00:00:00 UTC (epoch ms)
   {
     id: "strategy-design",
     title: "Strategy design",
-    summary: "Strategy templates live in /apps/strategy/*.py (data needs + wiring).",
+    summary: "Strategy templates live in /apps/strategy/*.py (wiring, not a DSL you must buy into).",
     bullets: [
-      "Declare data requirements and placeholders.",
-      "Keep optional feeds as soft-readiness (non-blocking when missing).",
-      "Layer configs are defined here (features/model/risk/execution/portfolio).",
+      "Declare what data you need, and which parts are optional.",
+      "Missing optional feeds can be allowed — but the choice is recorded.",
+      "You can keep early experiments simple: start with OHLCV only, add domains later.",
     ],
     code: `(strategy template excerpt — see source)
 @register_strategy("EXAMPLE")
@@ -248,16 +248,16 @@ class ExampleStrategy(StrategyBase):
 ]
   },
   audit: {
-    label: 'Audit logs & traces',
+    label: 'Inspect the run',
     sections: [
       {
         id: 'trace-step',
         title: 'Per-step trace',
         summary: 'One JSON row per driver step: state, inputs, and guardrails frozen at each step.',
         bullets: [
-  'Each step records exactly what the strategy saw at that moment: features, model outputs, portfolio state, and market data.',
-  'The trace stores timing checks (last step time and per-data-stream progress) to make time ordering explicit.',
-  'For price bars, the trace shows whether the bar was fully closed before the step (with expected vs actual timestamps).',
+  'Each step records inputs and outputs: features, model output, portfolio snapshot, and market snapshots.',
+  'Timing context is included so you can tell what was visible at the step, and what arrived late.',
+  'For OHLCV bars, the trace records whether the bar was closed at the step (expected vs actual timestamps).',
 
         ],
         code: `log_step_trace(
@@ -372,12 +372,17 @@ const SoionLab = () => {
           >
             View source (GitHub)
           </a>
+          <p className="soionlab-status" role="note" aria-label="SoionLab status">
+        <span className="soionlab-status-badge">Note: </span>
+        <span className="soionlab-status-text">
+          This page captures the execution substrate and its inspectable artifacts. Strategy results and performance are studied at a different layer of the research stack.
+        </span>
+      </p>
         </div>
-        <p className="soionlab-page-subtitle">
-          Research inspection surface for execution semantics and constraints.
+        <p className="soionlab-page-subtitle soionlab-page-subtitle-secondary">
+          Built for cross-domain experiments where update rates diverge, which naturally pushes the system toward contract-driven wiring and async ingestion.
         </p>
-      </header>
-
+      </header>      
       <div className="soionlab-tabs" role="tablist">
         {Object.entries(MODES).map(([key, tab]) => (
           <button
@@ -421,39 +426,38 @@ const SoionLab = () => {
         </main>
       </div>
 
-      <section className="failure-card">
+  <section className="failure-card">
   <h2>Failure case (boundary example)</h2>
 
   <p>
-    <span className="text-accent">Option-chain updates arrive late</span> — after the system has already advanced to the
-    next evaluation step — so the run continues with <span className="text-accent">outdated option snapshots</span>.
+    <span className="text-accent">Option-chain updates can arrive late</span>, after the run has already advanced to the
+    next step, so the system may operate on an older option snapshot.
   </p>
 
   <p>
-    Many standard workflows quietly <span className="text-accent">reuse the last value</span> and keep going, without recording
-    that the option data was missing at that step.
+    Reusing the last value is sometimes a reasonable approximation. The problem is when that choice is
+    <span className="text-accent"> implicit and unlogged</span>.
   </p>
 
   <p className="failure-note">
-    This is a boundary where <span className="text-accent">data availability changes what the result means</span>.
+    This page treats the approximation as a <span className="text-accent">named, inspectable choice</span>.
   </p>
 
   <div className="failure-columns">
     <div className="failure-list">
-      <p className="failure-heading">What standard workflows do</p>
+      <p className="failure-heading">Vectorized pipelines typically do</p>
       <ul>
-        <li>Assume delayed data is current.</li>
-        <li>Reuse old values when updates are missing.</li>
-        <li>Leave no record of incomplete inputs.</li>
+        <li>Align domains on a single grid and treat missing updates as “filled”.</li>
+        <li>Make the fallback implicit, can’t audit when it happened.</li>
       </ul>
     </div>
 
     <div className="failure-list">
-      <p className="failure-heading">What is flagged here</p>
+      <p className="failure-heading">SoionLab makes explicit</p>
       <ul>
-        <li>Missing option data is detected explicitly.</li>
-        <li>The missing input is recorded as an event.</li>
-        <li>The run remains inspectable after the fact.</li>
+        <li>Which domain was missing or stale at the step.</li>
+        <li>Which fallback was taken (block vs continue-with-warning).</li>
+        <li>Enough context to inspect the step after the run.</li>
       </ul>
     </div>
   </div>
@@ -480,11 +484,13 @@ const SoionLab = () => {
 
       <section className="soionlab-entrypoints">
         <header className="entrypoints-header">
-          <h2>Deep documentation reference</h2>
-          <p>Reference index for contracts, semantics, and boundaries.</p>
+          <h2>Reference index (optional)</h2>
+          <p>
+            Definitions and invariants referenced by traces/logs. Not a tutorial — use it to verify terms you see during inspection.
+          </p>
         </header>
         <label className="entrypoints-select-label" htmlFor="soionlab-doc-select">
-          Select a document
+          Reference doc
         </label>
         <select
           id="soionlab-doc-select"

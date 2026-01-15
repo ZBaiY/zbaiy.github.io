@@ -2,8 +2,8 @@ import React from 'react';
 
 const projects = [
   {
-    title: "Option Mini Lab",
-    description: "Connecting Itô calculus with working Python code for option pricing, IV surfaces, and more.",
+    title: "Stochastic Calculus in Finance",
+    description: "Connecting Itô calculus with working Python code for option pricing, IV surfaces. Experiment for the option chain modules in SoionLab.",
     link: "https://github.com/ZBaiY/option-mini-lab.git",
     tags: ["Python", "Finance", "Itô Calculus"]
   },
@@ -13,20 +13,14 @@ const projects = [
     link: "https://github.com/ZBaiY/WIS_Deeplearning.git",
     tags: ["Deep Learning", "PyTorch", "Physics"]
   },
-  {
-    title: "Tradebot v3 (Legacy)",
-    description: "Multi-symbol crypto trading bot automating data collection, backtesting, and live trading via Binance API.",
-    link: "https://github.com/ZBaiY/tradebotv3",
-    tags: ["Crypto", "Automation", "Legacy"]
-  }
 ];
 
 const Projects = () => {
   return (
     <div className="projects-container fade-in">
       <div className="section-header">
-        <h2>Other Projects</h2>
-        <p>Experiments, tools, and legacy codebases.</p>
+        <h2>Other Selected Projects</h2>
+        <p>Experiments, tools.</p>
       </div>
       
       <div className="projects-grid">

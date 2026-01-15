@@ -23,7 +23,7 @@ const Header = ({ activeTab, onTabChange }) => {
           onClick={() => onTabChange('PROJECTS')} 
           className={activeTab === 'PROJECTS' ? 'active' : ''}
         >
-          Projects
+          Other Projects
         </button>
         <button 
           onClick={() => onTabChange('PUBLICATIONS')} 
