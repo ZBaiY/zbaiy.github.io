@@ -256,6 +256,7 @@ a:focus-visible {
   color: var(--text-secondary);
   margin: 0;
   font-weight: 400;
+  opacity: 1.0;
 }
 
 .soionlab-title-row {

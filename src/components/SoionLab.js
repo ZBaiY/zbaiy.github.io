@@ -380,7 +380,7 @@ const SoionLab = () => {
       </p>
         </div>
         <p className="soionlab-page-subtitle soionlab-page-subtitle-secondary">
-          Built for cross-domain experiments where update rates diverge, which naturally pushes the system toward contract-driven wiring and async ingestion.
+          Built for cross-domain experiments with divergent update rates and slippage-sensitive execution, which naturally pushes the system toward contract-driven wiring and async ingestion.
         </p>
       </header>      
       <div className="soionlab-tabs" role="tablist">
