@@ -46,6 +46,12 @@ Scope: **SoionLab documentation page** (`src/components/SoionLab.js`)
 
 ## 3) Role-Specific Audit
 
+### A) Web Designer
+(Empty)
+
+### B) Copywriter
+(Empty)
+
 ### C) Red Team
 
 - **Most likely misinterpretation by a skeptical reader:** "This is a resume-padding project where the candidate reinvented the wheel (a `for` loop over OHLCV data) and dressed it up in formal verification language to sound smart."

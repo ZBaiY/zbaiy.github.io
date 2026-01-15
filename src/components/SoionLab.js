@@ -1,282 +1,116 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const DOCS = [
   {
-    id: 'overview',
-    title: 'Overview',
-    shortTitle: 'Overview',
+    id: "semantics",
+    title: "Semantics",
+    shortTitle: "Semantics",
     content: {
-      purpose: 'Scope, failure mode, and inspectable artifacts.',
+      purpose: "Rules for time, visibility, and step execution.",
       sections: [
         {
-          heading: 'What SoionLab Is',
-          body: `SoionLab is a research engine for inspection of data visibility. It separates event time from arrival time.`,
+          heading: "Time Model",
+          body: `SoionLab separates event time from arrival time.
+Only the Driver advances the execution clock (step_ts).`,
         },
         {
-          heading: 'Why This Engine Exists',
-          body: `Many engines collapse event time and arrival time. Missing or delayed data then looks clean. Research conclusions become ambiguous.`,
+          heading: "Visibility Rule",
+          body: null,
           list: [
-            { term: 'Timing-induced invalidity', def: 'Update rates differ, so step N visibility can be unclear.' },
-            { term: 'Degraded-data regimes', def: 'Gaps and delays create missing snapshots; logs mark them.' },
-            { term: 'Execution context reconstruction', def: 'Logs show what the system knew at time T.' },
+            { term: "data_ts", def: "When the event occurred at the source." },
+            { term: "arrival_ts", def: "When the system received it (diagnostic only)." },
+            { term: "step_ts", def: "Current execution step timestamp (Driver-owned)." },
+            { term: "Visibility", def: "Data is visible iff data_ts ≤ step_ts." },
           ],
         },
         {
-          heading: 'Current Scope and Limitations',
-          body: `SoionLab runs offline replay and controlled mock execution. Live order books are out of scope. Data focus: OHLCV and options.`,
-        },
-        {
-          heading: 'Architecture Choices',
+          heading: "Execution Invariants",
           body: null,
           list: [
-            { term: 'Single step clock', def: 'The Driver advances time. Other layers consume step_ts only.' },
-            { term: 'Visibility gate', def: 'Snapshots expose data_ts <= step_ts. Future access is a contract failure.' },
-            { term: 'Readiness policy', def: 'Hard failures block execution. Soft failures write logs.' },
-            { term: 'Mode parity', def: 'Backtest, mock, and realtime share the same step rules.' },
+            { term: "Single clock", def: "Only the Driver sets step_ts." },
+            { term: "No lookahead", def: "Accessing future data is a contract violation." },
+            { term: "Monotonicity", def: "step_ts must strictly increase." },
           ],
         },
       ],
     },
   },
   {
-    id: 'contract_spec',
-    title: 'Contract Spec',
-    shortTitle: 'Contracts',
+    id: "boundaries",
+    title: "Boundaries",
+    shortTitle: "Boundaries",
     content: {
-      purpose: 'Tick schema, timestamps, and invariants.',
+      purpose: "Where data enters, and where runs may block or degrade.",
       sections: [
         {
-          heading: 'Tick Schema',
-          body: `The IngestionTick is the sole object crossing the ingestion boundary. All fields are immutable after creation.`,
-          code: `IngestionTick:
-  data_ts: int       # When the event occurred (source time)
-  arrival_ts: int    # When the system received it
-  domain: str        # e.g., "ohlcv", "option_chain", "sentiment"
-  symbol: str        # Instrument identifier
-  payload: dict      # Domain-specific data`,
+          heading: "Ingestion Boundary",
+          body: "Ingestion is external. The runtime never fetches or parses raw data.",
+          code: `WORLD → Ingestion → Tick → Driver → Engine`,
         },
         {
-          heading: 'Timestamp Semantics',
+          heading: "Readiness Policy",
           body: null,
           list: [
-            { term: 'data_ts', def: 'The timestamp of the underlying event at the source. Used for legality checks and snapshot visibility.' },
-            { term: 'arrival_ts', def: 'When the tick was received by the ingestion layer. Used for latency analysis, not execution logic.' },
-            { term: 'step_ts', def: 'The current simulation/execution timestamp, set by the Driver.' },
+            { term: "Hard readiness", def: "Required grid data must be present." },
+            { term: "Soft readiness", def: "Optional domains may be missing; an event is logged." },
           ],
         },
         {
-          heading: 'Invariants',
-          body: null,
-          list: [
-            { term: 'Immutability', def: 'Ticks are never modified after creation.' },
-            { term: 'Visibility', def: 'A tick is visible at step_ts iff data_ts <= step_ts.' },
-            { term: 'Monotonicity', def: 'step_ts must be monotonically increasing within a run.' },
-          ],
+          heading: "Failure Modes",
+          body: "Failures are surfaced as explicit events, not silently absorbed.",
         },
       ],
     },
   },
   {
-    id: 'runtime_semantics',
-    title: 'Runtime Semantics',
-    shortTitle: 'Runtime',
+    id: "artifacts",
+    title: "Artifacts",
+    shortTitle: "Artifacts",
     content: {
-      purpose: 'Step clock rules, time checks, and runtime flow.',
+      purpose: "What you can inspect after a run.",
       sections: [
         {
-          heading: 'Single Step Clock',
-          body: `The Driver advances time. The Engine validates timestamps and does not choose them. Only the Driver sets step order and pace.`,
+          heading: "Step Traces",
+          body: "Each execution step emits a structured trace.",
         },
         {
-          heading: 'Layer Responsibilities',
-          body: null,
-          table: {
-            headers: ['Layer', 'Owns Time?', 'Responsibility'],
-            rows: [
-              ['Strategy', 'No', 'Declare structure and intent only'],
-              ['Feature', 'No', 'Snapshot/windowed computation'],
-              ['DataHandler', 'No', 'Cache + anti-lookahead gates'],
-              ['Engine', 'No', 'Runtime orchestration'],
-              ['Driver', 'Yes', 'Single step clock'],
-            ],
-          },
-        },
-        {
-          heading: 'No Lookahead Guarantees',
-          body: null,
-          list: [
-            { term: 'Strategies never pull data', def: 'They declare dependencies; runtime provides snapshots.' },
-            { term: 'Features never advance time', def: 'They receive step_ts and compute on visible data.' },
-            { term: 'DataHandlers never decide arrival', def: 'They cache ticks and filter by visibility.' },
-            { term: 'Engine never infers timestamps', def: 'All timestamps originate from Driver.' },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    id: 'ingestion_boundary',
-    title: 'Ingestion Boundary',
-    shortTitle: 'Ingestion',
-    content: {
-      purpose: 'Boundary between external data and runtime, plus readiness rules.',
-      sections: [
-        {
-          heading: 'The Boundary',
-          body: `SoionLab separates data ingestion from the runtime. Ingestion is an external subsystem; the runtime never touches raw data sources.`,
-          code: `WORLD -> Ingestion -> Tick -> Driver -> Engine -> DataHandler`,
-        },
-        {
-          heading: 'What Runtime Never Does',
-          body: null,
-          list: [
-            { term: 'Fetch data', def: 'Runtime only receives normalized ticks from Driver.' },
-            { term: 'Know provenance', def: 'Strategy/Engine/DataHandler never know data source.' },
-            { term: 'Block on I/O', def: 'Ingestion may block; runtime is single-threaded and event-driven.' },
-            { term: 'Parse raw formats', def: 'All normalization happens in Ingestion layer.' },
-          ],
-        },
-        {
-          heading: 'Hard Readiness vs Soft Degradation',
-          body: null,
-          list: [
-            { term: 'Hard (grid-based)', def: 'OHLCV bars must be closed before visible. Violation blocks execution.' },
-            { term: 'Soft (non-grid)', def: 'Option chain, sentiment: warnings logged, execution continues.' },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    id: 'strategy',
-    title: 'Strategy Spec',
-    shortTitle: 'Strategy',
-    content: {
-      purpose: 'Template declaration, binding, and runtime wiring.',
-      sections: [
-        {
-          heading: 'Strategy as Template',
-          body: `A strategy class is a static template, not a runtime object. It declares structure but has no state or I/O. Strategy declares structure; state lives in Features/Model; decisions use snapshots.`,
-        },
-        {
-          heading: 'Lifecycle',
-          body: null,
-          list: [
-            { term: 'Declaration', def: 'Template uses placeholders like {A} and {B}.' },
-            { term: 'Binding', def: 'bind() resolves placeholders to concrete symbols.' },
-            { term: 'Loading', def: 'StrategyLoader wires components. No time has advanced.' },
-            { term: 'Execution', def: 'Driver calls engine.step(ts). Time advances here.' },
-          ],
-        },
-        {
-          heading: 'Naming Conventions',
-          body: null,
-          list: [
-            { term: 'Registry IDs', def: 'Kebab-case (RSI-MEAN, ATR-SIZER). Type identifiers, never parsed.' },
-            { term: 'Runtime names', def: 'TYPE_PURPOSE_SYMBOL format (RSI_DECISION_BTCUSDT). Underscore-delimited.' },
-          ],
-        },
-        {
-          heading: 'Complex Examples',
-          body: `(example: complex strategy example placeholder)`,
-        },
-      ],
-    },
-  },
-  {
-    id: 'logging',
-    title: 'Logging',
-    shortTitle: 'Logging',
-    content: {
-      purpose: 'Audit logs, schema, and failure signatures.',
-      sections: [
-        {
-          heading: 'Purpose',
-          body: `Logs support inspection of what happened, when, and why.`,
-        },
-        {
-          heading: 'Log Schema',
+          heading: "Audit Logs",
           body: null,
           code: `{
-  "ts": 1640995200000,
   "event": "soft_domain.not_ready",
   "domain": "option_chain",
-  "symbol": "BTC-31DEC21",
-  "step_ts": 1640995200000,
-  "reason": "no_snapshot"
+  "symbol": "BTCUSDT",
+  "step_ts": ...,
+  "...": "..."
 }`,
         },
         {
-          heading: 'Common Failure Signatures',
-          body: null,
-          list: [
-            { term: 'backtest.closed_bar.not_ready', def: 'Hard readiness failure: OHLCV bar not closed at step_ts.' },
-            { term: 'soft_domain.not_ready', def: 'Soft degradation: non-grid domain has no valid snapshot.' },
-            { term: 'step.monotonicity.violation', def: 'step_ts decreased (should never happen).' },
-            { term: 'tick.visibility.future', def: 'Tick with data_ts > step_ts was accessed (lookahead).' },
-          ],
+          heading: "Reproducibility",
+          body: "Artifacts allow reconstructing what the system knew at each step.",
         },
       ],
     },
   },
   {
-    id: 'sample_data',
-    title: 'Sample Data',
-    shortTitle: 'Sample Data',
+    id: "strategy",
+    title: "Strategy Templates",
+    shortTitle: "Strategy",
     content: {
-      purpose: 'Bundled fixtures for semantics tests.',
+      purpose: "Declarative templates for intent (no time, no I/O).",
       sections: [
         {
-          heading: 'What Sample Data Is For',
-          body: `Files under data/sample/ are small fixtures for wiring checks. They test contract enforcement, not strategy results.`,
+          heading: "Template Definition",
+          body: `Strategies declare structure and dependencies.
+They do not own time, I/O, or execution.`,
         },
         {
-          heading: 'Intended Use',
+          heading: "Lifecycle",
           body: null,
           list: [
-            { term: 'Wiring validation', def: 'Verify engine initialization and component assembly.' },
-            { term: 'Readiness checks', def: 'Trigger hard/soft readiness behavior.' },
-            { term: 'Log inspection', def: 'Produce traces for schema checks.' },
+            { term: "Declare", def: "Define placeholders and dependencies." },
+            { term: "Bind", def: "Resolve placeholders to symbols/params." },
+            { term: "Execute", def: "Driver advances steps." },
           ],
-        },
-        {
-          heading: 'Not Intended For',
-          body: null,
-          list: [
-            { term: 'Performance evaluation', def: 'Coverage is too small for metrics.' },
-            { term: 'Statistical inference', def: 'Sample size is too small.' },
-            { term: 'Strategy development', def: 'Use real data sources for research.' },
-          ],
-        },
-      ],
-    },
-  },
-  {
-    id: 'install',
-    title: 'Installation',
-    shortTitle: 'Install',
-    content: {
-      purpose: 'Build and run commands.',
-      sections: [
-        {
-          heading: 'Requirements',
-          body: `Python 3.11 or 3.12. Ubuntu 22.04 LTS or macOS.`,
-        },
-        {
-          heading: 'Quick Setup (venv)',
-          body: null,
-          code: `python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt && pip install -e .`,
-        },
-        {
-          heading: 'Run Sample',
-          body: null,
-          code: `python apps/run_sample.py`,
-        },
-        {
-          heading: 'Run Tests',
-          body: null,
-          code: `pytest -q -m "not local_data" tests`,
         },
       ],
     },
@@ -292,150 +126,362 @@ const DocContent = ({ doc }) => {
       </header>
 
       <div className="doc-body">
-        {doc.content.sections.map((section, idx) => (
-          <section key={idx} className="doc-section">
-            <h3 className="section-heading">{section.heading}</h3>
+        {doc.content.sections.map((section, idx) => {
+          const sectionId =
+            (doc.id ? `${doc.id}-` : "") +
+            (section.heading || `section-${idx}`)
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "");
 
-            {section.body && (
-              <p className="section-body">{section.body}</p>
-            )}
+          return (
+            <section key={idx} className="doc-section" id={sectionId}>
+              <h3 className="section-heading">
+                {section.heading}
+              </h3>
 
-            {section.code && (
-              <pre className="section-code"><code>{section.code}</code></pre>
-            )}
+              {section.body && (
+                // preserves intentional newlines without introducing <pre>
+                <p className="section-body" style={{ whiteSpace: "pre-line" }}>
+                  {String(section.body).trim()}
+                </p>
+              )}
 
-            {section.list && (
-              <dl className="section-list">
-                {section.list.map((item, i) => (
-                  <div key={i} className="list-item">
-                    <dt>{item.term}</dt>
-                    <dd>{item.def}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
+              {section.code && (
+                <pre className="section-code">
+                  <code>{String(section.code).trim()}</code>
+                </pre>
+              )}
 
-            {section.table && (
-              <div className="section-table-wrapper">
-                <table className="section-table">
-                  <thead>
-                    <tr>
-                      {section.table.headers.map((h, i) => (
-                        <th key={i}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {section.table.rows.map((row, i) => (
-                      <tr key={i}>
-                        {row.map((cell, j) => (
-                          <td key={j}>{cell}</td>
+              {section.list && (
+                <dl className="section-list">
+                  {section.list.map((item, i) => (
+                    <React.Fragment key={i}>
+                      <dt className="list-term">{item.term}</dt>
+                      <dd className="list-def">{item.def}</dd>
+                    </React.Fragment>
+                  ))}
+                </dl>
+              )}
+
+              {section.table && (
+                <div className="section-table-wrapper">
+                  <table className="section-table">
+                    <thead>
+                      <tr>
+                        {section.table.headers.map((h, i) => (
+                          <th key={i}>{h}</th>
                         ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </section>
-        ))}
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row, i) => (
+                        <tr key={i}>
+                          {row.map((cell, j) => (
+                            <td key={j}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </section>
+          );
+        })}
       </div>
     </article>
   );
 };
 
-const SoionLab = () => {
-  const entryDocIds = [
-    'overview',
-    'contract_spec',
-    'runtime_semantics',
-    'ingestion_boundary',
-    'strategy',
-    'logging',
-    'sample_data',
-    'install',
-  ];
-  const entryDocs = DOCS.filter(doc => entryDocIds.includes(doc.id));
-  const [activeDoc, setActiveDoc] = useState(entryDocs[0]?.id || 'contract_spec');
+const MODES = {
+  use: {
+    label: 'How to use',
+    sections: [
+  {
+    id: "declared-surface",
+    title: "Declaration surface",
+    summary: "Bind symbols/params to a strategy template in /apps/run_*.py.",
+    bullets: [
+      "Select strategy name.",
+      "Bind placeholders to concrete values.",
+      "Set the replay window (start timestamp and end timestamp).",
+    ],
+    code: `STRATEGY_NAME = "EXAMPLE"
+BIND_SYMBOLS = {"A":"BTCUSDT","B":"ETHUSDT","PARAM1":14, "...":"..."}  # fills template placeholders
+START_TS = 1766966400000  # 2025-12-29 00:00:00 UTC (epoch ms)
+END_TS   = 1767052800000  # 2025-12-30 00:00:00 UTC (epoch ms)
+`,
+  },
 
-  const currentDoc = DOCS.find(d => d.id === activeDoc);
+  {
+    id: "run-a-backtest",
+    title: "Run a backtest",
+    summary: "Execute the run and inspect artifacts.",
+    bullets: [
+      "Run the entry script.",
+      "Per-step traces/logs are written for audit.",
+      "Outputs: /artifacts/run/<run_id>/*.jsonl",
+    ],
+    code: `python apps/run_backtest.py`,
+  },
+
+  {
+    id: "strategy-design",
+    title: "Strategy design",
+    summary: "Strategy templates live in /apps/strategy/*.py (data needs + wiring).",
+    bullets: [
+      "Declare data requirements and placeholders.",
+      "Keep optional feeds as soft-readiness (non-blocking when missing).",
+      "Layer configs are defined here (features/model/risk/execution/portfolio).",
+    ],
+    code: `(strategy template excerpt — see source)
+@register_strategy("EXAMPLE")
+class ExampleStrategy(StrategyBase):
+    STRATEGY_NAME="EXAMPLE"; INTERVAL="30m"
+    UNIVERSE_TEMPLATE={..., "soft_readiness":{...}}
+    DATA={...}; REQUIRED_DATA={...}
+    FEATURES_USER=[...]; MODEL_CFG={...}; DECISION_CFG={...}
+    RISK_CFG={...}; EXECUTION_CFG={...}; PORTFOLIO_CFG={...}
+`,
+  },
+]
+  },
+  audit: {
+    label: 'Audit logs & traces',
+    sections: [
+      {
+        id: 'trace-step',
+        title: 'Per-step trace',
+        summary: 'One JSON row per driver step: state, inputs, and guardrails frozen at each step.',
+        bullets: [
+  'Each step records exactly what the strategy saw at that moment: features, model outputs, portfolio state, and market data.',
+  'The trace stores timing checks (last step time and per-data-stream progress) to make time ordering explicit.',
+  'For price bars, the trace shows whether the bar was fully closed before the step (with expected vs actual timestamps).',
+
+        ],
+        code: `log_step_trace(
+    step_ts, feature_output, model_output, decision_score,
+    target_position, order_fills, execution_outcomes, portfolio_state,
+    market_snapshots, guardrails_checks, ## check timestamp, ticks' visibilities
+
+    # --- part of guardrail checks, better readability ---
+    expected_visible_end_ts, # OHLCV expected visible end ts
+    actual_last_ts, # primary symbol OHLCV last visible tick ts -- for lookahead check
+    closed_bar_ready # OHLCV readiness status, check lookahead,
+)`,
+      },
+      {
+      id: 'asyncio-health',
+      title: 'Async runtime health',
+      summary: 'Dedicated asyncio.jsonl surfaces scheduling and backpressure without polluting trace.',
+      bullets: [
+  'Separate runtime logs record slow or blocked background tasks (e.g. file replay or parsing), without affecting strategy logic.',
+  'These logs explain why some data sources may arrive late even though the strategy logic itself is deterministic.',
+      ],
+      code: `## Example asyncio audit log
+{"event":"asyncio.to_thread.exec_slow",
+ "operation":"sync_iter_next","fn_ms":112,
+ "worker":"OptionChainWorker","domain":"option_chain","symbol":"BTCUSDT"}`,
+    },
+    {
+      id: 'default-events',
+      title: 'Runtime + ingestion events',
+      summary: 'default.jsonl records lifecycle, errors, and stop reasons for post-mortem.',
+      bullets: [
+  'Lifecycle events (worker start and stop, cancellations, errors) are recorded with context for debugging.',
+  'Critical failures stop the run with full diagnostics; non-critical issues are logged and the system continues.',
+      ],
+      code: `## Example default audit log
+{"event":"ingestion.worker_stop",
+ "worker":"OHLCVWorker","domain":"ohlcv",
+ "symbol":"BTCUSDT","stop_reason":"cancelled","poll_seq":2988}`,
+    },
+      {
+      id: 'post-hoc',
+      title: 'Post-hoc reconstruction',
+      summary: 'Trace is sufficient to reconstruct “what the strategy saw” per step without re-reading data sources.',
+      bullets: [
+'All traces can be replayed after the run to reconstruct exactly what data was visible at each step.',
+  'Timing checks allow verification that no future data leaked into the strategy decisions.',
+      ],
+      code: `# invariants you can assert offline from trace.jsonl
+assert trace.step_ts == trace.guardrails.last_step_ts
+assert trace.actual_last_ts >= trace.expected_visible_end_ts
+assert all(v.numeric.data_ts <= trace.step_ts for v in trace.market_snapshots.ohlcv.values())`,
+    },
+    ],
+  },
+};
+
+const referenceSummaries = {
+  semantics: 'Time model, visibility rule, and execution invariants.',
+  boundaries: 'Ingestion boundary, readiness policy, and failure modes.',
+  artifacts: 'Traces and audit logs emitted by each run.',
+  strategy: 'Declarative strategy templates and their lifecycle.',
+};
+
+const DeepDocsGrid = ({ items, active, onSelect }) => (
+  <div className="deep-docs-grid">
+    {items.map(item => (
+      <button
+        key={item.id}
+        type="button"
+        className={`deep-doc-item ${active === item.id ? 'active' : ''}`}
+        onClick={() => onSelect(item.id)}
+        aria-pressed={active === item.id}
+      >
+        <span className="deep-doc-title">{item.title}</span>
+        <span className="deep-doc-desc">{item.desc}</span>
+      </button>
+    ))}
+  </div>
+);
+
+const SoionLab = () => {
+  const entryDocIds = ['semantics', 'boundaries', 'artifacts', 'strategy'];
+  const entryDocs = DOCS.filter(doc => entryDocIds.includes(doc.id));
+  const [activeDoc, setActiveDoc] = useState(entryDocs[0]?.id || 'semantics');
+  const [activeTab, setActiveTab] = useState('use');
+  const [activeSection, setActiveSection] = useState(MODES.use.sections[0].id);
+
+  useEffect(() => {
+    setActiveSection(MODES[activeTab].sections[0].id);
+  }, [activeTab]);
+
+  const currentDoc = entryDocs.find(d => d.id === activeDoc);
+  const mode = MODES[activeTab];
+  const section = mode.sections.find(sec => sec.id === activeSection) || mode.sections[0];
+  const referenceItems = entryDocs.map(doc => ({
+    id: doc.id,
+    title: doc.title,
+    desc: referenceSummaries[doc.id] || doc.content.purpose,
+  }));
 
   return (
     <div className="soionlab-docs-container">
       <header className="soionlab-page-header">
-        <h1 className="soionlab-page-title">SoionLab</h1>
+        <div className="soionlab-title-row">
+          <h1 className="soionlab-page-title">SoionLab</h1>
+          <a
+            className="soionlab-github-link"
+            href="https://github.com/ZBaiY/SoionLab"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="SoionLab source code on GitHub"
+          >
+            View source (GitHub)
+          </a>
+        </div>
         <p className="soionlab-page-subtitle">
           Research inspection surface for execution semantics and constraints.
         </p>
-        <p className="soionlab-page-subtitle soionlab-page-subtitle-secondary">
-          Focus on visibility, timing, and readiness under imperfect data.
-        </p>
       </header>
 
-      <section className="soionlab-banner">
-        <p className="banner-line">
-          <span className="banner-label">Failure mode:</span> event time and arrival time are collapsed.
-        </p>
-        <p className="banner-line">
-          <span className="banner-label">Constraint:</span> step clock + visibility rules are enforced.
-        </p>
-        <p className="banner-line">
-          <span className="banner-label">Scope:</span> inspectable visibility, readiness, and audit traces.
-        </p>
-        <p className="banner-line">
-          <span className="banner-label">Artifact chain:</span> event time vs arrival time → visibility policy → audit trace → visible data at step N.
-        </p>
-      </section>
+      <div className="soionlab-tabs" role="tablist">
+        {Object.entries(MODES).map(([key, tab]) => (
+          <button
+            key={key}
+            type="button"
+            role="tab"
+            className={`soionlab-tab-button ${activeTab === key ? 'active' : ''}`}
+            onClick={() => setActiveTab(key)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-      <section className="soionlab-constraints">
-        <div className="constraint-card">
-          <h2>Two clocks: event vs arrival</h2>
+      <div className="soionlab-layout">
+        <aside className="soionlab-sidebar">
           <ul>
-            <li>Each tick carries event time and arrival time.</li>
-            <li>Logs preserve both clocks per step.</li>
-            <li>Visibility uses event time only.</li>
+            {mode.sections.map((sec) => (
+              <li key={sec.id}>
+                <button
+                  type="button"
+                  className={`soionlab-section-tab ${activeSection === sec.id ? 'active' : ''}`}
+                  onClick={() => setActiveSection(sec.id)}
+                >
+                  {sec.title}
+                </button>
+              </li>
+            ))}
           </ul>
-        </div>
-        <div className="constraint-card">
-          <h2>Single step clock</h2>
-          <ul>
-            <li>Only the Driver advances step_ts.</li>
-            <li>All components consume the same step_ts.</li>
-            <li>Step order is monotonic.</li>
-          </ul>
-        </div>
-        <div className="constraint-card">
-          <h2>Explicit readiness policy</h2>
-          <ul>
-            <li>Readiness rules are declared per domain.</li>
-            <li>Hard failures block execution.</li>
-            <li>Soft failures write an audit event.</li>
-          </ul>
-        </div>
-      </section>
+        </aside>
 
-      <section className="soionlab-artifacts">
-        <div className="artifact-card">
-          <p className="artifact-title">Code</p>
-          <p className="artifact-subtitle">Tick schema + visibility rule</p>
-          <p className="artifact-placeholder">(example: code snippet placeholder)</p>
-        </div>
-        <div className="artifact-card">
-          <p className="artifact-title">Diagram</p>
-          <p className="artifact-subtitle">Ingestion boundary + step clock</p>
-          <p className="artifact-placeholder">(example: diagram placeholder)</p>
-        </div>
-        <div className="artifact-card">
-          <p className="artifact-title">Trace</p>
-          <p className="artifact-subtitle">Audit trace: what was visible at step N</p>
-          <p className="artifact-note">Fields include step_ts, data_ts, arrival_ts, event.</p>
-        </div>
-      </section>
+        <main className="soionlab-main-content">
+          <h2>{section.title}</h2>
+          {section.summary && <p className="section-summary">{section.summary}</p>}
+          <ul className="section-bullets">
+            {section.bullets.map((bullet, idx) => (
+              <li key={idx}>{bullet}</li>
+            ))}
+          </ul>
+          <pre className="section-code"><code>{section.code}</code></pre>
+        </main>
+      </div>
+
+      <section className="failure-card">
+  <h2>Failure case (boundary example)</h2>
+
+  <p>
+    <span className="text-accent">Option-chain updates arrive late</span> — after the system has already advanced to the
+    next evaluation step — so the run continues with <span className="text-accent">outdated option snapshots</span>.
+  </p>
+
+  <p>
+    Many standard workflows quietly <span className="text-accent">reuse the last value</span> and keep going, without recording
+    that the option data was missing at that step.
+  </p>
+
+  <p className="failure-note">
+    This is a boundary where <span className="text-accent">data availability changes what the result means</span>.
+  </p>
+
+  <div className="failure-columns">
+    <div className="failure-list">
+      <p className="failure-heading">What standard workflows do</p>
+      <ul>
+        <li>Assume delayed data is current.</li>
+        <li>Reuse old values when updates are missing.</li>
+        <li>Leave no record of incomplete inputs.</li>
+      </ul>
+    </div>
+
+    <div className="failure-list">
+      <p className="failure-heading">What is flagged here</p>
+      <ul>
+        <li>Missing option data is detected explicitly.</li>
+        <li>The missing input is recorded as an event.</li>
+        <li>The run remains inspectable after the fact.</li>
+      </ul>
+    </div>
+  </div>
+
+  <pre className="section-code">
+    <code>{`{
+  "ts_ms": 1766838600000,
+  "level": "WARNING",
+  "event": "soft_domain.not_ready",
+  "context": {
+    "domain": "option_chain",
+    "symbol": "BTCUSDT",
+    "last_data_ts": 1766832244603,
+    "staleness_ms": 6355397,
+    "reasons": ["missing"],
+    "max_staleness_ms": 5,
+    "run_id": "EXAMPLE20260115T163551Z",
+    "mode": "default",
+    "...": "..."
+  }
+}`}</code>
+  </pre>
+</section>
 
       <section className="soionlab-entrypoints">
         <header className="entrypoints-header">
-          <h2>Deep Documentation</h2>
-          <p>Drill-down references for contracts, semantics, and boundaries.</p>
+          <h2>Deep documentation reference</h2>
+          <p>Reference index for contracts, semantics, and boundaries.</p>
         </header>
         <label className="entrypoints-select-label" htmlFor="soionlab-doc-select">
           Select a document
@@ -452,19 +498,7 @@ const SoionLab = () => {
             </option>
           ))}
         </select>
-        <ul className="entrypoints-list">
-          {entryDocs.map(doc => (
-            <li key={doc.id}>
-              <button
-                className={`entrypoint-button ${activeDoc === doc.id ? 'active' : ''}`}
-                onClick={() => setActiveDoc(doc.id)}
-              >
-                <span className="entrypoint-title">{doc.title}</span>
-                <span className="entrypoint-purpose">{doc.content.purpose}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <DeepDocsGrid items={referenceItems} active={activeDoc} onSelect={setActiveDoc} />
       </section>
 
       <section className="soionlab-docs-main">
