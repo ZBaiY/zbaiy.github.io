@@ -208,7 +208,7 @@ const MODES = {
       "Set the replay window (START_TS, END_TS).",
     ],
     code: `STRATEGY_NAME = "EXAMPLE"
-BIND_SYMBOLS = {"A":"BTCUSDT","B":"ETHUSDT","PARAM1":14, "...":"..."}  # fills template placeholders
+BIND_SYMBOLS = {"A":"BTCUSDT","B":"ETHUSDT","PARAM1":14, "...":"..."} 
 START_TS = 1766966400000  # 2025-12-29 00:00:00 UTC (epoch ms)
 END_TS   = 1767052800000  # 2025-12-30 00:00:00 UTC (epoch ms)
 `,
