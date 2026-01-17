@@ -473,7 +473,7 @@ const SoionLab = () => {
     "last_data_ts": 1766832244603,
     "staleness_ms": 6355397,
     "reasons": ["missing"],
-    "max_staleness_ms": 5,
+    "max_staleness_ms": 300000,
     "run_id": "EXAMPLE20260115T163551Z",
     "mode": "default",
     "...": "..."
