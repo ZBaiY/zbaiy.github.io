@@ -20,6 +20,18 @@ const Header = ({ activeTab, onTabChange }) => {
           SoionLab
         </button>
         <button 
+          onClick={() => onTabChange('STRATEGIES')} 
+          className={activeTab === 'STRATEGIES' ? 'active' : ''}
+        >
+          Strategies
+        </button>
+        <button
+          onClick={() => onTabChange('EXPERIMENTS')}
+          className={activeTab === 'EXPERIMENTS' ? 'active' : ''}
+        >
+          Experiments
+        </button>
+        <button 
           onClick={() => onTabChange('PROJECTS')} 
           className={activeTab === 'PROJECTS' ? 'active' : ''}
         >

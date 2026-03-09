@@ -7,6 +7,8 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import SoionLab from './components/SoionLab';
 import Projects from './components/Projects';
+import StrategyShowcase from './components/StrategyShowcase';
+import ExperimentingStrategies from './components/ExperimentingStrategies';
 import CV from './pages/CV';
 import Publications from './pages/Publications';
 
@@ -21,6 +23,10 @@ function App() {
         return <CV />;
       case 'SOIONLAB':
         return <SoionLab />;
+      case 'STRATEGIES':
+        return <StrategyShowcase />;
+      case 'EXPERIMENTS':
+        return <ExperimentingStrategies />;
       case 'PROJECTS':
         return <Projects />;
       case 'HOME':

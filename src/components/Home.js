@@ -37,6 +37,20 @@ const Home = ({ onNavigate }) => {
           </p>
         </div>
       </section>
+
+      <section className="home-showcase-section">
+        <div className="home-showcase-card">
+          <p className="home-showcase-kicker">Phase 0 Strategy Snapshot</p>
+          <h2>Static research showcase from existing run artifacts</h2>
+          <p>
+            A homepage-safe strategy view built from backtest outputs, summary files, and supporting audit references.
+            No live runtime integration, operator controls, or polling.
+          </p>
+          <button className="btn-secondary" onClick={() => onNavigate('STRATEGIES')}>
+            Open Strategy Showcase
+          </button>
+        </div>
+      </section>
     </div>
   );
 };

@@ -232,6 +232,543 @@ a:focus-visible {
   color: var(--text-accent); 
 }
 
+.home-showcase-section {
+  margin-top: -1rem;
+}
+
+.home-showcase-card {
+  background:
+    linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(148, 163, 184, 0.06)),
+    var(--bg-card);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 18px;
+  padding: 2rem;
+}
+
+.home-showcase-kicker,
+.strategy-kicker {
+  margin: 0 0 0.75rem;
+  color: #7dd3fc;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.home-showcase-card h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0 0 0.9rem;
+}
+
+.home-showcase-card p {
+  max-width: 62ch;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.strategy-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.strategy-hero {
+  display: grid;
+  gap: 1.2rem;
+  padding: 2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(125, 211, 252, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.16), transparent 35%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.96));
+}
+
+.strategy-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 1rem;
+}
+
+.strategy-description {
+  margin: 0;
+  max-width: 60ch;
+  color: #cbd5e1;
+  font-size: 1.05rem;
+}
+
+.strategy-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.strategy-hero-meta span,
+.strategy-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.42rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e2e8f0;
+  background: rgba(51, 65, 85, 0.86);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.strategy-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.strategy-metric-card,
+.strategy-panel,
+.strategy-summary-strip,
+.strategy-window-strip,
+.strategy-evidence-strip {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 20px;
+}
+
+.strategy-metric-card {
+  padding: 1.2rem 1.1rem;
+}
+
+.strategy-metric-card span {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.55rem;
+}
+
+.strategy-metric-card strong {
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-weight: 600;
+}
+
+.strategy-panel {
+  padding: 1rem;
+}
+
+.strategy-chart-shell {
+  padding: 1rem;
+}
+
+.strategy-panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.strategy-panel-header h3,
+.strategy-summary-header h3,
+.strategy-window-header h3,
+.strategy-evidence-header h3 {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+}
+
+.strategy-panel-header p,
+.strategy-summary-header p,
+.strategy-window-header p,
+.strategy-evidence-header p,
+.strategy-evidence-card p,
+.strategy-summary-item p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.strategy-chart {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.strategy-chart-frame {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.strategy-chart-canvas {
+  min-width: 0;
+  overflow: visible;
+}
+
+.strategy-chart-y-label,
+.strategy-chart-x-label {
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.strategy-chart-y-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+}
+
+.strategy-chart-x-label {
+  margin-top: 0.55rem;
+  text-align: center;
+}
+
+.strategy-chart-tick {
+  fill: var(--text-secondary);
+  font-size: 11px;
+}
+
+.strategy-chart-tick-y {
+  text-anchor: end;
+}
+
+.strategy-chart-bg {
+  fill: rgba(15, 23, 42, 0.4);
+}
+
+.strategy-chart-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.strategy-chart-tab {
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: rgba(30, 41, 59, 0.6);
+  color: #cbd5e1;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+  font-size: 0.84rem;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.strategy-chart-tab:hover {
+  background: rgba(51, 65, 85, 0.85);
+}
+
+.strategy-chart-tab.active {
+  background: rgba(14, 165, 233, 0.14);
+  border-color: rgba(125, 211, 252, 0.36);
+  color: #e0f2fe;
+}
+
+.strategy-chart-axis {
+  stroke: rgba(148, 163, 184, 0.35);
+  stroke-width: 1;
+}
+
+.strategy-bar-positive {
+  fill: rgba(125, 211, 252, 0.85);
+}
+
+.strategy-bar-negative {
+  fill: rgba(251, 113, 133, 0.82);
+}
+
+.strategy-chart-legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+}
+
+.strategy-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.strategy-chart-legend i {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+}
+
+.strategy-summary-strip,
+.strategy-window-strip,
+.strategy-evidence-strip {
+  display: grid;
+  gap: 1rem;
+  padding: 1.1rem;
+}
+
+.strategy-summary-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.strategy-summary-item {
+  border-radius: 14px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  overflow: hidden;
+}
+
+.strategy-summary-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.85rem 0.95rem;
+}
+
+.strategy-summary-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.strategy-summary-item summary span {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--text-accent);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.strategy-summary-item summary p,
+.strategy-summary-body p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.strategy-summary-item[open] {
+  border-color: rgba(125, 211, 252, 0.24);
+}
+
+.strategy-summary-body {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0 0.95rem 0.95rem;
+}
+
+.strategy-window-strip {
+  gap: 1.1rem;
+}
+
+.strategy-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.strategy-evidence-card {
+  padding: 0.8rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.strategy-evidence-card p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.strategy-evidence-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.strategy-evidence-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 211, 252, 0.24);
+  background: rgba(14, 165, 233, 0.08);
+  color: #e0f2fe;
+  text-decoration: none;
+  font-size: 0.86rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.strategy-evidence-action:hover {
+  background: rgba(14, 165, 233, 0.16);
+  border-color: rgba(125, 211, 252, 0.38);
+}
+
+.strategy-showcase-loading,
+.strategy-showcase-error {
+  padding: 2rem;
+}
+
+.experiments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.experiment-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.experiment-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem;
+}
+
+.experiment-summary::-webkit-details-marker {
+  display: none;
+}
+
+.experiment-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.experiment-label,
+.experiment-domain,
+.experiment-status {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.experiment-label,
+.experiment-domain {
+  padding: 0.32rem 0.65rem;
+  background: rgba(30, 41, 59, 0.7);
+  color: #e2e8f0;
+}
+
+.experiment-description,
+.experiment-detail p,
+.experiments-takeaway {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.experiment-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+.experiment-description {
+  min-height: 0;
+}
+
+.experiment-detail-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0 1.1rem 1.1rem;
+  margin-top: 0;
+}
+
+.experiment-detail {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.experiment-detail span {
+  color: var(--text-accent);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.experiment-toggle {
+  display: inline-flex;
+  margin-top: 0.9rem;
+  color: #e0f2fe;
+  font-size: 0.82rem;
+}
+
+.experiment-card[open] {
+  border-color: rgba(125, 211, 252, 0.24);
+}
+
+.experiment-card[open] .experiment-toggle {
+  display: none;
+}
+
+.experiments-takeaway {
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+}
+
+.note-emphasis {
+  color: var(--text-accent);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .strategy-metrics-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .strategy-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0 1rem;
+  }
+
+  .app-header nav {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .App-content {
+    padding: 2.5rem 1rem;
+  }
+
+  .strategy-chart-frame {
+    grid-template-columns: 2.7rem minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 3.4rem);
+  }
+
+  .strategy-hero,
+  .home-showcase-card,
+  .about-card {
+    padding: 1.4rem;
+  }
+
+  .strategy-metrics-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- SoionLab Docs Layout --- */
 .soionlab-docs-container {
   width: 100%;
