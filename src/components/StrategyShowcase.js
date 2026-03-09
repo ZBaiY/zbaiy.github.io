@@ -56,6 +56,18 @@ function getChartSemantics(chart) {
       xLabel: 'Time',
       yLabel: 'Indexed',
     },
+    yearly_returns: {
+      title: 'Yearly Returns',
+      subtitle: chart.description || 'Calendar-year return breakdown for the displayed span.',
+      xLabel: 'Year',
+      yLabel: 'Return (%)',
+    },
+    rolling_sharpe: {
+      title: 'Rolling Sharpe',
+      subtitle: chart.description || 'Rolling Sharpe over the displayed span.',
+      xLabel: 'Time',
+      yLabel: 'Sharpe',
+    },
     trade_pnl: {
       title: 'Trade PnL',
       subtitle: chart.description || 'Realized profit and loss for each closed trade.',
@@ -136,7 +148,8 @@ function formatShortDate(value) {
 
 function getChartValueMeta(chart) {
   if (chart.chart_type === 'bar') {
-    return { keys: ['pnl'], primaryKey: 'pnl' };
+    const primaryKey = chart.series[0]?.return_pct !== undefined ? 'return_pct' : 'pnl';
+    return { keys: [primaryKey], primaryKey };
   }
   if (chart.chart_type === 'multi_line') {
     return {
@@ -149,6 +162,9 @@ function getChartValueMeta(chart) {
   }
   if (chart.series[0]?.price !== undefined) {
     return { keys: ['price'], primaryKey: 'price' };
+  }
+  if (chart.series[0]?.rolling_sharpe !== undefined) {
+    return { keys: ['rolling_sharpe'], primaryKey: 'rolling_sharpe' };
   }
   if (chart.series[0]?.exposure !== undefined) {
     return { keys: ['exposure'], primaryKey: 'exposure' };
@@ -250,7 +266,7 @@ function getChartTicks(chart) {
   const xTicks = xIndexes.map((index) => {
     const point = chart.series[index];
     const label = chart.chart_type === 'bar'
-      ? `${index + 1}`
+      ? (point.label || `${index + 1}`)
       : formatShortDate(point.ts || point.ts_ms);
     return { index, label };
   });
@@ -269,6 +285,8 @@ function formatTickValue(value, chart) {
   if (chart.key === 'drawdown') return `${value.toFixed(0)}%`;
   if (chart.key === 'btc_price') return `$${value.toFixed(0)}`;
   if (chart.key === 'equity_vs_btc') return value.toFixed(0);
+  if (chart.key === 'yearly_returns') return `${value.toFixed(0)}%`;
+  if (chart.key === 'rolling_sharpe') return value.toFixed(1);
   if (chart.key === 'equity') {
     if (Math.abs(value) >= 1_000_000) return `${(value / 1_000_000).toFixed(2)}M`;
     if (Math.abs(value) >= 1_000) return `${(value / 1_000).toFixed(0)}K`;
@@ -326,7 +344,8 @@ function ShowcaseChart({ chart, windowLabel }) {
 
   const renderContent = () => {
     if (displayChart.chart_type === 'bar') {
-      const rects = buildBarRects(displayChart.series, 'pnl', width, height, padding);
+      const barValueKey = displayChart.series[0]?.return_pct !== undefined ? 'return_pct' : 'pnl';
+      const rects = buildBarRects(displayChart.series, barValueKey, width, height, padding);
       const baseline = scaleY(0);
       return (
         <>
@@ -360,6 +379,8 @@ function ShowcaseChart({ chart, windowLabel }) {
 
     const valueKey = displayChart.chart_type === 'line' && displayChart.series[0]?.price !== undefined
       ? 'price'
+      : displayChart.chart_type === 'line' && displayChart.series[0]?.rolling_sharpe !== undefined
+        ? 'rolling_sharpe'
       : displayChart.chart_type === 'line' && displayChart.series[0]?.exposure !== undefined
         ? 'exposure'
         : displayChart.chart_type === 'area'
@@ -481,7 +502,7 @@ const StrategyShowcase = () => {
   }, []);
 
   const chartEntries = useMemo(() => {
-    const preferredOrder = ['equity', 'drawdown', 'btc_price', 'equity_vs_btc', 'trade_pnl'];
+    const preferredOrder = ['equity', 'drawdown', 'yearly_returns', 'rolling_sharpe', 'btc_price', 'equity_vs_btc', 'trade_pnl'];
     const charts = snapshot?.charts || {};
     return preferredOrder
       .map((key) => {
@@ -541,8 +562,8 @@ const StrategyShowcase = () => {
   );
   const evidenceItems = [
     `${horizonDays || 'Full'}-day BTCUSDT research window covering ${evidencePeriodLabel || 'the selected backtest period'}.`,
-    `Equity, drawdown, and BTC-relative comparison are included for the same horizon.`,
-    `${metrics.trade_count ?? 'Trade-level'} realized trades are summarized, with per-trade PnL available in the chart panel.`,
+    `Equity, drawdown, yearly return breakdown, and BTC-relative comparison are included for the same horizon.`,
+    `${metrics.trade_count ?? 'Trade-level'} realized trades are summarized, with ${formatNumber(metrics.trades_per_year)} trades per year and per-trade PnL available in the chart panel.`,
     smokeArtifact
       ? `A recent smoke audit is retained for runtime context, but this homepage remains a static backtest snapshot.`
       : `Method notes and source artifacts are retained behind the summary links below.`,
@@ -573,11 +594,11 @@ const StrategyShowcase = () => {
     },
     {
       title: 'Final Configuration',
-      summary: 'This page uses the `20 / 1.8 / 5` challenger as a representative research configuration, while the broader study still keeps `25 / 1.8 / 5` as the baseline.',
+      summary: 'The primary showcase window is built from the baseline `25 / 1.8 / 5` family because it has the broadest clean contiguous artifact coverage, while the `20 / 1.8 / 5` challenger remains part of the research findings above.',
       details: [
-        <>The structured analysis ranked <Emphasis>`20 / 1.8 / 5`</Emphasis> as the best local point inside the tested grid, with median Sharpe `2.76`, mean return `2.70%`, and median trades `63` on the clean tuning windows.</>,
-        <>It is presented here because it sits inside the same <Emphasis>stable parameter neighborhood</Emphasis> that the research found credible, not because it is treated as a magic parameter set.</>,
-        <>The report remains explicit that <Emphasis>`25 / 1.8 / 5` should stay the repo baseline</Emphasis> until broader validation shows the lower-ADX challenger is robust outside this study.</>,
+        <>The structured analysis still ranked <Emphasis>`20 / 1.8 / 5`</Emphasis> as the best local challenger inside the tested grid, but the broader study remained cautious about promoting it beyond that neighborhood.</>,
+        <>For the homepage showcase, the multi-window aggregate is anchored to the <Emphasis>baseline `25 / 1.8 / 5` route</Emphasis> because that is the cleanest contiguous artifact family currently available across the longer span.</>,
+        <>That keeps the page tied to a <Emphasis>stable parameter region</Emphasis> and avoids presenting the challenger as a magic setting before the longer-horizon evidence supports it.</>,
       ],
     },
   ];
@@ -625,17 +646,17 @@ const StrategyShowcase = () => {
 
       <section className="strategy-window-strip">
         <div className="strategy-window-header">
-          <h3>Representative Backtest Window</h3>
+          <h3>Primary Analysis Window</h3>
           <p>
-            The charts below show a single representative window for readability and visualization.
-            The underlying research also included monthly parameter inspection and rolling 60-day robustness checks across broader market segments.
+            The charts below use the primary contiguous backtest window currently supported by the artifact set.
+            <Emphasis> A Binance maintenance-era OHLCV discontinuity was unavoidable before November 2024, so the showcase starts from November 2024 and uses the longest contiguous span that is actually supported.</Emphasis>
           </p>
         </div>
 
-        <section className="strategy-metrics-row" aria-label="Representative backtest metrics">
+        <section className="strategy-metrics-row" aria-label="Primary analysis metrics">
           <article className="strategy-metric-card">
-            <span>Total Return</span>
-            <strong>{formatPercent(metrics.total_return_pct)}</strong>
+            <span>Annualized Return</span>
+            <strong>{formatPercent(metrics.annualized_return_pct)}</strong>
           </article>
           <article className="strategy-metric-card">
             <span>Sharpe</span>

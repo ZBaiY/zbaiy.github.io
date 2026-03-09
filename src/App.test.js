@@ -24,9 +24,11 @@ test('renders strategy showcase from static snapshot', async () => {
       },
       metrics: {
         total_return_pct: -4.82,
+        annualized_return_pct: -4.12,
         sharpe: -9.79,
         max_drawdown_pct: -8.28,
         trade_count: 7,
+        trades_per_year: 5.6,
       },
       charts: {
         equity: {
@@ -47,6 +49,16 @@ test('renders strategy showcase from static snapshot', async () => {
           series: [
             { ts: '2026-03-09T00:00:00Z', ts_ms: 1741478400000, drawdown_pct: 0 },
             { ts: '2026-03-09T01:00:00Z', ts_ms: 1741482000000, drawdown_pct: -5 },
+          ],
+        },
+        yearly_returns: {
+          label: 'Yearly Returns',
+          title: 'Calendar-Year Returns',
+          description: 'Yearly returns test',
+          chart_type: 'bar',
+          series: [
+            { label: '2025', ts_ms: 1741478400000, return_pct: 12.5 },
+            { label: '2026*', ts_ms: 1741482000000, return_pct: -3.2 },
           ],
         },
       },
@@ -81,7 +93,8 @@ test('renders strategy showcase from static snapshot', async () => {
   expect(screen.getByText('Research Summary')).toBeInTheDocument();
   expect(screen.getByText('Key Observations')).toBeInTheDocument();
   expect(screen.getByText(/Dynamic RSI bounds and ADX gating matter most/i)).toBeInTheDocument();
-  expect(screen.getByText('Representative Backtest Window')).toBeInTheDocument();
+  expect(screen.getByText('Primary Analysis Window')).toBeInTheDocument();
+  expect(screen.getByText('Annualized Return')).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Backtest Report' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Method Notes' })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Smoke Run Summary' })).toBeInTheDocument();
