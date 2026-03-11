@@ -11,6 +11,7 @@ import StrategyShowcase from './components/StrategyShowcase';
 import ExperimentingStrategies from './components/ExperimentingStrategies';
 import CV from './pages/CV';
 import Publications from './pages/Publications';
+import LiveDeployment from './pages/LiveDeployment';
 
 function App() {
   const [activeTab, setActiveTab] = useState('HOME');
@@ -25,6 +26,9 @@ function App() {
         return <SoionLab />;
       case 'STRATEGIES':
         return <StrategyShowcase />;
+      case 'LIVE':
+      case 'LIVE_DEPLOYMENT':
+        return <LiveDeployment />;
       case 'EXPERIMENTS':
         return <ExperimentingStrategies />;
       case 'PROJECTS':

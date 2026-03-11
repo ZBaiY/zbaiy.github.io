@@ -11,13 +11,6 @@ const Publications = () => {
           <h3>Preprints</h3>
           <ul>
             <li>
-              Bai, Z. et al. “Stellar Superradiance and Low-Energy Absorption in Dense Nuclear Media.”
-              arXiv:2512.13816 (hep-ph, 2025).{' '}
-              <a href="https://arxiv.org/abs/2512.13816" target="_blank" rel="noreferrer">arXiv</a>
-              {' '}·{' '}
-              <a href="https://inspirehep.net/literature/3093256" target="_blank" rel="noreferrer">INSPIRE</a>
-            </li>
-            <li>
               Bai, Z. et al. “Probing Axions via Spectroscopic Measurements of S-stars at the Galactic Center.”
               arXiv:2507.07482 (hep-ph, 2025).{' '}
               <a href="https://arxiv.org/abs/2507.07482" target="_blank" rel="noreferrer">arXiv</a>
@@ -28,6 +21,13 @@ const Publications = () => {
 
           <h3>Peer-reviewed</h3>
           <ul>
+            <li>
+              Bai, Z. et al. “Stellar Superradiance and Low-Energy Absorption in Dense Nuclear Media.”
+              arXiv:2512.13816 (hep-ph, 2025).{' '}
+              <a href="https://arxiv.org/abs/2512.13816" target="_blank" rel="noreferrer">arXiv</a>
+              {' '}·{' '}
+              <a href="https://inspirehep.net/literature/3093256" target="_blank" rel="noreferrer">INSPIRE</a>
+            </li>
             <li>
               Bai, Z. et al. “New physics searches with an optical dump at LUXE.”
               Phys. Rev. D 106 (2022) 115034.{' '}

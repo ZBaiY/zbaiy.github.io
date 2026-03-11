@@ -5,6 +5,7 @@ test('renders home navigation', () => {
   render(<App />);
   expect(screen.getByRole('button', { name: 'Home' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Strategies' })).toBeInTheDocument();
+  expect(screen.getAllByRole('button', { name: 'Live Deployment' }).length).toBeGreaterThan(0);
   expect(screen.getByRole('button', { name: 'Experiments' })).toBeInTheDocument();
 });
 
@@ -113,4 +114,101 @@ test('renders experimenting strategies page', () => {
   expect(screen.getByText('Random Forest Dynamic RSI')).toBeInTheDocument();
   expect(screen.getByText(/An early attempt to extend RSI threshold logic with option-chain implied-volatility context/i)).toBeInTheDocument();
   expect(screen.getAllByText('View details').length).toBeGreaterThan(0);
+});
+
+test('renders live deployment page from projected runtime data', async () => {
+  const fetchMock = jest.spyOn(global, 'fetch').mockResolvedValue({
+    ok: true,
+    json: async () => ({
+      environment: {
+        strategy: 'Dynamic RSI + ADX',
+        venue: 'Binance (Mainnet)',
+        market: 'Spot',
+        symbol: 'BTCUSDT',
+        interval: '15m',
+        mode: 'REALTIME',
+        engineStatus: 'RUNNING',
+      },
+      execution: {
+        executionModel: 'Fractional spot execution',
+        minNotionalLabel: '5 USDT',
+        stepSizeLabel: '0.00001 BTC',
+        executionPermit: 'full',
+      },
+      runtime: {
+        lastUpdateTs: '2026-03-11T05:30:00Z',
+        lastUpdateMs: Date.now() - 10_000,
+        feedStateLabel: 'Feed Active',
+        observedSteps: 4,
+        decisionScore: 1,
+        targetPosition: 0.95,
+        fillsInWindow: 1,
+        signalStateLabel: 'Recent Fill Activity',
+        liveSignalNote: 'A live BUY signal has been triggered and filled in the current observation window.',
+      },
+      portfolio: {
+        cash: 0.63,
+        positionQty: 0.0002,
+        totalEquity: 14.62,
+        portfolioStateLabel: 'Holding',
+        quoteAsset: 'USDT',
+        baseAsset: 'BTC',
+      },
+      latestFill: {
+        side: 'BUY',
+        quantity: 0.0002,
+        price: 69941.43,
+        status: 'FILLED',
+        timestamp: '2026-03-11T05:30:05Z',
+        markerTs: '2026-03-11T05:30:00Z',
+      },
+      charts: {
+        price: [
+          { ts: '2026-03-11T04:15:00Z', close: 69500 },
+          { ts: '2026-03-11T04:30:00Z', close: 69750 },
+          { ts: '2026-03-11T05:30:00Z', close: 69943.67, marker: { side: 'BUY', label: 'BUY', price: 69941.43 } },
+        ],
+        rsi: [
+          { ts: '2026-03-11T04:15:00Z', rsi: 42, rsiMean: 48, rsiUpper: 52, rsiLower: 44 },
+          { ts: '2026-03-11T04:30:00Z', rsi: 45, rsiMean: 47, rsiUpper: 51, rsiLower: 43 },
+          { ts: '2026-03-11T05:30:00Z', rsi: 51.5, rsiMean: 60.3, rsiUpper: 62.9, rsiLower: 57.7, marker: { side: 'BUY', label: 'BUY', value: 51.5 } },
+        ],
+        adx: [
+          { ts: '2026-03-11T04:15:00Z', adx: 18 },
+          { ts: '2026-03-11T04:30:00Z', adx: 21 },
+          { ts: '2026-03-11T05:30:00Z', adx: 13.6 },
+        ],
+      },
+      live_note: 'Portfolio state is exchange-synced at startup and reconciled during live runtime.',
+      explanatory_note:
+        'The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. The first real BUY fill is visible in context without turning the page into a performance claim.',
+    }),
+  });
+
+  render(<App />);
+  fireEvent.click(screen.getAllByRole('button', { name: 'Live Deployment' })[0]);
+
+  await waitFor(() => {
+    expect(screen.getByText('Dynamic RSI + ADX')).toBeInTheDocument();
+  });
+
+  expect(screen.getByRole('heading', { name: 'Live Deployment' })).toBeInTheDocument();
+  expect(screen.getByText('Fractional spot execution')).toBeInTheDocument();
+  expect(screen.getByText('Latest Live Trade')).toBeInTheDocument();
+  expect(screen.getAllByText('BUY').length).toBeGreaterThan(0);
+  expect(screen.getByText('Filled')).toBeInTheDocument();
+  expect(screen.getAllByText('A live BUY signal has been triggered and filled in the current observation window.').length).toBeGreaterThan(0);
+  expect(screen.getByRole('button', { name: 'BTC Price' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'RSI Diagnostics' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'ADX Regime' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'BTC Price' })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole('button', { name: 'RSI Diagnostics' }));
+  expect(screen.getByRole('heading', { name: 'RSI Diagnostics' })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole('button', { name: 'ADX Regime' }));
+  expect(screen.getByRole('heading', { name: 'ADX Regime Indicator' })).toBeInTheDocument();
+  expect(fetchMock).toHaveBeenCalledWith('/data/live/live_deployment_v1.json');
+
+  fetchMock.mockRestore();
 });

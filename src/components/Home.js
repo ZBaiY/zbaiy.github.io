@@ -14,6 +14,12 @@ const Home = ({ onNavigate }) => {
           <button className="btn-primary hero-cta" onClick={() => onNavigate('SOIONLAB')}>
             Research Engine
           </button>
+          <button className="btn-primary hero-cta" onClick={() => onNavigate('STRATEGIES')}>
+            Strategy Showcase
+          </button>
+          <button className="btn-primary hero-cta" onClick={() => onNavigate('LIVE')}>
+            Live Deployment
+          </button>
           <button className="btn-secondary" onClick={() => onNavigate('PROJECTS')}>
             More Projects
           </button>
@@ -41,10 +47,9 @@ const Home = ({ onNavigate }) => {
       <section className="home-showcase-section">
         <div className="home-showcase-card">
           <p className="home-showcase-kicker">Phase 0 Strategy Snapshot</p>
-          <h2>Static research showcase from existing run artifacts</h2>
+          <h2>Strategy Showcase</h2>
           <p>
-            A homepage-safe strategy view built from backtest outputs, summary files, and supporting audit references.
-            No live runtime integration, operator controls, or polling.
+            Built from backtest outputs, summary files, and supporting audit references.
           </p>
           <button className="btn-secondary" onClick={() => onNavigate('STRATEGIES')}>
             Open Strategy Showcase
