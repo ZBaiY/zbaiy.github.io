@@ -4,6 +4,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_PATH = path.resolve(__dirname, '..', 'public', 'data', 'live', 'live_deployment_v1.json');
 const STRATEGY_LABEL = 'Dynamic RSI + ADX';
+const RSI_VARIANCE_FACTOR = 1.8;
 
 function readJsonLines(filePath) {
   return fs
@@ -200,8 +201,8 @@ function main() {
           ts_ms: Number(step.ts_ms || 0),
           rsi,
           rsiMean: mean,
-          rsiUpper: mean + std,
-          rsiLower: mean - std,
+          rsiUpper: mean + (RSI_VARIANCE_FACTOR * std),
+          rsiLower: mean - (RSI_VARIANCE_FACTOR * std),
           marker: latestFillEntry && Number(step.ts_ms || 0) === latestFillEntry.markerTsMs
             ? {
                 side: latestFillEntry.side,

@@ -119,14 +119,14 @@ function getLiveChartConfig(charts) {
       key: 'rsi',
       label: 'RSI Diagnostics',
       title: 'RSI Diagnostics',
-      subtitle: 'RSI against its live rolling mean and one-standard-deviation envelope.',
+      subtitle: 'RSI against its live rolling mean and variance-adjusted decision envelope.',
       yLabel: 'RSI',
       xLabel: 'Time',
       lines: [
         { key: 'rsi', label: 'RSI', color: '#f8fafc', strokeWidth: 2.6 },
         { key: 'rsiMean', label: 'RSI Mean', color: '#38bdf8', strokeWidth: 2.2 },
-        { key: 'rsiUpper', label: 'Mean + Std', color: '#f59e0b', strokeWidth: 2 },
-        { key: 'rsiLower', label: 'Mean - Std', color: '#f59e0b', strokeWidth: 2 },
+        { key: 'rsiUpper', label: 'Mean + variance factor (=1.8) * Std', color: '#f59e0b', strokeWidth: 2 },
+        { key: 'rsiLower', label: 'Mean - variance factor (=1.8) * Std', color: '#f59e0b', strokeWidth: 2 },
       ],
       guides: [
         { label: '30', value: 30 },
@@ -523,10 +523,10 @@ function LiveDeployment() {
       label: 'RSI',
       kicker: 'RSI Context',
       value: latestRsi ? `RSI ${formatCompactNumber(latestRsi.rsi, 1)}` : 'RSI unavailable',
-      secondary: latestRsi ? `Mean ${formatCompactNumber(latestRsi.rsiMean, 2)} • Std ${formatCompactNumber(latestRsi.rsiUpper - latestRsi.rsiMean, 2)}` : null,
+      secondary: latestRsi ? `Mean ${formatCompactNumber(latestRsi.rsiMean, 2)} • Variance factor (=1.8) * Std ${formatCompactNumber(latestRsi.rsiUpper - latestRsi.rsiMean, 2)}` : null,
       meta: latestRsi ? [
         { label: 'Mean', value: formatCompactNumber(latestRsi.rsiMean, 2) },
-        { label: 'Std', value: formatCompactNumber(latestRsi.rsiUpper - latestRsi.rsiMean, 2) },
+        { label: 'Variance factor (=1.8) * Std', value: formatCompactNumber(latestRsi.rsiUpper - latestRsi.rsiMean, 2) },
       ] : [],
     },
     {

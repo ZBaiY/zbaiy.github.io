@@ -169,9 +169,9 @@ test('renders live deployment page from projected runtime data', async () => {
           { ts: '2026-03-11T05:30:00Z', close: 69943.67, marker: { side: 'BUY', label: 'BUY', price: 69941.43 } },
         ],
         rsi: [
-          { ts: '2026-03-11T04:15:00Z', rsi: 42, rsiMean: 48, rsiUpper: 52, rsiLower: 44 },
-          { ts: '2026-03-11T04:30:00Z', rsi: 45, rsiMean: 47, rsiUpper: 51, rsiLower: 43 },
-          { ts: '2026-03-11T05:30:00Z', rsi: 51.5, rsiMean: 60.3, rsiUpper: 62.9, rsiLower: 57.7, marker: { side: 'BUY', label: 'BUY', value: 51.5 } },
+          { ts: '2026-03-11T04:15:00Z', rsi: 42, rsiMean: 48, rsiUpper: 55.2, rsiLower: 40.8 },
+          { ts: '2026-03-11T04:30:00Z', rsi: 45, rsiMean: 47, rsiUpper: 54.2, rsiLower: 39.8 },
+          { ts: '2026-03-11T05:30:00Z', rsi: 51.5, rsiMean: 60.3, rsiUpper: 64.98, rsiLower: 55.62, marker: { side: 'BUY', label: 'BUY', value: 51.5 } },
         ],
         adx: [
           { ts: '2026-03-11T04:15:00Z', adx: 18 },
