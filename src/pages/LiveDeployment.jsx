@@ -96,6 +96,27 @@ function getXTickIndexes(length) {
 function getLiveChartConfig(charts) {
   return [
     {
+      key: 'equity',
+      label: 'Equity',
+      title: 'Portfolio Equity',
+      subtitle: 'Exchange-synced total equity across the observed live runtime window.',
+      yLabel: 'Equity (USDT)',
+      xLabel: 'Time',
+      lines: [{ key: 'totalEquity', label: 'Total Equity', color: '#22c55e', strokeWidth: 3 }],
+      guides: [],
+      series: charts.equity || [],
+      formatTick: (value) => formatCompactNumber(value, 2),
+      getDomain: (series) => {
+        const values = series.map((point) => point.totalEquity).filter((value) => typeof value === 'number');
+        if (!values.length) return buildNumericTicks(0, 1);
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        const padding = Math.max((max - min) * 0.12, 0.05);
+        return buildNumericTicks(min - padding, max + padding, 4);
+      },
+      markerKey: 'totalEquity',
+    },
+    {
       key: 'price',
       label: 'BTC Price',
       title: 'BTC Price',
@@ -114,6 +135,7 @@ function getLiveChartConfig(charts) {
         const padding = Math.max((max - min) * 0.1, max * 0.0025, 1);
         return buildNumericTicks(min - padding, max + padding, 4);
       },
+      markerKey: 'close',
     },
     {
       key: 'rsi',
@@ -143,6 +165,7 @@ function getLiveChartConfig(charts) {
         const max = Math.min(100, Math.max(...filtered) + 5);
         return buildNumericTicks(min, max, 5);
       },
+      markerKey: 'rsi',
     },
     {
       key: 'adx',
@@ -166,6 +189,7 @@ function getLiveChartConfig(charts) {
         const max = Math.max(...filtered) + 4;
         return buildNumericTicks(min, max, 5);
       },
+      markerKey: 'adx',
     },
   ];
 }
@@ -275,6 +299,7 @@ function MonitoringChart({ chart, windowLabel }) {
   };
   const scaleX = (index) => padding + (index / Math.max(series.length - 1, 1)) * plotWidth;
   const markerPoint = series.find((point) => point.marker);
+  const markerValue = markerPoint && chart.markerKey ? markerPoint[chart.markerKey] : null;
 
   return (
     <section className="strategy-panel live-chart-panel">
@@ -336,13 +361,13 @@ function MonitoringChart({ chart, windowLabel }) {
               <g>
                 <circle
                   cx={scaleX(series.indexOf(markerPoint))}
-                  cy={scaleY(chart.key === 'price' ? markerPoint.close : (chart.key === 'rsi' ? markerPoint.rsi : markerPoint.adx))}
+                  cy={scaleY(markerValue)}
                   r="6"
                   className="live-event-marker"
                 />
                 <text
                   x={scaleX(series.indexOf(markerPoint))}
-                  y={scaleY(chart.key === 'price' ? markerPoint.close : (chart.key === 'rsi' ? markerPoint.rsi : markerPoint.adx)) - 12}
+                  y={scaleY(markerValue) - 12}
                   textAnchor="middle"
                   className="live-event-marker-label"
                 >
@@ -378,7 +403,7 @@ function MonitoringChart({ chart, windowLabel }) {
 
 function LiveDeployment() {
   const [state, setState] = useState({ status: 'loading', payload: null, error: null });
-  const [activeChartKey, setActiveChartKey] = useState('price');
+  const [activeChartKey, setActiveChartKey] = useState('equity');
   const [activePortfolioKey, setActivePortfolioKey] = useState('equity');
   const [activeTradeKey, setActiveTradeKey] = useState('fill');
   const [activeSignalKey, setActiveSignalKey] = useState('decision');
@@ -631,7 +656,7 @@ function LiveDeployment() {
         <div className="live-chart-shell-header">
           <div>
             <h2>Chart Window</h2>
-            <p>Switch between market price, RSI diagnostics, and ADX regime using the same interaction pattern as the strategies page.</p>
+            <p>Switch between equity, market price, RSI diagnostics, and ADX regime using the same interaction pattern as the strategies page.</p>
             {latestFill ? (
               <p className="live-runtime-note">
                 {runtime.liveSignalNote || 'A live BUY signal has been triggered and filled in the current observation window.'}

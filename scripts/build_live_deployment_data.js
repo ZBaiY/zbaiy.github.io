@@ -124,6 +124,26 @@ function main() {
     .reverse()
     .flatMap((step) => (step.fills || []).map((fill) => normalizeFill(fill, step)))
     .find(Boolean);
+  const equitySeries = steps.map((step) => {
+    const snapshot = (((step || {}).portfolio || {}).snapshot_dict || {});
+    const close = Number((((step.market_snapshots || {}).ohlcv || {}).BTCUSDT || {}).numeric?.close || 0);
+    const cash = Number(snapshot.cash ?? 0);
+    const positionQty = Number(snapshot.position_qty ?? 0);
+    const totalEquityPoint = Number(snapshot.total_equity ?? (cash + (positionQty * close)) ?? 0);
+
+    return {
+      ts: toIso(step.ts_ms),
+      ts_ms: Number(step.ts_ms || 0),
+      totalEquity: totalEquityPoint,
+      marker: latestFillEntry && Number(step.ts_ms || 0) === latestFillEntry.markerTsMs
+        ? {
+            side: latestFillEntry.side,
+            label: latestFillEntry.side,
+            value: totalEquityPoint,
+          }
+        : null,
+    };
+  });
 
   const payload = {
     schema: 'live_deployment_v1',
@@ -179,6 +199,7 @@ function main() {
     },
     latestFill: latestFillEntry,
     charts: {
+      equity: equitySeries,
       price: steps.map((step) => ({
         ts: toIso(step.ts_ms),
         ts_ms: Number(step.ts_ms || 0),

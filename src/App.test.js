@@ -87,7 +87,7 @@ test('renders strategy showcase from static snapshot', async () => {
     expect(screen.getByText('Dynamic RSI Range + ADX Gateway')).toBeInTheDocument();
   });
   expect(screen.getByText(/Static research snapshot\./i)).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: 'Equity' })).toBeInTheDocument();
+  expect(screen.getAllByRole('button', { name: 'Equity' }).length).toBeGreaterThan(0);
   expect(screen.getByText('Equity Curve')).toBeInTheDocument();
   expect(screen.getByText('Time')).toBeInTheDocument();
   expect(screen.getAllByText('Equity').length).toBeGreaterThan(0);
@@ -163,6 +163,11 @@ test('renders live deployment page from projected runtime data', async () => {
         markerTs: '2026-03-11T05:30:00Z',
       },
       charts: {
+        equity: [
+          { ts: '2026-03-11T04:15:00Z', totalEquity: 14.95 },
+          { ts: '2026-03-11T04:30:00Z', totalEquity: 14.81 },
+          { ts: '2026-03-11T05:30:00Z', totalEquity: 14.62, marker: { side: 'BUY', label: 'BUY', value: 14.62 } },
+        ],
         price: [
           { ts: '2026-03-11T04:15:00Z', close: 69500 },
           { ts: '2026-03-11T04:30:00Z', close: 69750 },
@@ -198,9 +203,13 @@ test('renders live deployment page from projected runtime data', async () => {
   expect(screen.getAllByText('BUY').length).toBeGreaterThan(0);
   expect(screen.getByText('Filled')).toBeInTheDocument();
   expect(screen.getAllByText('A live BUY signal has been triggered and filled in the current observation window.').length).toBeGreaterThan(0);
+  expect(screen.getAllByRole('button', { name: 'Equity' }).length).toBeGreaterThan(0);
   expect(screen.getByRole('button', { name: 'BTC Price' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'RSI Diagnostics' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'ADX Regime' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'Portfolio Equity' })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole('button', { name: 'BTC Price' }));
   expect(screen.getByRole('heading', { name: 'BTC Price' })).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('button', { name: 'RSI Diagnostics' }));
