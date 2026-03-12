@@ -57,9 +57,10 @@ function buildSignalLabel(decisionScore, targetPosition, fillsInWindow) {
 
 function normalizeFill(fill, step) {
   if (!fill || typeof fill !== 'object') return null;
+  const side = String(fill.side || '').toUpperCase() || 'BUY';
   return {
-    side: String(fill.side || '').toUpperCase() || 'BUY',
-    quantity: Number(fill.filled_qty || 0),
+    side,
+    quantity: Math.abs(Number(fill.filled_qty || 0)),
     price: Number(fill.fill_price || 0),
     status: String(fill.exchange_status || 'UNKNOWN').toUpperCase(),
     timestampMs: Number(fill.timestamp || step.ts_ms || 0),
@@ -69,6 +70,22 @@ function normalizeFill(fill, step) {
     exchange: String(fill.exchange || ''),
     markerTsMs: Number(step.ts_ms || 0),
     markerTs: toIso(Number(step.ts_ms || 0)),
+  };
+}
+
+function buildStepMarker(step, valueKey, fallbackValue) {
+  const fills = (step.fills || [])
+    .map((fill) => normalizeFill(fill, step))
+    .filter(Boolean);
+  if (!fills.length) return null;
+
+  const latestStepFill = fills[fills.length - 1];
+  return {
+    side: latestStepFill.side,
+    label: fills.map((fill) => fill.side).join('/'),
+    fills,
+    value: fallbackValue,
+    [valueKey]: fallbackValue,
   };
 }
 
@@ -135,13 +152,7 @@ function main() {
       ts: toIso(step.ts_ms),
       ts_ms: Number(step.ts_ms || 0),
       totalEquity: totalEquityPoint,
-      marker: latestFillEntry && Number(step.ts_ms || 0) === latestFillEntry.markerTsMs
-        ? {
-            side: latestFillEntry.side,
-            label: latestFillEntry.side,
-            value: totalEquityPoint,
-          }
-        : null,
+      marker: buildStepMarker(step, 'totalEquity', totalEquityPoint),
     };
   });
 
@@ -185,7 +196,7 @@ function main() {
       fillsInWindow,
       signalStateLabel: buildSignalLabel(decisionScore, targetPosition, fillsInWindow),
       liveSignalNote: latestFillEntry
-        ? 'A live BUY signal has been triggered and filled in the current observation window.'
+        ? `A live ${latestFillEntry.side} signal has been triggered and filled in the current observation window.`
         : null,
     },
     portfolio: {
@@ -204,13 +215,11 @@ function main() {
         ts: toIso(step.ts_ms),
         ts_ms: Number(step.ts_ms || 0),
         close: Number((((step.market_snapshots || {}).ohlcv || {}).BTCUSDT || {}).numeric?.close || 0),
-        marker: latestFillEntry && Number(step.ts_ms || 0) === latestFillEntry.markerTsMs
-          ? {
-              side: latestFillEntry.side,
-              label: latestFillEntry.side,
-              price: latestFillEntry.price,
-            }
-          : null,
+        marker: buildStepMarker(
+          step,
+          'close',
+          Number((((step.market_snapshots || {}).ohlcv || {}).BTCUSDT || {}).numeric?.close || 0)
+        ),
       })),
       rsi: steps.map((step) => {
         const features = step.features || {};
@@ -224,13 +233,7 @@ function main() {
           rsiMean: mean,
           rsiUpper: mean + (RSI_VARIANCE_FACTOR * std),
           rsiLower: mean - (RSI_VARIANCE_FACTOR * std),
-          marker: latestFillEntry && Number(step.ts_ms || 0) === latestFillEntry.markerTsMs
-            ? {
-                side: latestFillEntry.side,
-                label: latestFillEntry.side,
-                value: rsi,
-              }
-            : null,
+          marker: buildStepMarker(step, 'rsi', rsi),
         };
       }),
       adx: steps.map((step) => ({
@@ -241,7 +244,7 @@ function main() {
     },
     live_note: 'Portfolio state is exchange-synced at startup and reconciled during live runtime.',
     explanatory_note: latestFillEntry
-      ? 'The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. The first real BUY fill is visible in context without turning the page into a performance claim.'
+      ? `The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. The most recent real ${latestFillEntry.side} fill is visible in context without turning the page into a performance claim.`
       : 'The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. A flat state or no fills in this window is acceptable when entry conditions have not been satisfied yet.',
   };
 

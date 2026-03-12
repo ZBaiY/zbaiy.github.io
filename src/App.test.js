@@ -140,11 +140,11 @@ test('renders live deployment page from projected runtime data', async () => {
         lastUpdateMs: Date.now() - 10_000,
         feedStateLabel: 'Feed Active',
         observedSteps: 4,
-        decisionScore: 1,
-        targetPosition: 0.95,
-        fillsInWindow: 1,
+        decisionScore: -1,
+        targetPosition: 0,
+        fillsInWindow: 2,
         signalStateLabel: 'Recent Fill Activity',
-        liveSignalNote: 'A live BUY signal has been triggered and filled in the current observation window.',
+        liveSignalNote: 'A live SELL signal has been triggered and filled in the current observation window.',
       },
       portfolio: {
         cash: 0.63,
@@ -155,28 +155,28 @@ test('renders live deployment page from projected runtime data', async () => {
         baseAsset: 'BTC',
       },
       latestFill: {
-        side: 'BUY',
+        side: 'SELL',
         quantity: 0.0002,
-        price: 69941.43,
+        price: 69511.0,
         status: 'FILLED',
-        timestamp: '2026-03-11T05:30:05Z',
-        markerTs: '2026-03-11T05:30:00Z',
+        timestamp: '2026-03-11T06:45:05Z',
+        markerTs: '2026-03-11T06:45:00Z',
       },
       charts: {
         equity: [
-          { ts: '2026-03-11T04:15:00Z', totalEquity: 14.95 },
+          { ts: '2026-03-11T04:15:00Z', totalEquity: 14.95, marker: { side: 'BUY', label: 'BUY', value: 14.95 } },
           { ts: '2026-03-11T04:30:00Z', totalEquity: 14.81 },
-          { ts: '2026-03-11T05:30:00Z', totalEquity: 14.62, marker: { side: 'BUY', label: 'BUY', value: 14.62 } },
+          { ts: '2026-03-11T06:45:00Z', totalEquity: 14.62, marker: { side: 'SELL', label: 'SELL', value: 14.62 } },
         ],
         price: [
-          { ts: '2026-03-11T04:15:00Z', close: 69500 },
+          { ts: '2026-03-11T04:15:00Z', close: 69500, marker: { side: 'BUY', label: 'BUY', price: 69500 } },
           { ts: '2026-03-11T04:30:00Z', close: 69750 },
-          { ts: '2026-03-11T05:30:00Z', close: 69943.67, marker: { side: 'BUY', label: 'BUY', price: 69941.43 } },
+          { ts: '2026-03-11T06:45:00Z', close: 69511.0, marker: { side: 'SELL', label: 'SELL', price: 69511.0 } },
         ],
         rsi: [
-          { ts: '2026-03-11T04:15:00Z', rsi: 42, rsiMean: 48, rsiUpper: 55.2, rsiLower: 40.8 },
+          { ts: '2026-03-11T04:15:00Z', rsi: 42, rsiMean: 48, rsiUpper: 55.2, rsiLower: 40.8, marker: { side: 'BUY', label: 'BUY', value: 42 } },
           { ts: '2026-03-11T04:30:00Z', rsi: 45, rsiMean: 47, rsiUpper: 54.2, rsiLower: 39.8 },
-          { ts: '2026-03-11T05:30:00Z', rsi: 51.5, rsiMean: 60.3, rsiUpper: 64.98, rsiLower: 55.62, marker: { side: 'BUY', label: 'BUY', value: 51.5 } },
+          { ts: '2026-03-11T06:45:00Z', rsi: 51.5, rsiMean: 60.3, rsiUpper: 64.98, rsiLower: 55.62, marker: { side: 'SELL', label: 'SELL', value: 51.5 } },
         ],
         adx: [
           { ts: '2026-03-11T04:15:00Z', adx: 18 },
@@ -200,9 +200,9 @@ test('renders live deployment page from projected runtime data', async () => {
   expect(screen.getByRole('heading', { name: 'Live Deployment' })).toBeInTheDocument();
   expect(screen.getByText('Fractional spot execution')).toBeInTheDocument();
   expect(screen.getByText('Latest Live Trade')).toBeInTheDocument();
-  expect(screen.getAllByText('BUY').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('SELL').length).toBeGreaterThan(0);
   expect(screen.getByText('Filled')).toBeInTheDocument();
-  expect(screen.getAllByText('A live BUY signal has been triggered and filled in the current observation window.').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('A live SELL signal has been triggered and filled in the current observation window.').length).toBeGreaterThan(0);
   expect(screen.getAllByRole('button', { name: 'Equity' }).length).toBeGreaterThan(0);
   expect(screen.getByRole('button', { name: 'BTC Price' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'RSI Diagnostics' })).toBeInTheDocument();

@@ -1737,11 +1737,27 @@ a:focus-visible {
   stroke-width: 2;
 }
 
+.live-event-marker-buy {
+  fill: #22c55e;
+}
+
+.live-event-marker-sell {
+  fill: #ef4444;
+}
+
 .live-event-marker-label {
   fill: #bbf7d0;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
+}
+
+.live-event-marker-label-buy {
+  fill: #bbf7d0;
+}
+
+.live-event-marker-label-sell {
+  fill: #fca5a5;
 }
 
 .live-chart-guides {

@@ -1,7 +1,7 @@
 {
   "schema": "live_deployment_v1",
-  "generated_at": "2026-03-12T03:03:53.712Z",
-  "generated_at_ms": 1773284633712,
+  "generated_at": "2026-03-12T07:51:38.378Z",
+  "generated_at_ms": 1773301898378,
   "source": {
     "run_id": "20260311T034309Z",
     "trace_path": "20260311T034309Z/logs/trace.jsonl",
@@ -27,39 +27,39 @@
     "executionPermit": "full"
   },
   "runtime": {
-    "lastUpdateTs": "2026-03-12T02:45:00.000Z",
-    "lastUpdateMs": 1773283500000,
+    "lastUpdateTs": "2026-03-12T07:30:00.000Z",
+    "lastUpdateMs": 1773300600000,
     "feedState": "healthy",
     "feedStateLabel": "Feed Active",
-    "feedStalenessMs": 5002,
-    "observedSteps": 93,
+    "feedStalenessMs": 5005,
+    "observedSteps": 112,
     "decisionScore": 0,
-    "targetPosition": 0.9565817518144439,
-    "fillsInWindow": 1,
+    "targetPosition": 0,
+    "fillsInWindow": 2,
     "signalStateLabel": "Recent Fill Activity",
-    "liveSignalNote": "A live BUY signal has been triggered and filled in the current observation window."
+    "liveSignalNote": "A live SELL signal has been triggered and filled in the current observation window."
   },
   "portfolio": {
-    "cash": 0.63054067,
-    "positionQty": 0.0002,
-    "totalEquity": 14.52248067,
-    "exposure": 13.89194,
-    "portfolioStateLabel": "Holding",
+    "cash": 14.51883847,
+    "positionQty": 0,
+    "totalEquity": 14.51883847,
+    "exposure": 0,
+    "portfolioStateLabel": "Flat",
     "quoteAsset": "USDT",
     "baseAsset": "BTC"
   },
   "latestFill": {
-    "side": "BUY",
+    "side": "SELL",
     "quantity": 0.0002,
-    "price": 69941.43,
+    "price": 69511,
     "status": "FILLED",
-    "timestampMs": 1773207005376,
-    "timestamp": "2026-03-11T05:30:05.376Z",
+    "timestampMs": 1773294305494,
+    "timestamp": "2026-03-12T05:45:05.494Z",
     "symbol": "BTCUSDT",
     "orderType": "MARKET",
     "exchange": "binance",
-    "markerTsMs": 1773207000000,
-    "markerTs": "2026-03-11T05:30:00.000Z"
+    "markerTsMs": 1773294300000,
+    "markerTs": "2026-03-12T05:45:00.000Z"
   },
   "charts": {
     "equity": [
@@ -112,7 +112,23 @@
         "marker": {
           "side": "BUY",
           "label": "BUY",
-          "value": 14.619274670000001
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 69941.43,
+              "status": "FILLED",
+              "timestampMs": 1773207005376,
+              "timestamp": "2026-03-11T05:30:05.376Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773207000000,
+              "markerTs": "2026-03-11T05:30:00.000Z"
+            }
+          ],
+          "value": 14.619274670000001,
+          "totalEquity": 14.619274670000001
         }
       },
       {
@@ -624,6 +640,140 @@
         "ts_ms": 1773283500000,
         "totalEquity": 14.52248067,
         "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:00:00.000Z",
+        "ts_ms": 1773284400000,
+        "totalEquity": 14.48785267,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:15:00.000Z",
+        "ts_ms": 1773285300000,
+        "totalEquity": 14.504000670000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:30:00.000Z",
+        "ts_ms": 1773286200000,
+        "totalEquity": 14.514542669999999,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:45:00.000Z",
+        "ts_ms": 1773287100000,
+        "totalEquity": 14.542812670000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:00:00.000Z",
+        "ts_ms": 1773288000000,
+        "totalEquity": 14.51986267,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:15:00.000Z",
+        "ts_ms": 1773288900000,
+        "totalEquity": 14.54790867,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:30:00.000Z",
+        "ts_ms": 1773289800000,
+        "totalEquity": 14.527638670000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:45:00.000Z",
+        "ts_ms": 1773290700000,
+        "totalEquity": 14.50745067,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:00:00.000Z",
+        "ts_ms": 1773291600000,
+        "totalEquity": 14.504940670000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:15:00.000Z",
+        "ts_ms": 1773292500000,
+        "totalEquity": 14.498760670000003,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:30:00.000Z",
+        "ts_ms": 1773293400000,
+        "totalEquity": 14.48193067,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:45:00.000Z",
+        "ts_ms": 1773294300000,
+        "totalEquity": 14.51883847,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 69511,
+              "status": "FILLED",
+              "timestampMs": 1773294305494,
+              "timestamp": "2026-03-12T05:45:05.494Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773294300000,
+              "markerTs": "2026-03-12T05:45:00.000Z"
+            }
+          ],
+          "value": 14.51883847,
+          "totalEquity": 14.51883847
+        }
+      },
+      {
+        "ts": "2026-03-12T06:00:00.000Z",
+        "ts_ms": 1773295200000,
+        "totalEquity": 14.51883847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:15:00.000Z",
+        "ts_ms": 1773296100000,
+        "totalEquity": 14.51883847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:30:00.000Z",
+        "ts_ms": 1773297000000,
+        "totalEquity": 14.51883847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:45:00.000Z",
+        "ts_ms": 1773297900000,
+        "totalEquity": 14.51883847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:00:00.000Z",
+        "ts_ms": 1773298800000,
+        "totalEquity": 14.51883847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:15:00.000Z",
+        "ts_ms": 1773299700000,
+        "totalEquity": 14.51883847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:30:00.000Z",
+        "ts_ms": 1773300600000,
+        "totalEquity": 14.51883847,
+        "marker": null
       }
     ],
     "price": [
@@ -676,7 +826,23 @@
         "marker": {
           "side": "BUY",
           "label": "BUY",
-          "price": 69941.43
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 69941.43,
+              "status": "FILLED",
+              "timestampMs": 1773207005376,
+              "timestamp": "2026-03-11T05:30:05.376Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773207000000,
+              "markerTs": "2026-03-11T05:30:00.000Z"
+            }
+          ],
+          "value": 69943.67,
+          "close": 69943.67
         }
       },
       {
@@ -1188,6 +1354,140 @@
         "ts_ms": 1773283500000,
         "close": 69459.7,
         "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:00:00.000Z",
+        "ts_ms": 1773284400000,
+        "close": 69286.56,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:15:00.000Z",
+        "ts_ms": 1773285300000,
+        "close": 69367.3,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:30:00.000Z",
+        "ts_ms": 1773286200000,
+        "close": 69420.01,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:45:00.000Z",
+        "ts_ms": 1773287100000,
+        "close": 69561.36,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:00:00.000Z",
+        "ts_ms": 1773288000000,
+        "close": 69446.61,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:15:00.000Z",
+        "ts_ms": 1773288900000,
+        "close": 69586.84,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:30:00.000Z",
+        "ts_ms": 1773289800000,
+        "close": 69485.49,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:45:00.000Z",
+        "ts_ms": 1773290700000,
+        "close": 69384.55,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:00:00.000Z",
+        "ts_ms": 1773291600000,
+        "close": 69372,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:15:00.000Z",
+        "ts_ms": 1773292500000,
+        "close": 69341.1,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:30:00.000Z",
+        "ts_ms": 1773293400000,
+        "close": 69256.95,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:45:00.000Z",
+        "ts_ms": 1773294300000,
+        "close": 69511.01,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 69511,
+              "status": "FILLED",
+              "timestampMs": 1773294305494,
+              "timestamp": "2026-03-12T05:45:05.494Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773294300000,
+              "markerTs": "2026-03-12T05:45:00.000Z"
+            }
+          ],
+          "value": 69511.01,
+          "close": 69511.01
+        }
+      },
+      {
+        "ts": "2026-03-12T06:00:00.000Z",
+        "ts_ms": 1773295200000,
+        "close": 69480.54,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:15:00.000Z",
+        "ts_ms": 1773296100000,
+        "close": 69453.84,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:30:00.000Z",
+        "ts_ms": 1773297000000,
+        "close": 69536.39,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:45:00.000Z",
+        "ts_ms": 1773297900000,
+        "close": 69484.52,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:00:00.000Z",
+        "ts_ms": 1773298800000,
+        "close": 69501.44,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:15:00.000Z",
+        "ts_ms": 1773299700000,
+        "close": 69495.6,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:30:00.000Z",
+        "ts_ms": 1773300600000,
+        "close": 69606.4,
+        "marker": null
       }
     ],
     "rsi": [
@@ -1264,7 +1564,23 @@
         "marker": {
           "side": "BUY",
           "label": "BUY",
-          "value": 51.518664065048476
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 69941.43,
+              "status": "FILLED",
+              "timestampMs": 1773207005376,
+              "timestamp": "2026-03-11T05:30:05.376Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773207000000,
+              "markerTs": "2026-03-11T05:30:00.000Z"
+            }
+          ],
+          "value": 51.518664065048476,
+          "rsi": 51.518664065048476
         }
       },
       {
@@ -2031,6 +2347,197 @@
         "rsiUpper": 38.97375274502263,
         "rsiLower": 24.84993923206081,
         "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:00:00.000Z",
+        "ts_ms": 1773284400000,
+        "rsi": 23.37867588971507,
+        "rsiMean": 29.121751777846544,
+        "rsiUpper": 36.383638097234126,
+        "rsiLower": 21.85986545845896,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:15:00.000Z",
+        "ts_ms": 1773285300000,
+        "rsi": 27.312166480225727,
+        "rsiMean": 27.743436723868285,
+        "rsiUpper": 33.3936149720756,
+        "rsiLower": 22.09325847566097,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:30:00.000Z",
+        "ts_ms": 1773286200000,
+        "rsi": 29.84426498239509,
+        "rsiMean": 27.139245890240012,
+        "rsiUpper": 31.211628969958692,
+        "rsiLower": 23.066862810521332,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T03:45:00.000Z",
+        "ts_ms": 1773287100000,
+        "rsi": 36.2569403801037,
+        "rsiMean": 28.603662267422983,
+        "rsiUpper": 36.44352255146536,
+        "rsiLower": 20.76380198338061,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:00:00.000Z",
+        "ts_ms": 1773288000000,
+        "rsi": 33.573944471053935,
+        "rsiMean": 30.077826611175034,
+        "rsiUpper": 38.24713656552873,
+        "rsiLower": 21.90851665682134,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:15:00.000Z",
+        "ts_ms": 1773288900000,
+        "rsi": 39.4688977026644,
+        "rsiMean": 33.2958658540079,
+        "rsiUpper": 41.12814934505995,
+        "rsiLower": 25.463582362955847,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:30:00.000Z",
+        "ts_ms": 1773289800000,
+        "rsi": 36.9187991297435,
+        "rsiMean": 35.21705118847514,
+        "rsiUpper": 41.11150662603645,
+        "rsiLower": 29.322595750913827,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T04:45:00.000Z",
+        "ts_ms": 1773290700000,
+        "rsi": 34.52617401772706,
+        "rsiMean": 36.1531857607783,
+        "rsiUpper": 39.83269754489741,
+        "rsiLower": 32.47367397665919,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:00:00.000Z",
+        "ts_ms": 1773291600000,
+        "rsi": 34.229152206654845,
+        "rsiMean": 35.747334732019155,
+        "rsiUpper": 39.67004543515273,
+        "rsiLower": 31.82462402888558,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:15:00.000Z",
+        "ts_ms": 1773292500000,
+        "rsi": 33.46577324340063,
+        "rsiMean": 35.725501868324,
+        "rsiUpper": 39.68791379170906,
+        "rsiLower": 31.763089944938947,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:30:00.000Z",
+        "ts_ms": 1773293400000,
+        "rsi": 31.411256527945724,
+        "rsiMean": 34.11368911121476,
+        "rsiUpper": 37.31145413048697,
+        "rsiLower": 30.915924091942546,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T05:45:00.000Z",
+        "ts_ms": 1773294300000,
+        "rsi": 42.823986533707654,
+        "rsiMean": 35.29456035941643,
+        "rsiUpper": 42.35096918482361,
+        "rsiLower": 28.238151534009248,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 69511,
+              "status": "FILLED",
+              "timestampMs": 1773294305494,
+              "timestamp": "2026-03-12T05:45:05.494Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773294300000,
+              "markerTs": "2026-03-12T05:45:00.000Z"
+            }
+          ],
+          "value": 42.823986533707654,
+          "rsi": 42.823986533707654
+        }
+      },
+      {
+        "ts": "2026-03-12T06:00:00.000Z",
+        "ts_ms": 1773295200000,
+        "rsi": 41.92301707335364,
+        "rsiMean": 36.77382519440812,
+        "rsiUpper": 45.18932245210232,
+        "rsiLower": 28.358327936713916,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:15:00.000Z",
+        "ts_ms": 1773296100000,
+        "rsi": 41.10688391411867,
+        "rsiMean": 38.14925788368355,
+        "rsiUpper": 46.67505940858975,
+        "rsiLower": 29.623456358777354,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:30:00.000Z",
+        "ts_ms": 1773297000000,
+        "rsi": 44.69187382694447,
+        "rsiMean": 40.39438963772725,
+        "rsiUpper": 48.756617020871396,
+        "rsiLower": 32.032162254583106,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T06:45:00.000Z",
+        "ts_ms": 1773297900000,
+        "rsi": 42.92378035045368,
+        "rsiMean": 42.696834150893025,
+        "rsiUpper": 44.85298211188142,
+        "rsiLower": 40.54068618990463,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:00:00.000Z",
+        "ts_ms": 1773298800000,
+        "rsi": 43.70614006592322,
+        "rsiMean": 42.8731818785238,
+        "rsiUpper": 45.1537244069505,
+        "rsiLower": 40.5926393500971,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:15:00.000Z",
+        "ts_ms": 1773299700000,
+        "rsi": 43.48458393605183,
+        "rsiMean": 43.18543009538015,
+        "rsiUpper": 45.318035508133015,
+        "rsiLower": 41.05282468262728,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-12T07:30:00.000Z",
+        "ts_ms": 1773300600000,
+        "rsi": 48.78876303358942,
+        "rsiMean": 44.721754415226016,
+        "rsiUpper": 48.52617065825224,
+        "rsiLower": 40.91733817219979,
+        "marker": null
       }
     ],
     "adx": [
@@ -2498,9 +3005,104 @@
         "ts": "2026-03-12T02:45:00.000Z",
         "ts_ms": 1773283500000,
         "adx": 54.508035165057656
+      },
+      {
+        "ts": "2026-03-12T03:00:00.000Z",
+        "ts_ms": 1773284400000,
+        "adx": 58.774252748093524
+      },
+      {
+        "ts": "2026-03-12T03:15:00.000Z",
+        "ts_ms": 1773285300000,
+        "adx": 58.774252748093446
+      },
+      {
+        "ts": "2026-03-12T03:30:00.000Z",
+        "ts_ms": 1773286200000,
+        "adx": 48.90512570067463
+      },
+      {
+        "ts": "2026-03-12T03:45:00.000Z",
+        "ts_ms": 1773287100000,
+        "adx": 34.47433470293846
+      },
+      {
+        "ts": "2026-03-12T04:00:00.000Z",
+        "ts_ms": 1773288000000,
+        "adx": 40.11118744045976
+      },
+      {
+        "ts": "2026-03-12T04:15:00.000Z",
+        "ts_ms": 1773288900000,
+        "adx": 28.24467079900643
+      },
+      {
+        "ts": "2026-03-12T04:30:00.000Z",
+        "ts_ms": 1773289800000,
+        "adx": 28.244670799006393
+      },
+      {
+        "ts": "2026-03-12T04:45:00.000Z",
+        "ts_ms": 1773290700000,
+        "adx": 36.78508179049725
+      },
+      {
+        "ts": "2026-03-12T05:00:00.000Z",
+        "ts_ms": 1773291600000,
+        "adx": 36.966613119461215
+      },
+      {
+        "ts": "2026-03-12T05:15:00.000Z",
+        "ts_ms": 1773292500000,
+        "adx": 29.367425719765887
+      },
+      {
+        "ts": "2026-03-12T05:30:00.000Z",
+        "ts_ms": 1773293400000,
+        "adx": 36.22231945413502
+      },
+      {
+        "ts": "2026-03-12T05:45:00.000Z",
+        "ts_ms": 1773294300000,
+        "adx": 23.65835610252896
+      },
+      {
+        "ts": "2026-03-12T06:00:00.000Z",
+        "ts_ms": 1773295200000,
+        "adx": 23.658356102528934
+      },
+      {
+        "ts": "2026-03-12T06:15:00.000Z",
+        "ts_ms": 1773296100000,
+        "adx": 29.057568698670522
+      },
+      {
+        "ts": "2026-03-12T06:30:00.000Z",
+        "ts_ms": 1773297000000,
+        "adx": 20.233259416700655
+      },
+      {
+        "ts": "2026-03-12T06:45:00.000Z",
+        "ts_ms": 1773297900000,
+        "adx": 20.775724081013077
+      },
+      {
+        "ts": "2026-03-12T07:00:00.000Z",
+        "ts_ms": 1773298800000,
+        "adx": 21.327514219039237
+      },
+      {
+        "ts": "2026-03-12T07:15:00.000Z",
+        "ts_ms": 1773299700000,
+        "adx": 21.327514219039216
+      },
+      {
+        "ts": "2026-03-12T07:30:00.000Z",
+        "ts_ms": 1773300600000,
+        "adx": 7.4946178512508235
       }
     ]
   },
   "live_note": "Portfolio state is exchange-synced at startup and reconciled during live runtime.",
-  "explanatory_note": "The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. The first real BUY fill is visible in context without turning the page into a performance claim."
+  "explanatory_note": "The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. The most recent real SELL fill is visible in context without turning the page into a performance claim."
 }

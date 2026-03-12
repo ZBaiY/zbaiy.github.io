@@ -298,8 +298,9 @@ function MonitoringChart({ chart, windowLabel }) {
     return height - padding - ((value - domain.min) / range) * plotHeight;
   };
   const scaleX = (index) => padding + (index / Math.max(series.length - 1, 1)) * plotWidth;
-  const markerPoint = series.find((point) => point.marker);
-  const markerValue = markerPoint && chart.markerKey ? markerPoint[chart.markerKey] : null;
+  const markerPoints = series
+    .map((point, index) => ({ point, index }))
+    .filter(({ point }) => point.marker && chart.markerKey && typeof point[chart.markerKey] === 'number');
 
   return (
     <section className="strategy-panel live-chart-panel">
@@ -357,24 +358,24 @@ function MonitoringChart({ chart, windowLabel }) {
                 strokeLinejoin="round"
               />
             ))}
-            {markerPoint ? (
-              <g>
+            {markerPoints.map(({ point, index }) => (
+              <g key={`${chart.key}-marker-${point.ts_ms || index}`}>
                 <circle
-                  cx={scaleX(series.indexOf(markerPoint))}
-                  cy={scaleY(markerValue)}
+                  cx={scaleX(index)}
+                  cy={scaleY(point[chart.markerKey])}
                   r="6"
-                  className="live-event-marker"
+                  className={`live-event-marker live-event-marker-${String(point.marker?.side || '').toLowerCase()}`}
                 />
                 <text
-                  x={scaleX(series.indexOf(markerPoint))}
-                  y={scaleY(markerValue) - 12}
+                  x={scaleX(index)}
+                  y={scaleY(point[chart.markerKey]) - 12}
                   textAnchor="middle"
-                  className="live-event-marker-label"
+                  className={`live-event-marker-label live-event-marker-label-${String(point.marker?.side || '').toLowerCase()}`}
                 >
-                  {markerPoint.marker?.label || 'BUY'}
+                  {point.marker?.label || point.marker?.side || 'FILL'}
                 </text>
               </g>
-            ) : null}
+            ))}
           </svg>
           <div className="strategy-chart-x-label" aria-hidden="true">{chart.xLabel}</div>
         </div>
