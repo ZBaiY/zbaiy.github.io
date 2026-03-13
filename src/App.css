@@ -353,6 +353,13 @@ a:focus-visible {
   font-weight: 600;
 }
 
+.strategy-metric-subtitle {
+  margin: 0.55rem 0 0 0;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
 .strategy-panel {
   padding: 1rem;
 }
@@ -506,7 +513,8 @@ a:focus-visible {
 
 .strategy-summary-strip,
 .strategy-window-strip,
-.strategy-evidence-strip {
+.strategy-evidence-strip,
+.strategy-execution-strip {
   display: grid;
   gap: 1rem;
   padding: 1.1rem;
@@ -561,6 +569,29 @@ a:focus-visible {
 
 .strategy-window-strip {
   gap: 1.1rem;
+}
+
+.strategy-execution-strip {
+  background: rgba(30, 41, 59, 0.46);
+  border: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 18px;
+}
+
+.strategy-execution-header h3 {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+}
+
+.strategy-execution-header p,
+.strategy-execution-body p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.strategy-execution-body {
+  display: grid;
+  gap: 0.55rem;
 }
 
 .strategy-evidence-grid {

@@ -92,13 +92,12 @@ test('renders strategy showcase from static snapshot', async () => {
   expect(screen.getByText('Time')).toBeInTheDocument();
   expect(screen.getAllByText('Equity').length).toBeGreaterThan(0);
   expect(screen.getByText('Research Summary')).toBeInTheDocument();
-  expect(screen.getByText('Key Observations')).toBeInTheDocument();
-  expect(screen.getByText(/Dynamic RSI bounds and ADX gating matter most/i)).toBeInTheDocument();
+  expect(screen.getByText('Objective')).toBeInTheDocument();
+  expect(screen.getByText(/two distinct variants rather than one/i)).toBeInTheDocument();
   expect(screen.getByText('Primary Analysis Window')).toBeInTheDocument();
   expect(screen.getByText('Annualized Return')).toBeInTheDocument();
   expect(screen.getByRole('link', { name: 'Backtest Report' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Method Notes' })).toBeInTheDocument();
-  expect(screen.getByRole('link', { name: 'Smoke Run Summary' })).toBeInTheDocument();
+  expect(screen.getByRole('link', { name: 'Research Notes' })).toBeInTheDocument();
   expect(fetchMock).toHaveBeenCalledWith('/data/strategies/rsi-adx-gateway/showcase_snapshot_v1.json');
 
   fetchMock.mockRestore();

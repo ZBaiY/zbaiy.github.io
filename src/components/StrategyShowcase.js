@@ -14,6 +14,11 @@ function formatNumber(value) {
   return value.toFixed(2);
 }
 
+function formatBarsAndHours(bars, hours) {
+  if (typeof bars !== 'number' || typeof hours !== 'number') return 'N/A';
+  return `${bars.toFixed(0)} x 15m bars (${hours.toFixed(2)}h)`;
+}
+
 function formatDate(iso) {
   if (!iso) return 'Unknown';
   return new Date(iso).toLocaleString();
@@ -127,7 +132,7 @@ function buildRebasedEquityVsBtcChart(charts) {
 
   return {
     ...comparisonChart,
-    description: 'Strategy equity and BTC price rebased to the same starting value over the displayed horizon.',
+    description: 'Strategy equity and BTC price rebased to the same starting value. This view highlights whether the system adds value beyond passive BTC exposure rather than simply tracking the market.',
     series: alignedEquitySeries.map((equityPoint) => {
       const btcPoint = btcByTs.get(equityPoint.ts_ms);
       return {
@@ -306,14 +311,15 @@ function buildBarRects(series, valueKey, width, height, padding) {
   const innerHeight = height - padding * 2;
   const baseline = height - padding - ((0 - min) / range) * innerHeight;
   const innerWidth = width - padding * 2;
-  const barWidth = Math.max(innerWidth / series.length, 1);
+  const barWidth = innerWidth / series.length;
+  const gap = barWidth > 2 ? 1 : 0;
   return series.map((point, index) => {
     const value = point[valueKey] ?? 0;
     const scaled = (Math.abs(value) / range) * innerHeight;
     const x = padding + index * barWidth;
     const y = value >= 0 ? baseline - scaled : baseline;
     const rectHeight = Math.max(scaled, 1);
-    return { x, y, width: Math.max(barWidth - 1, 1), height: rectHeight, positive: value >= 0 };
+    return { x, y, width: Math.max(barWidth - gap, 0.2), height: rectHeight, positive: value >= 0 };
   });
 }
 
@@ -540,7 +546,7 @@ const StrategyShowcase = () => {
     );
   }
 
-  const { strategy, metrics, evidence } = snapshot;
+  const { strategy, metrics, evidence, diagnostics = {} } = snapshot;
   const windowLabel = formatWindowLabel(strategy.period_start, strategy.period_end);
   const evidencePeriodLabel = strategy.period_start && strategy.period_end
     ? `${new Date(strategy.period_start).toLocaleDateString()} - ${new Date(strategy.period_end).toLocaleDateString()}`
@@ -556,50 +562,94 @@ const StrategyShowcase = () => {
     supportingArtifacts,
     (artifact) => artifact.label === 'Robustness report',
   );
-  const smokeArtifact = findEvidenceArtifact(
+  const legacyArtifact = findEvidenceArtifact(
     supportingArtifacts,
-    (artifact) => artifact.label === 'Smoke summary example',
+    (artifact) => artifact.label === 'Legacy strategy note',
   );
   const evidenceItems = [
-    `${horizonDays || 'Full'}-day BTCUSDT research window covering ${evidencePeriodLabel || 'the selected backtest period'}.`,
-    `Equity, drawdown, yearly return breakdown, and BTC-relative comparison are included for the same horizon.`,
-    `${metrics.trade_count ?? 'Trade-level'} realized trades are summarized, with ${formatNumber(metrics.trades_per_year)} trades per year and per-trade PnL available in the chart panel.`,
-    smokeArtifact
-      ? `A recent smoke audit is retained for runtime context, but this homepage remains a static backtest snapshot.`
-      : `Method notes and source artifacts are retained behind the summary links below.`,
+    `${horizonDays || 'Full'}-day BTCUSDT 15-minute backtest window covering ${evidencePeriodLabel || 'the selected backtest period'}.`,
+    `All chart panels on this page are sourced from the direct continuous gateway run ${snapshot.selection?.selected_run_id || ''}.`,
+    `${metrics.trade_count ?? 'Trade-level'} closed trades are summarized, with ${formatNumber(metrics.trades_per_year)} trades per year and per-trade PnL shown without mixing in stitched showcase data.`,
+    `Old-vs-new family interpretation is retained in the linked research notes, but the graphs on this page remain gateway-only and non-comparative.`,
   ];
   const evidenceActions = [
     reportArtifact ? { label: 'Backtest Report', path: reportArtifact.path } : null,
-    methodArtifact ? { label: 'Method Notes', path: methodArtifact.path } : null,
-    smokeArtifact ? { label: 'Smoke Run Summary', path: smokeArtifact.path } : null,
+    methodArtifact ? { label: 'Research Notes', path: methodArtifact.path } : null,
+    legacyArtifact ? { label: 'Legacy Notes', path: legacyArtifact.path } : null,
   ].filter(Boolean);
   const strategySummarySections = [
     {
-      title: 'Key Observations',
-      summary: 'Dynamic RSI bounds and ADX gating matter most in sideways conditions, where the research found cleaner entries and fewer static-threshold failures.',
+      title: 'Objective',
+      summary: 'This page presents the gateway flush variant directly from a continuous backtest run.',
       details: [
-        <>The research describes the signal as a <Emphasis>local rolling RSI region</Emphasis> rather than a fixed RSI threshold, which made entries less brittle across changing volatility conditions.</>,
-        <>Across the tested grid, <Emphasis>`variance_factor = 1.8`</Emphasis> and <Emphasis>`window_RSI_rolling = 5`</Emphasis> consistently formed the most credible neighborhood, while very tight or very loose bands degraded the signal.</>,
-        <><Emphasis>ADX is used as a regime gate</Emphasis>, not as a source of alpha by itself. The work targets <Emphasis>sideways-regime BTCUSDT behavior</Emphasis> and degrades outside those conditions.</>,
+        <>This page presents the gateway flush variant directly from a <Emphasis>continuous backtest run</Emphasis>.</>,
+        <>The goal is not to showcase stitched performance, but to expose a <Emphasis>single research artifact</Emphasis> with transparent diagnostics.</>,
       ],
     },
     {
-      title: 'Robustness Findings',
-      summary: 'Robustness here means examining neighboring parameter sets and rolling market windows, not trusting a single annual equity curve.',
+      title: 'Key Findings',
+      summary: 'The strategy behaves as a selective long/flat intraday BTC timing system rather than a market-neutral alpha engine.',
       details: [
-        <>The study first ran a <Emphasis>clean local grid</Emphasis> over `adx_threshold`, `variance_factor`, and `window_RSI_rolling`, then followed with <Emphasis>wider 60-day rolling validations</Emphasis> across multiple market segments.</>,
-        <>That broader view showed a <Emphasis>stable region</Emphasis> around `variance_factor = 1.8` and `window_RSI_rolling = 5`, but only a <Emphasis>modest and mixed</Emphasis> advantage when lowering `adx_threshold` from `25` to `20`.</>,
-        <>The reports also document the limits of robustness: returns and Sharpe flip by regime, trade frequency changes materially across windows, and one strong 2024 window was excluded because its <Emphasis>trace chronology was invalid</Emphasis>.</>,
+        <>The strategy behaves as a <Emphasis>selective long/flat intraday BTC timing system</Emphasis> rather than a market-neutral alpha engine.</>,
+        <>Performance comes from <Emphasis>tactical exposure control</Emphasis>: the system spends a large fraction of time flat and deploys capital aggressively when signals trigger.</>,
       ],
     },
     {
-      title: 'Final Configuration',
-      summary: 'The primary showcase window is built from the baseline `25 / 1.8 / 5` family because it has the broadest clean contiguous artifact coverage, while the `20 / 1.8 / 5` challenger remains part of the research findings above.',
+      title: 'Robustness and Limits',
+      summary: 'The current evidence is bounded to the tested BTCUSDT window.',
       details: [
-        <>The structured analysis still ranked <Emphasis>`20 / 1.8 / 5`</Emphasis> as the best local challenger inside the tested grid, but the broader study remained cautious about promoting it beyond that neighborhood.</>,
-        <>For the homepage showcase, the multi-window aggregate is anchored to the <Emphasis>baseline `25 / 1.8 / 5` route</Emphasis> because that is the cleanest contiguous artifact family currently available across the longer span.</>,
-        <>That keeps the page tied to a <Emphasis>stable parameter region</Emphasis> and avoids presenting the challenger as a magic setting before the longer-horizon evidence supports it.</>,
+        <>The run demonstrates coherent behavior and <Emphasis>non-trivial excess return periods versus BTC</Emphasis>, but it does not yet prove cross-asset robustness, cross-exchange portability, deployable capacity, or realistic market impact.</>,
+        <>These remain the next research steps before claiming deployable alpha. The page should be read as a <Emphasis>research artifact</Emphasis>, not a finished production claim.</>,
       ],
+    },
+    {
+      title: 'Current Showcase Configuration',
+      summary: 'Charts shown here are sourced from a single continuous backtest artifact to avoid stitched or cherry-picked results.',
+      details: [
+        <>The current showcase is anchored to the direct continuous <Emphasis>`BT_RSI_ADX_GATEWAY_V2_20241101_20260201`</Emphasis> artifact.</>,
+        <>The graph concepts are unchanged, but the page is intentionally framed around <Emphasis>benchmark-relative performance, directional exposure, and robustness limits</Emphasis> rather than headline marketing metrics alone.</>,
+      ],
+    },
+  ];
+  const primaryMetricCards = [
+    { label: 'Annualized Return', value: formatPercent(metrics.annualized_return_pct) },
+    { label: 'Sharpe', value: formatNumber(metrics.sharpe) },
+    { label: 'Max Drawdown', value: formatPercent(metrics.max_drawdown_pct) },
+    { label: 'Trades', value: metrics.trade_count ?? 'N/A' },
+    {
+      label: 'Execution Cost Assumption',
+      value: '~20 bps round trip',
+      subtitle: '10 bps observed fee baseline + 10 bps slippage allowance',
+    },
+    {
+      label: 'Strategy Beta to BTC',
+      value: formatNumber(diagnostics.strategy_beta_to_btc),
+      subtitle: 'Directional but sub-1 beta exposure',
+    },
+    {
+      label: 'Return Correlation to BTC',
+      value: formatNumber(diagnostics.return_correlation_to_btc),
+      subtitle: 'Moderate dependence on BTC moves',
+    },
+    {
+      label: 'Time in Market',
+      value: formatPercent((diagnostics.time_in_market_ratio || 0) * 100),
+      subtitle: 'Strategy is flat most of the time',
+    },
+    {
+      label: 'Mean Leverage When Active',
+      value: formatNumber(diagnostics.mean_leverage_when_active),
+      subtitle: 'Near-fully deployed when signals trigger',
+    },
+    {
+      label: 'Holding Horizon',
+      value: formatBarsAndHours(diagnostics.avg_holding_steps, diagnostics.avg_holding_hours),
+      subtitle: 'Intraday tactical positioning',
+    },
+    {
+      label: 'Trade Frequency',
+      value: `${formatNumber(diagnostics.trade_frequency_per_day)} trades/day`,
+      subtitle: 'Short-horizon tactical turnover',
     },
   ];
 
@@ -623,8 +673,8 @@ const StrategyShowcase = () => {
         <div className="strategy-summary-header">
           <h3>Research Summary</h3>
           <p>
-            This strategy page is organized around the research process: empirical observations first,
-            robustness findings second, and configuration choice last.
+            This page is framed as a quant research artifact: benchmark-relative diagnostics, directional exposure,
+            and stated robustness limits rather than promotional headline framing.
           </p>
         </div>
         <div className="strategy-summary-list">
@@ -648,28 +698,39 @@ const StrategyShowcase = () => {
         <div className="strategy-window-header">
           <h3>Primary Analysis Window</h3>
           <p>
-            The charts below use the primary contiguous backtest window currently supported by the artifact set.
-            <Emphasis> A Binance maintenance-era OHLCV discontinuity was unavoidable before November 2024, so the showcase starts from November 2024 and uses the longest contiguous span that is actually supported.</Emphasis>
+            The charts below use the direct continuous gateway backtest run currently selected for the website snapshot.
+            <Emphasis> The graph concepts are unchanged from the prior page, but the chart inputs now come from one continuous artifact family instead of a stitched showcase aggregate.</Emphasis>
           </p>
         </div>
 
+        <section className="strategy-execution-strip" aria-label="Execution assumptions">
+          <div className="strategy-execution-header">
+            <h3>Execution Assumptions</h3>
+            <p>
+              The backtest applies an intentionally conservative round-trip trading-cost assumption of about 20 bps per
+              completed trade.
+            </p>
+          </div>
+          <div className="strategy-execution-body">
+            <p>
+              Roughly 10 bps reflects the effective fee level observed from real Binance trading experience, and
+              another ~10 bps is applied as a linear slippage allowance.
+            </p>
+            <p>
+              This is not a full order-book execution simulator; it is a deliberately practical baseline used to avoid
+              overstating edge.
+            </p>
+          </div>
+        </section>
+
         <section className="strategy-metrics-row" aria-label="Primary analysis metrics">
-          <article className="strategy-metric-card">
-            <span>Annualized Return</span>
-            <strong>{formatPercent(metrics.annualized_return_pct)}</strong>
-          </article>
-          <article className="strategy-metric-card">
-            <span>Sharpe</span>
-            <strong>{formatNumber(metrics.sharpe)}</strong>
-          </article>
-          <article className="strategy-metric-card">
-            <span>Max Drawdown</span>
-            <strong>{formatPercent(metrics.max_drawdown_pct)}</strong>
-          </article>
-          <article className="strategy-metric-card">
-            <span>Trades</span>
-            <strong>{metrics.trade_count ?? 'N/A'}</strong>
-          </article>
+          {primaryMetricCards.map((card) => (
+            <article key={card.label} className="strategy-metric-card">
+              <span>{card.label}</span>
+              <strong>{card.value}</strong>
+              {card.subtitle ? <p className="strategy-metric-subtitle">{card.subtitle}</p> : null}
+            </article>
+          ))}
         </section>
 
         <section className="strategy-panel strategy-chart-shell">
