@@ -608,7 +608,7 @@ const StrategyShowcase = () => {
       summary: 'Charts shown here are sourced from a single continuous backtest artifact to avoid stitched or cherry-picked results.',
       details: [
         <>The current showcase is anchored to the direct continuous <Emphasis>`{showcaseRunId}`</Emphasis> artifact.</>,
-        <>The graph concepts are unchanged, but the page is intentionally framed around <Emphasis>benchmark-relative performance, directional exposure, and robustness limits</Emphasis> rather than headline marketing metrics alone.</>,
+        <>An <Emphasis>hours-level discontinuity in the Binance data caused by exchange maintenance</Emphasis> blocks extending this backtest family further back than March 2023, so the showcased window stops at the last continuous range before that gap.</>,
       ],
     },
   ];
@@ -700,7 +700,7 @@ const StrategyShowcase = () => {
           <h3>Primary Analysis Window</h3>
           <p>
             The charts below use the direct continuous gateway backtest run currently selected for the website snapshot.
-            <Emphasis> The graph concepts are unchanged from the prior page, but the chart inputs now come from one continuous artifact family instead of a stitched showcase aggregate.</Emphasis>
+            <Emphasis> An hours-level discontinuity in the Binance data caused by exchange maintenance blocks extending this backtest family further back than March 2023, so the showcased window stops at the last continuous range before that gap.</Emphasis>
           </p>
         </div>
 

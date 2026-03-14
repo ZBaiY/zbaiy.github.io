@@ -1,6 +1,6 @@
 {
   "schema": "showcase_snapshot_v1",
-  "generated_at": "2026-03-14T12:19:58.950Z",
+  "generated_at": "2026-03-14T12:40:02.435Z",
   "strategy": {
     "slug": "rsi-adx-gateway",
     "name": "Dynamic RSI Range + ADX Gateway",
