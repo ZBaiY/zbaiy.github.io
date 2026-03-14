@@ -553,6 +553,7 @@ const StrategyShowcase = () => {
     : null;
   const activeChart = chartEntries.find((entry) => entry.key === activeChartKey) || chartEntries[0];
   const supportingArtifacts = evidence.supporting_artifacts || [];
+  const showcaseRunId = snapshot.selection?.selected_run_id || evidence?.latest_run_label || 'current backtest artifact';
   const horizonDays = Math.round(snapshot.selection?.selected_horizon_days || 0);
   const reportArtifact = findEvidenceArtifact(
     supportingArtifacts,
@@ -568,7 +569,7 @@ const StrategyShowcase = () => {
   );
   const evidenceItems = [
     `${horizonDays || 'Full'}-day BTCUSDT 15-minute backtest window covering ${evidencePeriodLabel || 'the selected backtest period'}.`,
-    `All chart panels on this page are sourced from the direct continuous gateway run ${snapshot.selection?.selected_run_id || ''}.`,
+    `All chart panels on this page are sourced from the direct continuous gateway run ${showcaseRunId}.`,
     `${metrics.trade_count ?? 'Trade-level'} closed trades are summarized, with ${formatNumber(metrics.trades_per_year)} trades per year and per-trade PnL shown without mixing in stitched showcase data.`,
     `Old-vs-new family interpretation is retained in the linked research notes, but the graphs on this page remain gateway-only and non-comparative.`,
   ];
@@ -606,7 +607,7 @@ const StrategyShowcase = () => {
       title: 'Current Showcase Configuration',
       summary: 'Charts shown here are sourced from a single continuous backtest artifact to avoid stitched or cherry-picked results.',
       details: [
-        <>The current showcase is anchored to the direct continuous <Emphasis>`BT_RSI_ADX_GATEWAY_V2_20241101_20260201`</Emphasis> artifact.</>,
+        <>The current showcase is anchored to the direct continuous <Emphasis>`{showcaseRunId}`</Emphasis> artifact.</>,
         <>The graph concepts are unchanged, but the page is intentionally framed around <Emphasis>benchmark-relative performance, directional exposure, and robustness limits</Emphasis> rather than headline marketing metrics alone.</>,
       ],
     },

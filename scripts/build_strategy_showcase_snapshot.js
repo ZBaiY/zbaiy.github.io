@@ -3,7 +3,7 @@ const path = require('path');
 
 const WORKSPACE_ROOT = path.resolve(__dirname, '..', '..');
 const SITE_ROOT = path.resolve(__dirname, '..');
-const RUN_ID = 'BT_RSI_ADX_GATEWAY_V2_20241101_20260201';
+const RUN_ID = 'RSI-ADX-GATEWAY-FRACTIONAL20260314T120457Z';
 const RUN_ROOT = path.join(WORKSPACE_ROOT, 'SoionLab', 'artifacts', 'runs', RUN_ID);
 const OUTPUT_PATH = path.join(SITE_ROOT, 'public', 'data', 'strategies', 'rsi-adx-gateway', 'showcase_snapshot_v1.json');
 const FLUSH_RESEARCH_PATH = path.join(
