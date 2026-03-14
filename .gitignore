@@ -9,7 +9,9 @@
 /coverage
 
 # production
-
+docs/data/strategies/rsi-adx-gateway/evidence/trace.jsonl
+docs/data/strategies/rsi-adx-gateway/showcase_snapshot_v1.json
+public/data/strategies/rsi-adx-gateway/evidence/trace.jsonl
 # misc
 .DS_Store
 .env.local
@@ -20,3 +22,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+docs/data/strategies/rsi-adx-gateway/evidence/*.jsonl
+docs/data/strategies/rsi-adx-gateway/evidence/*.jsonl
+
+public/data/strategies/rsi-adx-gateway/evidence/*.jsonl

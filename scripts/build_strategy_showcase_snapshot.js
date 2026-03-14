@@ -6,22 +6,7 @@ const SITE_ROOT = path.resolve(__dirname, '..');
 const RUN_ID = 'RSI-ADX-GATEWAY-FRACTIONAL20260314T120457Z';
 const RUN_ROOT = path.join(WORKSPACE_ROOT, 'SoionLab', 'artifacts', 'runs', RUN_ID);
 const OUTPUT_PATH = path.join(SITE_ROOT, 'public', 'data', 'strategies', 'rsi-adx-gateway', 'showcase_snapshot_v1.json');
-const FLUSH_RESEARCH_PATH = path.join(
-  WORKSPACE_ROOT,
-  'SoionLab',
-  'docs',
-  'strategies',
-  'rsi_adx_gateway_flush',
-  'rsi_adx_gateway_flush_research_report.md'
-);
-const LEGACY_RESEARCH_PATH = path.join(
-  WORKSPACE_ROOT,
-  'SoionLab',
-  'docs',
-  'strategies',
-  'dynamical_rsi_adxgateway',
-  'rsi_adx_gateway_robustness_report.md'
-);
+const EVIDENCE_PUBLIC_ROOT = path.join(SITE_ROOT, 'public', 'data', 'strategies', 'rsi-adx-gateway', 'evidence');
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
@@ -35,19 +20,37 @@ function readJsonLines(filePath) {
     .map((line) => JSON.parse(line));
 }
 
+function copyEvidenceAsset(sourcePath, fileName) {
+  const outputPath = path.join(EVIDENCE_PUBLIC_ROOT, fileName);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.copyFileSync(sourcePath, outputPath);
+  return `/data/strategies/rsi-adx-gateway/evidence/${fileName}`;
+}
+
 function toIso(tsMs) {
   return new Date(tsMs).toISOString();
 }
 
 function mean(values) {
-  return values.reduce((sum, value) => sum + value, 0) / Math.max(values.length, 1);
+  if (!values.length) return 0;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
+function median(values) {
+  if (!values.length) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  if (sorted.length % 2 === 0) {
+    return (sorted[mid - 1] + sorted[mid]) / 2;
+  }
+  return sorted[mid];
 }
 
 function sampleStd(values) {
   if (values.length <= 1) return 0;
   const avg = mean(values);
   const variance = values.reduce((sum, value) => sum + ((value - avg) ** 2), 0) / (values.length - 1);
-  return Math.sqrt(variance);
+  return Math.sqrt(Math.max(variance, 0));
 }
 
 function sampleCovariance(xs, ys) {
@@ -55,6 +58,22 @@ function sampleCovariance(xs, ys) {
   const meanX = mean(xs);
   const meanY = mean(ys);
   return xs.reduce((sum, value, index) => sum + ((value - meanX) * (ys[index] - meanY)), 0) / (xs.length - 1);
+}
+
+function skewness(values) {
+  if (values.length < 3) return 0;
+  const avg = mean(values);
+  const std = sampleStd(values);
+  if (!std) return 0;
+  return mean(values.map((value) => ((value - avg) / std) ** 3));
+}
+
+function kurtosis(values) {
+  if (values.length < 4) return 0;
+  const avg = mean(values);
+  const std = sampleStd(values);
+  if (!std) return 0;
+  return mean(values.map((value) => ((value - avg) / std) ** 4));
 }
 
 function getNearestClose(closeByTs, tsMs) {
@@ -69,6 +88,48 @@ function buildDailyEquity(equityCurve) {
     byDay.set(day, { day, tsMs, equity });
   });
   return [...byDay.values()].sort((a, b) => a.tsMs - b.tsMs);
+}
+
+function buildDailyPriceSeries(closeByTs) {
+  const byDay = new Map();
+  [...closeByTs.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .forEach(([tsMs, price]) => {
+      const day = new Date(tsMs).toISOString().slice(0, 10);
+      byDay.set(day, { day, tsMs, price });
+    });
+  return [...byDay.values()].sort((a, b) => a.tsMs - b.tsMs);
+}
+
+function buildDailyReturns(series, valueKey, outputKey) {
+  const result = [];
+  for (let index = 1; index < series.length; index += 1) {
+    const prev = series[index - 1];
+    const curr = series[index];
+    const prevValue = Number(prev[valueKey]);
+    const currValue = Number(curr[valueKey]);
+    if (!(prevValue > 0 && currValue > 0)) continue;
+    result.push({
+      day: curr.day,
+      ts: toIso(curr.tsMs),
+      ts_ms: curr.tsMs,
+      [outputKey]: (currValue / prevValue) - 1,
+    });
+  }
+  return result;
+}
+
+function alignDailyReturns(strategyReturns, btcReturns) {
+  const btcByDay = new Map(btcReturns.map((point) => [point.day, point.btc_return]));
+  return strategyReturns
+    .filter((point) => btcByDay.has(point.day))
+    .map((point) => ({
+      day: point.day,
+      ts: point.ts,
+      ts_ms: point.ts_ms,
+      strategy_return: point.strategy_return,
+      btc_return: btcByDay.get(point.day),
+    }));
 }
 
 function buildYearlyReturns(dailyEquity, startTsMs, endTsMs) {
@@ -92,27 +153,17 @@ function buildYearlyReturns(dailyEquity, startTsMs, endTsMs) {
       return_pct: returnPct,
       start_ts_ms: first.tsMs,
       end_ts_ms: last.tsMs,
+      ts_ms: last.tsMs,
       is_partial: first.tsMs > yearStart || last.tsMs < yearEnd,
     };
   });
 }
 
-function buildRollingSharpe(dailyEquity, windowDays = 90) {
-  const dailyReturns = [];
-  for (let index = 1; index < dailyEquity.length; index += 1) {
-    const prev = dailyEquity[index - 1];
-    const curr = dailyEquity[index];
-    dailyReturns.push({
-      ts: toIso(curr.tsMs),
-      ts_ms: curr.tsMs,
-      return: (curr.equity / prev.equity) - 1,
-    });
-  }
-
+function buildRollingSharpe(dailyReturns, windowDays = 90) {
   const result = [];
   for (let index = windowDays - 1; index < dailyReturns.length; index += 1) {
     const windowSlice = dailyReturns.slice(index - windowDays + 1, index + 1);
-    const values = windowSlice.map((point) => point.return);
+    const values = windowSlice.map((point) => point.strategy_return);
     const std = sampleStd(values);
     const sharpe = std > 0 ? (mean(values) / std) * Math.sqrt(365) : 0;
     result.push({
@@ -121,8 +172,128 @@ function buildRollingSharpe(dailyEquity, windowDays = 90) {
       rolling_sharpe: sharpe,
     });
   }
-
   return result;
+}
+
+function buildRollingBeta(alignedReturns, windowDays = 90) {
+  const result = [];
+  for (let index = windowDays - 1; index < alignedReturns.length; index += 1) {
+    const windowSlice = alignedReturns.slice(index - windowDays + 1, index + 1);
+    const strategyValues = windowSlice.map((point) => point.strategy_return);
+    const btcValues = windowSlice.map((point) => point.btc_return);
+    const btcVariance = sampleStd(btcValues) ** 2;
+    const beta = btcVariance > 0 ? sampleCovariance(strategyValues, btcValues) / btcVariance : 0;
+    result.push({
+      ts: alignedReturns[index].ts,
+      ts_ms: alignedReturns[index].ts_ms,
+      beta,
+    });
+  }
+  return result;
+}
+
+function buildRollingVolatility(dailyReturns, windowDays = 90) {
+  const result = [];
+  for (let index = windowDays - 1; index < dailyReturns.length; index += 1) {
+    const windowSlice = dailyReturns.slice(index - windowDays + 1, index + 1);
+    const values = windowSlice.map((point) => point.strategy_return);
+    result.push({
+      ts: dailyReturns[index].ts,
+      ts_ms: dailyReturns[index].ts_ms,
+      annualized_volatility: sampleStd(values) * Math.sqrt(365),
+    });
+  }
+  return result;
+}
+
+function buildMonthlyPnl(dailyEquity) {
+  const groups = new Map();
+  dailyEquity.forEach((point) => {
+    const month = point.day.slice(0, 7);
+    if (!groups.has(month)) groups.set(month, []);
+    groups.get(month).push(point);
+  });
+
+  return [...groups.entries()].map(([month, points]) => {
+    const first = points[0];
+    const last = points[points.length - 1];
+    return {
+      month,
+      label: month,
+      ts_ms: last.tsMs,
+      pnl: last.equity - first.equity,
+      return_pct: ((last.equity / first.equity) - 1) * 100,
+    };
+  });
+}
+
+function buildTradeReturnHistogram(trades, binCount = 50) {
+  const values = trades
+    .map((trade) => Number(trade.return_pct))
+    .filter((value) => Number.isFinite(value));
+
+  if (!values.length) {
+    return {
+      series: [],
+      stats: [],
+      referenceLines: [],
+    };
+  }
+
+  let minValue = Math.min(...values);
+  let maxValue = Math.max(...values);
+  if (minValue === maxValue) {
+    minValue -= 1;
+    maxValue += 1;
+  }
+
+  const binWidth = (maxValue - minValue) / binCount;
+  const bins = Array.from({ length: binCount }, (_, index) => ({
+    index,
+    bin_start: minValue + index * binWidth,
+    bin_end: minValue + (index + 1) * binWidth,
+    count: 0,
+  }));
+
+  values.forEach((value) => {
+    const rawIndex = Math.floor((value - minValue) / binWidth);
+    const index = Math.min(Math.max(rawIndex, 0), binCount - 1);
+    bins[index].count += 1;
+  });
+
+  const avg = mean(values);
+  const med = median(values);
+
+  return {
+    series: bins.map((bin) => ({
+      ...bin,
+      label: `${bin.bin_start.toFixed(2)}%`,
+      bin_center: (bin.bin_start + bin.bin_end) / 2,
+    })),
+    stats: [
+      { label: 'Mean', value: avg },
+      { label: 'Median', value: med },
+      { label: 'Skewness', value: skewness(values) },
+      { label: 'Kurtosis', value: kurtosis(values) },
+    ],
+    referenceLines: [
+      { axis: 'x', value: avg, label: 'Mean', color: '#7dd3fc' },
+      { axis: 'x', value: med, label: 'Median', color: '#f59e0b' },
+    ],
+  };
+}
+
+function buildExposureRatioSeries(report) {
+  const exposureCurve = report.exposure_curve || [];
+  const equityCurve = report.equity_curve || [];
+  return exposureCurve.map(([tsMs, exposure], index) => {
+    const equity = Number(equityCurve[index]?.[1] || 0);
+    return {
+      ts: toIso(tsMs),
+      ts_ms: Number(tsMs),
+      exposure_ratio: equity > 0 ? Math.abs(Number(exposure)) / equity : 0,
+    };
+  });
 }
 
 function main() {
@@ -134,10 +305,35 @@ function main() {
   const performanceSummary = readJson(path.join(viewsRoot, 'performance_summary.json'));
   const equityChart = readJson(path.join(viewsRoot, 'equity_chart.json'));
   const drawdownChart = readJson(path.join(viewsRoot, 'drawdown_chart.json'));
-  const exposureChart = readJson(path.join(viewsRoot, 'exposure_chart.json'));
   const report = readJson(path.join(reportRoot, 'report.json'));
   const summary = readJson(path.join(reportRoot, 'summary.json'));
   const traceLines = readJsonLines(path.join(logsRoot, 'trace.jsonl'));
+  const backtestCardPublicPath = copyEvidenceAsset(path.join(viewsRoot, 'backtest_card.json'), 'backtest_card.json');
+  const performanceSummaryPublicPath = copyEvidenceAsset(path.join(viewsRoot, 'performance_summary.json'), 'performance_summary.json');
+  const reportSummaryPublicPath = copyEvidenceAsset(path.join(reportRoot, 'summary.json'), 'report_summary.json');
+  const traceLogPublicPath = copyEvidenceAsset(path.join(logsRoot, 'trace.jsonl'), 'trace.jsonl');
+  const researchNotesPublicPath = copyEvidenceAsset(
+    path.join(
+      WORKSPACE_ROOT,
+      'SoionLab',
+      'docs',
+      'strategies',
+      'rsi_adx_gateway_flush',
+      'rsi_adx_gateway_flush_research_report.md'
+    ),
+    'rsi_adx_gateway_flush_research_report.md'
+  );
+  const legacyNotesPublicPath = copyEvidenceAsset(
+    path.join(
+      WORKSPACE_ROOT,
+      'SoionLab',
+      'docs',
+      'strategies',
+      'dynamical_rsi_adxgateway',
+      'rsi_adx_gateway_robustness_report.md'
+    ),
+    'rsi_adx_gateway_robustness_report.md'
+  );
 
   const steps = traceLines.filter((entry) => entry.event === 'engine.step.trace');
   const closeByTs = new Map(
@@ -179,19 +375,29 @@ function main() {
     }));
 
   const dailyEquity = buildDailyEquity(report.equity_curve || []);
+  const dailyBtc = buildDailyPriceSeries(closeByTs);
+  const strategyDailyReturns = buildDailyReturns(dailyEquity, 'equity', 'strategy_return');
+  const btcDailyReturns = buildDailyReturns(dailyBtc, 'price', 'btc_return');
+  const alignedDailyReturns = alignDailyReturns(strategyDailyReturns, btcDailyReturns);
   const yearlyReturns = buildYearlyReturns(
     dailyEquity,
     backtestCard.time_range.start_ms,
     backtestCard.time_range.end_ms
   );
-  const rollingSharpe = buildRollingSharpe(dailyEquity, 90);
-  const tradePnlSeries = (report.trade_round_trips || []).map((trade, index) => ({
+  const rollingSharpe = buildRollingSharpe(strategyDailyReturns, 90);
+  const rollingBeta = buildRollingBeta(alignedDailyReturns, 90);
+  const rollingVolatility = buildRollingVolatility(strategyDailyReturns, 90);
+  const monthlyPnl = buildMonthlyPnl(dailyEquity);
+
+  const trades = report.trade_round_trips || [];
+  const tradePnlSeries = trades.map((trade, index) => ({
     ts: trade.exit_time,
     ts_ms: trade.exit_time_ms,
     trade_index: index + 1,
     pnl: trade.net_pnl,
     return_pct: trade.return_pct,
   }));
+  const tradeReturnDistribution = buildTradeReturnHistogram(trades, 50);
 
   const benchmarkPairs = report.equity_curve
     .slice(1)
@@ -216,17 +422,10 @@ function main() {
     : 0;
   const strategyBetaToBtc = btcVariance ? covariance / btcVariance : 0;
 
-  const exposureValues = report.exposure_curve || [];
-  const leverageSeries = exposureValues.map(([tsMs, exposure], index) => {
-    const equity = report.equity_curve[index]?.[1] || 0;
-    return {
-      ts_ms: tsMs,
-      exposure,
-      leverage: equity ? exposure / equity : 0,
-    };
-  });
-  const activeLeverage = leverageSeries.filter((point) => point.exposure > 0);
-  const avgHoldingSteps = mean((report.trade_round_trips || []).map((trade) => trade.holding_steps));
+  const exposureRatioSeries = buildExposureRatioSeries(report);
+  const avgExposure = mean(exposureRatioSeries.map((point) => point.exposure_ratio));
+  const activeExposure = exposureRatioSeries.filter((point) => point.exposure_ratio > 0);
+  const avgHoldingSteps = mean(trades.map((trade) => trade.holding_steps));
 
   const horizonDays = Number(backtestCard.time_range.duration_days || 0);
   const tradeCount = Number(performanceSummary.metrics.trade_count || 0);
@@ -253,13 +452,18 @@ function main() {
     diagnostics: {
       strategy_beta_to_btc: strategyBetaToBtc,
       return_correlation_to_btc: returnCorrelationToBtc,
-      time_in_market_ratio: activeLeverage.length / Math.max(leverageSeries.length, 1),
-      mean_leverage_when_active: activeLeverage.length
-        ? mean(activeLeverage.map((point) => point.leverage))
+      time_in_market_ratio: activeExposure.length / Math.max(exposureRatioSeries.length, 1),
+      mean_leverage_when_active: activeExposure.length
+        ? mean(activeExposure.map((point) => point.exposure_ratio))
         : 0,
       avg_holding_steps: avgHoldingSteps,
       avg_holding_hours: avgHoldingSteps * 0.25,
       trade_frequency_per_day: horizonDays ? tradeCount / horizonDays : 0,
+      mean_trade_return_pct: tradeReturnDistribution.stats[0]?.value || 0,
+      median_trade_return_pct: tradeReturnDistribution.stats[1]?.value || 0,
+      trade_return_skewness: tradeReturnDistribution.stats[2]?.value || 0,
+      trade_return_kurtosis: tradeReturnDistribution.stats[3]?.value || 0,
+      average_exposure_ratio: avgExposure,
     },
     metrics: {
       total_return_pct: performanceSummary.metrics.total_return_pct,
@@ -289,6 +493,25 @@ function main() {
         chart_type: 'area',
         source: 'direct_continuous_backtest',
         series: drawdownSeries,
+      },
+      rolling_beta: {
+        label: 'Rolling Beta',
+        title: 'Rolling Beta to BTC (90d)',
+        description: '90-day rolling beta of daily strategy returns relative to daily BTC returns.',
+        chart_type: 'line',
+        source: 'derived_from_daily_strategy_and_btc_returns',
+        reference_lines: [
+          { axis: 'y', value: 0, label: 'Beta = 0', color: 'rgba(148, 163, 184, 0.6)' },
+        ],
+        series: rollingBeta,
+      },
+      rolling_volatility: {
+        label: 'Rolling Vol',
+        title: 'Rolling Volatility (90d)',
+        description: '90-day rolling annualized volatility computed from daily strategy returns.',
+        chart_type: 'line',
+        source: 'derived_from_daily_strategy_returns',
+        series: rollingVolatility,
       },
       btc_price: {
         label: 'BTC Price',
@@ -323,7 +546,7 @@ function main() {
         title: 'Rolling Sharpe',
         description: '90-day rolling Sharpe computed from daily equity changes over the displayed span.',
         chart_type: 'line',
-        source: 'derived_from_continuous_equity',
+        source: 'derived_from_daily_strategy_returns',
         series: rollingSharpe,
       },
       trade_pnl: {
@@ -334,13 +557,34 @@ function main() {
         source: 'derived_from_trade_round_trips',
         series: tradePnlSeries,
       },
+      trade_return_distribution: {
+        label: 'Trade Distribution',
+        title: 'Trade Return Distribution',
+        description: 'Histogram of trade-level returns with mean and median markers.',
+        chart_type: 'histogram',
+        source: 'derived_from_trade_round_trips',
+        reference_lines: tradeReturnDistribution.referenceLines,
+        stats: tradeReturnDistribution.stats,
+        series: tradeReturnDistribution.series,
+      },
+      monthly_pnl: {
+        label: 'Monthly PnL',
+        title: 'Monthly PnL',
+        description: 'Monthly equity change over the displayed backtest horizon.',
+        chart_type: 'bar',
+        source: 'derived_from_daily_equity',
+        series: monthlyPnl,
+      },
       exposure: {
         label: 'Exposure',
-        title: 'Gross Exposure',
-        description: 'Portfolio exposure over the same continuous gateway run.',
+        title: 'Strategy Exposure Over Time',
+        description: 'Absolute position size divided by capital, with the average exposure shown as a guide.',
         chart_type: 'line',
-        source: 'direct_continuous_backtest',
-        series: exposureChart.series,
+        source: 'derived_from_backtest_exposure_curve',
+        reference_lines: [
+          { axis: 'y', value: avgExposure, label: 'Avg Exposure', color: 'rgba(125, 211, 252, 0.5)' },
+        ],
+        series: exposureRatioSeries,
       },
     },
     evidence: {
@@ -350,33 +594,37 @@ function main() {
       supporting_artifacts: [
         {
           label: 'Backtest card',
-          path: `SoionLab/artifacts/runs/${RUN_ID}/views/backtest_card.json`,
+          path: backtestCardPublicPath,
           kind: 'artifact_json',
         },
         {
           label: 'Performance summary',
-          path: `SoionLab/artifacts/runs/${RUN_ID}/views/performance_summary.json`,
+          path: performanceSummaryPublicPath,
           kind: 'artifact_json',
         },
         {
           label: 'Report summary',
-          path: `SoionLab/artifacts/runs/${RUN_ID}/report/summary.json`,
+          path: reportSummaryPublicPath,
           kind: 'artifact_json',
         },
         {
+          label: 'Trace log',
+          path: traceLogPublicPath,
+          kind: 'artifact_jsonl',
+        },
+        {
           label: 'Robustness report',
-          path: 'SoionLab/docs/strategies/rsi_adx_gateway_flush/rsi_adx_gateway_flush_research_report.md',
+          path: researchNotesPublicPath,
           kind: 'report_markdown',
         },
         {
           label: 'Legacy strategy note',
-          path: 'SoionLab/docs/strategies/dynamical_rsi_adxgateway/rsi_adx_gateway_robustness_report.md',
+          path: legacyNotesPublicPath,
           kind: 'report_markdown',
         },
       ],
       notes: [
         'Charts on this page use a direct continuous gateway backtest run, not a stitched showcase aggregate.',
-        'Old-vs-new family interpretation is documented in the linked research notes and is not plotted as a comparison chart here.',
         'Simulated execution only. No live runtime or API dependency.',
       ],
     },
@@ -394,7 +642,6 @@ function main() {
         'performance_summary_v1',
         'equity_chart_v1',
         'drawdown_chart_v1',
-        'exposure_chart_v1',
         'report_v1',
         'trace_v2',
       ],
