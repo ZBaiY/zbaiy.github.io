@@ -10,10 +10,8 @@
 
 # production
 docs/data/strategies/rsi-adx-gateway/evidence/trace.jsonl
-docs/data/strategies/rsi-adx-gateway/showcase_snapshot_v1.json
 public/data/strategies/rsi-adx-gateway/evidence/trace.jsonl
 public/data/live/evidence/**/*.jsonl
-docs/data/live/evidence/**/*.jsonl
 # misc
 .DS_Store
 .env.local
