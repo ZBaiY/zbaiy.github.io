@@ -3,6 +3,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_PATH = path.resolve(__dirname, '..', 'public', 'data', 'live', 'live_deployment_v1.json');
+const EVIDENCE_ROOT = path.resolve(__dirname, '..', 'public', 'data', 'live', 'evidence');
 const STRATEGY_LABEL = 'Dynamic RSI + ADX';
 const RSI_VARIANCE_FACTOR = 1.8;
 
@@ -17,6 +18,13 @@ function readJsonLines(filePath) {
 
 function toIso(tsMs) {
   return typeof tsMs === 'number' ? new Date(tsMs).toISOString() : null;
+}
+
+function copyEvidenceAsset(runId, sourcePath, fileName) {
+  const outputPath = path.join(EVIDENCE_ROOT, runId, fileName);
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.copyFileSync(sourcePath, outputPath);
+  return `/data/live/evidence/${runId}/${fileName}`;
 }
 
 function findLatestRunDir(rootDir) {
@@ -162,8 +170,8 @@ function main() {
     generated_at_ms: Date.now(),
     source: {
       run_id: latestRun.runId,
-      trace_path: path.relative(ROOT, latestRun.tracePath),
-      default_log_path: path.relative(ROOT, latestRun.defaultPath),
+      trace_path: copyEvidenceAsset(latestRun.runId, latestRun.tracePath, 'trace.jsonl'),
+      default_log_path: copyEvidenceAsset(latestRun.runId, latestRun.defaultPath, 'default.jsonl'),
     },
     environment: {
       strategy: STRATEGY_LABEL,
