@@ -1,7 +1,7 @@
 {
   "schema": "live_deployment_v1",
-  "generated_at": "2026-03-15T10:28:26.754Z",
-  "generated_at_ms": 1773570506754,
+  "generated_at": "2026-03-17T02:22:46.088Z",
+  "generated_at_ms": 1773714166088,
   "source": {
     "run_id": "20260313T161132Z",
     "trace_path": "/data/live/evidence/20260313T161132Z/trace.jsonl",
@@ -27,26 +27,39 @@
     "executionPermit": "full"
   },
   "runtime": {
-    "lastUpdateTs": "2026-03-15T00:45:00.000Z",
-    "lastUpdateMs": 1773535500000,
+    "lastUpdateTs": "2026-03-17T02:15:00.000Z",
+    "lastUpdateMs": 1773713700000,
     "feedState": "healthy",
     "feedStateLabel": "Feed Active",
     "feedStalenessMs": 5004,
-    "observedSteps": 130,
+    "observedSteps": 328,
     "decisionScore": 0,
-    "targetPosition": 0,
-    "fillsInWindow": 0,
-    "signalStateLabel": "No Active Signal",
-    "liveSignalNote": null
+    "targetPosition": 0.9841487810482007,
+    "fillsInWindow": 9,
+    "signalStateLabel": "Recent Fill Activity",
+    "liveSignalNote": "A live BUY signal has been triggered and filled in the current observation window."
   },
   "portfolio": {
-    "cash": 14.68908525,
-    "positionQty": 0,
-    "totalEquity": 14.68908525,
-    "exposure": 0,
-    "portfolioStateLabel": "Flat",
+    "cash": 0.24238268,
+    "positionQty": 0.0002,
+    "totalEquity": 15.29110668,
+    "exposure": 15.048724,
+    "portfolioStateLabel": "Holding",
     "quoteAsset": "USDT",
     "baseAsset": "BTC"
+  },
+  "latestFill": {
+    "side": "BUY",
+    "quantity": 0.0002,
+    "price": 74437.18,
+    "status": "FILLED",
+    "timestampMs": 1773702905420,
+    "timestamp": "2026-03-16T23:15:05.420Z",
+    "symbol": "BTCUSDT",
+    "orderType": "MARKET",
+    "exchange": "binance",
+    "markerTsMs": 1773702900000,
+    "markerTs": "2026-03-16T23:15:00.000Z"
   },
   "charts": {
     "equity": [
@@ -829,6 +842,1374 @@
         "ts_ms": 1773535500000,
         "totalEquity": 14.68908525,
         "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:00:00.000Z",
+        "ts_ms": 1773536400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:15:00.000Z",
+        "ts_ms": 1773537300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:30:00.000Z",
+        "ts_ms": 1773538200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:45:00.000Z",
+        "ts_ms": 1773539100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:00:00.000Z",
+        "ts_ms": 1773540000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:15:00.000Z",
+        "ts_ms": 1773540900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:30:00.000Z",
+        "ts_ms": 1773541800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:45:00.000Z",
+        "ts_ms": 1773542700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:00:00.000Z",
+        "ts_ms": 1773543600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:15:00.000Z",
+        "ts_ms": 1773544500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:30:00.000Z",
+        "ts_ms": 1773545400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:45:00.000Z",
+        "ts_ms": 1773546300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:00:00.000Z",
+        "ts_ms": 1773547200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:15:00.000Z",
+        "ts_ms": 1773548100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:30:00.000Z",
+        "ts_ms": 1773549000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:45:00.000Z",
+        "ts_ms": 1773549900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:00:00.000Z",
+        "ts_ms": 1773550800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:15:00.000Z",
+        "ts_ms": 1773551700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:30:00.000Z",
+        "ts_ms": 1773552600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:45:00.000Z",
+        "ts_ms": 1773553500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:00:00.000Z",
+        "ts_ms": 1773554400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:15:00.000Z",
+        "ts_ms": 1773555300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:30:00.000Z",
+        "ts_ms": 1773556200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:45:00.000Z",
+        "ts_ms": 1773557100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:00:00.000Z",
+        "ts_ms": 1773558000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:15:00.000Z",
+        "ts_ms": 1773558900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:30:00.000Z",
+        "ts_ms": 1773559800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:45:00.000Z",
+        "ts_ms": 1773560700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:00:00.000Z",
+        "ts_ms": 1773561600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:15:00.000Z",
+        "ts_ms": 1773562500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:30:00.000Z",
+        "ts_ms": 1773563400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:45:00.000Z",
+        "ts_ms": 1773564300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:00:00.000Z",
+        "ts_ms": 1773565200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:15:00.000Z",
+        "ts_ms": 1773566100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:30:00.000Z",
+        "ts_ms": 1773567000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:45:00.000Z",
+        "ts_ms": 1773567900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:00:00.000Z",
+        "ts_ms": 1773568800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:15:00.000Z",
+        "ts_ms": 1773569700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:30:00.000Z",
+        "ts_ms": 1773570600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:45:00.000Z",
+        "ts_ms": 1773571500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:00:00.000Z",
+        "ts_ms": 1773572400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:15:00.000Z",
+        "ts_ms": 1773573300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:30:00.000Z",
+        "ts_ms": 1773574200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:45:00.000Z",
+        "ts_ms": 1773575100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:00:00.000Z",
+        "ts_ms": 1773576000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:15:00.000Z",
+        "ts_ms": 1773576900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:30:00.000Z",
+        "ts_ms": 1773577800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:45:00.000Z",
+        "ts_ms": 1773578700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:00:00.000Z",
+        "ts_ms": 1773579600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:15:00.000Z",
+        "ts_ms": 1773580500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:30:00.000Z",
+        "ts_ms": 1773581400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:45:00.000Z",
+        "ts_ms": 1773582300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:00:00.000Z",
+        "ts_ms": 1773583200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:15:00.000Z",
+        "ts_ms": 1773584100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:30:00.000Z",
+        "ts_ms": 1773585000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:45:00.000Z",
+        "ts_ms": 1773585900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:00:00.000Z",
+        "ts_ms": 1773586800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:15:00.000Z",
+        "ts_ms": 1773587700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:30:00.000Z",
+        "ts_ms": 1773588600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:45:00.000Z",
+        "ts_ms": 1773589500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:00:00.000Z",
+        "ts_ms": 1773590400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:15:00.000Z",
+        "ts_ms": 1773591300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:30:00.000Z",
+        "ts_ms": 1773592200000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:45:00.000Z",
+        "ts_ms": 1773593100000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:00:00.000Z",
+        "ts_ms": 1773594000000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:15:00.000Z",
+        "ts_ms": 1773594900000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:30:00.000Z",
+        "ts_ms": 1773595800000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:45:00.000Z",
+        "ts_ms": 1773596700000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:00:00.000Z",
+        "ts_ms": 1773597600000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:15:00.000Z",
+        "ts_ms": 1773598500000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:30:00.000Z",
+        "ts_ms": 1773599400000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:45:00.000Z",
+        "ts_ms": 1773600300000,
+        "totalEquity": 14.68908525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:00:00.000Z",
+        "ts_ms": 1773601200000,
+        "totalEquity": 14.694483250000001,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 71363.54,
+              "status": "FILLED",
+              "timestampMs": 1773601206103,
+              "timestamp": "2026-03-15T19:00:06.103Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773601200000,
+              "markerTs": "2026-03-15T19:00:00.000Z"
+            }
+          ],
+          "value": 14.694483250000001,
+          "totalEquity": 14.694483250000001
+        }
+      },
+      {
+        "ts": "2026-03-15T19:15:00.000Z",
+        "ts_ms": 1773602100000,
+        "totalEquity": 14.71413925,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:30:00.000Z",
+        "ts_ms": 1773603000000,
+        "totalEquity": 14.721443250000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:45:00.000Z",
+        "ts_ms": 1773603900000,
+        "totalEquity": 14.71506525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:00:00.000Z",
+        "ts_ms": 1773604800000,
+        "totalEquity": 14.72636525,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:15:00.000Z",
+        "ts_ms": 1773605700000,
+        "totalEquity": 14.72272725,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:30:00.000Z",
+        "ts_ms": 1773606600000,
+        "totalEquity": 14.713497250000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:45:00.000Z",
+        "ts_ms": 1773607500000,
+        "totalEquity": 14.77312813,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 71855.61,
+              "status": "FILLED",
+              "timestampMs": 1773607505428,
+              "timestamp": "2026-03-15T20:45:05.428Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773607500000,
+              "markerTs": "2026-03-15T20:45:00.000Z"
+            }
+          ],
+          "value": 14.77312813,
+          "totalEquity": 14.77312813
+        }
+      },
+      {
+        "ts": "2026-03-15T21:00:00.000Z",
+        "ts_ms": 1773608400000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:15:00.000Z",
+        "ts_ms": 1773609300000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:30:00.000Z",
+        "ts_ms": 1773610200000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:45:00.000Z",
+        "ts_ms": 1773611100000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:00:00.000Z",
+        "ts_ms": 1773612000000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:15:00.000Z",
+        "ts_ms": 1773612900000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:30:00.000Z",
+        "ts_ms": 1773613800000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:45:00.000Z",
+        "ts_ms": 1773614700000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:00:00.000Z",
+        "ts_ms": 1773615600000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:15:00.000Z",
+        "ts_ms": 1773616500000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:30:00.000Z",
+        "ts_ms": 1773617400000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:45:00.000Z",
+        "ts_ms": 1773618300000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:00:00.000Z",
+        "ts_ms": 1773619200000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:15:00.000Z",
+        "ts_ms": 1773620100000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:30:00.000Z",
+        "ts_ms": 1773621000000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:45:00.000Z",
+        "ts_ms": 1773621900000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:00:00.000Z",
+        "ts_ms": 1773622800000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:15:00.000Z",
+        "ts_ms": 1773623700000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:30:00.000Z",
+        "ts_ms": 1773624600000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:45:00.000Z",
+        "ts_ms": 1773625500000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:00:00.000Z",
+        "ts_ms": 1773626400000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:15:00.000Z",
+        "ts_ms": 1773627300000,
+        "totalEquity": 14.77312813,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:30:00.000Z",
+        "ts_ms": 1773628200000,
+        "totalEquity": 14.775414130000001,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 72440.01,
+              "status": "FILLED",
+              "timestampMs": 1773628205378,
+              "timestamp": "2026-03-16T02:30:05.378Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773628200000,
+              "markerTs": "2026-03-16T02:30:00.000Z"
+            }
+          ],
+          "value": 14.775414130000001,
+          "totalEquity": 14.775414130000001
+        }
+      },
+      {
+        "ts": "2026-03-16T02:45:00.000Z",
+        "ts_ms": 1773629100000,
+        "totalEquity": 14.773952130000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:00:00.000Z",
+        "ts_ms": 1773630000000,
+        "totalEquity": 14.78806413,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:15:00.000Z",
+        "ts_ms": 1773630900000,
+        "totalEquity": 14.790752130000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:30:00.000Z",
+        "ts_ms": 1773631800000,
+        "totalEquity": 14.85021646,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 72898.35,
+              "status": "FILLED",
+              "timestampMs": 1773631805369,
+              "timestamp": "2026-03-16T03:30:05.369Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773631800000,
+              "markerTs": "2026-03-16T03:30:00.000Z"
+            }
+          ],
+          "value": 14.85021646,
+          "totalEquity": 14.85021646
+        }
+      },
+      {
+        "ts": "2026-03-16T03:45:00.000Z",
+        "ts_ms": 1773632700000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:00:00.000Z",
+        "ts_ms": 1773633600000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:15:00.000Z",
+        "ts_ms": 1773634500000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:30:00.000Z",
+        "ts_ms": 1773635400000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:45:00.000Z",
+        "ts_ms": 1773636300000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:00:00.000Z",
+        "ts_ms": 1773637200000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:15:00.000Z",
+        "ts_ms": 1773638100000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:30:00.000Z",
+        "ts_ms": 1773639000000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:45:00.000Z",
+        "ts_ms": 1773639900000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:00:00.000Z",
+        "ts_ms": 1773640800000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:15:00.000Z",
+        "ts_ms": 1773641700000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:30:00.000Z",
+        "ts_ms": 1773642600000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:45:00.000Z",
+        "ts_ms": 1773643500000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:00:00.000Z",
+        "ts_ms": 1773644400000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:15:00.000Z",
+        "ts_ms": 1773645300000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:30:00.000Z",
+        "ts_ms": 1773646200000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:45:00.000Z",
+        "ts_ms": 1773647100000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:00:00.000Z",
+        "ts_ms": 1773648000000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:15:00.000Z",
+        "ts_ms": 1773648900000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:30:00.000Z",
+        "ts_ms": 1773649800000,
+        "totalEquity": 14.85021646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:45:00.000Z",
+        "ts_ms": 1773650700000,
+        "totalEquity": 14.84611246,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 72927.08,
+              "status": "FILLED",
+              "timestampMs": 1773650705374,
+              "timestamp": "2026-03-16T08:45:05.374Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773650700000,
+              "markerTs": "2026-03-16T08:45:00.000Z"
+            }
+          ],
+          "value": 14.84611246,
+          "totalEquity": 14.84611246
+        }
+      },
+      {
+        "ts": "2026-03-16T09:00:00.000Z",
+        "ts_ms": 1773651600000,
+        "totalEquity": 14.89180046,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:15:00.000Z",
+        "ts_ms": 1773652500000,
+        "totalEquity": 14.891292460000003,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:30:00.000Z",
+        "ts_ms": 1773653400000,
+        "totalEquity": 14.920400460000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:45:00.000Z",
+        "ts_ms": 1773654300000,
+        "totalEquity": 14.905080459999999,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:00:00.000Z",
+        "ts_ms": 1773655200000,
+        "totalEquity": 14.91698446,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:15:00.000Z",
+        "ts_ms": 1773656100000,
+        "totalEquity": 14.93246646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:30:00.000Z",
+        "ts_ms": 1773657000000,
+        "totalEquity": 14.955542460000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:45:00.000Z",
+        "ts_ms": 1773657900000,
+        "totalEquity": 14.915442460000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:00:00.000Z",
+        "ts_ms": 1773658800000,
+        "totalEquity": 15.02148446,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:15:00.000Z",
+        "ts_ms": 1773659700000,
+        "totalEquity": 14.98618446,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:30:00.000Z",
+        "ts_ms": 1773660600000,
+        "totalEquity": 14.976048460000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:45:00.000Z",
+        "ts_ms": 1773661500000,
+        "totalEquity": 14.99005646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:00:00.000Z",
+        "ts_ms": 1773662400000,
+        "totalEquity": 14.975354460000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:15:00.000Z",
+        "ts_ms": 1773663300000,
+        "totalEquity": 14.984126460000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:30:00.000Z",
+        "ts_ms": 1773664200000,
+        "totalEquity": 15.01981068,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 73848.9,
+              "status": "FILLED",
+              "timestampMs": 1773664205359,
+              "timestamp": "2026-03-16T12:30:05.359Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773664200000,
+              "markerTs": "2026-03-16T12:30:00.000Z"
+            }
+          ],
+          "value": 15.01981068,
+          "totalEquity": 15.01981068
+        }
+      },
+      {
+        "ts": "2026-03-16T12:45:00.000Z",
+        "ts_ms": 1773665100000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:00:00.000Z",
+        "ts_ms": 1773666000000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:15:00.000Z",
+        "ts_ms": 1773666900000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:30:00.000Z",
+        "ts_ms": 1773667800000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:45:00.000Z",
+        "ts_ms": 1773668700000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:00:00.000Z",
+        "ts_ms": 1773669600000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:15:00.000Z",
+        "ts_ms": 1773670500000,
+        "totalEquity": 15.01981068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:30:00.000Z",
+        "ts_ms": 1773671400000,
+        "totalEquity": 15.028358680000002,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 73575.75,
+              "status": "FILLED",
+              "timestampMs": 1773671405423,
+              "timestamp": "2026-03-16T14:30:05.423Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773671400000,
+              "markerTs": "2026-03-16T14:30:00.000Z"
+            }
+          ],
+          "value": 15.028358680000002,
+          "totalEquity": 15.028358680000002
+        }
+      },
+      {
+        "ts": "2026-03-16T14:45:00.000Z",
+        "ts_ms": 1773672300000,
+        "totalEquity": 14.93187268,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:00:00.000Z",
+        "ts_ms": 1773673200000,
+        "totalEquity": 15.01776868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:15:00.000Z",
+        "ts_ms": 1773674100000,
+        "totalEquity": 15.04019468,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:30:00.000Z",
+        "ts_ms": 1773675000000,
+        "totalEquity": 15.072902680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:45:00.000Z",
+        "ts_ms": 1773675900000,
+        "totalEquity": 15.015662679999998,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:00:00.000Z",
+        "ts_ms": 1773676800000,
+        "totalEquity": 14.95961268,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:15:00.000Z",
+        "ts_ms": 1773677700000,
+        "totalEquity": 14.973156679999999,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:30:00.000Z",
+        "ts_ms": 1773678600000,
+        "totalEquity": 14.98739468,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:45:00.000Z",
+        "ts_ms": 1773679500000,
+        "totalEquity": 15.03611868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:00:00.000Z",
+        "ts_ms": 1773680400000,
+        "totalEquity": 15.056786680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:15:00.000Z",
+        "ts_ms": 1773681300000,
+        "totalEquity": 15.07179068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:30:00.000Z",
+        "ts_ms": 1773682200000,
+        "totalEquity": 15.041312679999999,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:45:00.000Z",
+        "ts_ms": 1773683100000,
+        "totalEquity": 15.08331668,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:00:00.000Z",
+        "ts_ms": 1773684000000,
+        "totalEquity": 15.093296679999998,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:15:00.000Z",
+        "ts_ms": 1773684900000,
+        "totalEquity": 15.14759268,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:30:00.000Z",
+        "ts_ms": 1773685800000,
+        "totalEquity": 15.154432680000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:45:00.000Z",
+        "ts_ms": 1773686700000,
+        "totalEquity": 15.145924680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:00:00.000Z",
+        "ts_ms": 1773687600000,
+        "totalEquity": 15.08738068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:15:00.000Z",
+        "ts_ms": 1773688500000,
+        "totalEquity": 15.13823668,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:30:00.000Z",
+        "ts_ms": 1773689400000,
+        "totalEquity": 15.12668668,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:45:00.000Z",
+        "ts_ms": 1773690300000,
+        "totalEquity": 15.13385468,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:00:00.000Z",
+        "ts_ms": 1773691200000,
+        "totalEquity": 15.09726068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:15:00.000Z",
+        "ts_ms": 1773692100000,
+        "totalEquity": 15.08596268,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:30:00.000Z",
+        "ts_ms": 1773693000000,
+        "totalEquity": 15.100258680000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:45:00.000Z",
+        "ts_ms": 1773693900000,
+        "totalEquity": 15.112984679999999,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:00:00.000Z",
+        "ts_ms": 1773694800000,
+        "totalEquity": 15.12981868,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 74199.99,
+              "status": "FILLED",
+              "timestampMs": 1773694805458,
+              "timestamp": "2026-03-16T21:00:05.458Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773694800000,
+              "markerTs": "2026-03-16T21:00:00.000Z"
+            }
+          ],
+          "value": 15.12981868,
+          "totalEquity": 15.12981868
+        }
+      },
+      {
+        "ts": "2026-03-16T21:15:00.000Z",
+        "ts_ms": 1773695700000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:30:00.000Z",
+        "ts_ms": 1773696600000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:45:00.000Z",
+        "ts_ms": 1773697500000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:00:00.000Z",
+        "ts_ms": 1773698400000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:15:00.000Z",
+        "ts_ms": 1773699300000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:30:00.000Z",
+        "ts_ms": 1773700200000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:45:00.000Z",
+        "ts_ms": 1773701100000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:00:00.000Z",
+        "ts_ms": 1773702000000,
+        "totalEquity": 15.12981868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:15:00.000Z",
+        "ts_ms": 1773702900000,
+        "totalEquity": 15.120882680000001,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 74437.18,
+              "status": "FILLED",
+              "timestampMs": 1773702905420,
+              "timestamp": "2026-03-16T23:15:05.420Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773702900000,
+              "markerTs": "2026-03-16T23:15:00.000Z"
+            }
+          ],
+          "value": 15.120882680000001,
+          "totalEquity": 15.120882680000001
+        }
+      },
+      {
+        "ts": "2026-03-16T23:30:00.000Z",
+        "ts_ms": 1773703800000,
+        "totalEquity": 15.16486068,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:45:00.000Z",
+        "ts_ms": 1773704700000,
+        "totalEquity": 15.21736868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:00:00.000Z",
+        "ts_ms": 1773705600000,
+        "totalEquity": 15.21931668,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:15:00.000Z",
+        "ts_ms": 1773706500000,
+        "totalEquity": 15.324248680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:30:00.000Z",
+        "ts_ms": 1773707400000,
+        "totalEquity": 15.25842268,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:45:00.000Z",
+        "ts_ms": 1773708300000,
+        "totalEquity": 15.241774680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:00:00.000Z",
+        "ts_ms": 1773709200000,
+        "totalEquity": 15.30607868,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:15:00.000Z",
+        "ts_ms": 1773710100000,
+        "totalEquity": 15.410558680000003,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:30:00.000Z",
+        "ts_ms": 1773711000000,
+        "totalEquity": 15.429142680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:45:00.000Z",
+        "ts_ms": 1773711900000,
+        "totalEquity": 15.378014680000001,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T02:00:00.000Z",
+        "ts_ms": 1773712800000,
+        "totalEquity": 15.367164680000002,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T02:15:00.000Z",
+        "ts_ms": 1773713700000,
+        "totalEquity": 15.29110668,
+        "marker": null
       }
     ],
     "price": [
@@ -1610,6 +2991,1374 @@
         "ts": "2026-03-15T00:45:00.000Z",
         "ts_ms": 1773535500000,
         "close": 71083,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:00:00.000Z",
+        "ts_ms": 1773536400000,
+        "close": 70985.28,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:15:00.000Z",
+        "ts_ms": 1773537300000,
+        "close": 70949.72,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:30:00.000Z",
+        "ts_ms": 1773538200000,
+        "close": 70933.69,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:45:00.000Z",
+        "ts_ms": 1773539100000,
+        "close": 70932.47,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:00:00.000Z",
+        "ts_ms": 1773540000000,
+        "close": 70985.83,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:15:00.000Z",
+        "ts_ms": 1773540900000,
+        "close": 71305.29,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:30:00.000Z",
+        "ts_ms": 1773541800000,
+        "close": 71268.29,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:45:00.000Z",
+        "ts_ms": 1773542700000,
+        "close": 71420,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:00:00.000Z",
+        "ts_ms": 1773543600000,
+        "close": 71450.53,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:15:00.000Z",
+        "ts_ms": 1773544500000,
+        "close": 71463.9,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:30:00.000Z",
+        "ts_ms": 1773545400000,
+        "close": 71341.38,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:45:00.000Z",
+        "ts_ms": 1773546300000,
+        "close": 71336.25,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:00:00.000Z",
+        "ts_ms": 1773547200000,
+        "close": 71363.14,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:15:00.000Z",
+        "ts_ms": 1773548100000,
+        "close": 71586.04,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:30:00.000Z",
+        "ts_ms": 1773549000000,
+        "close": 71538.04,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:45:00.000Z",
+        "ts_ms": 1773549900000,
+        "close": 71596.45,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:00:00.000Z",
+        "ts_ms": 1773550800000,
+        "close": 71606.32,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:15:00.000Z",
+        "ts_ms": 1773551700000,
+        "close": 71545.29,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:30:00.000Z",
+        "ts_ms": 1773552600000,
+        "close": 71630.28,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:45:00.000Z",
+        "ts_ms": 1773553500000,
+        "close": 71643.82,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:00:00.000Z",
+        "ts_ms": 1773554400000,
+        "close": 71489.68,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:15:00.000Z",
+        "ts_ms": 1773555300000,
+        "close": 71567.78,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:30:00.000Z",
+        "ts_ms": 1773556200000,
+        "close": 71466.15,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:45:00.000Z",
+        "ts_ms": 1773557100000,
+        "close": 71411.2,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:00:00.000Z",
+        "ts_ms": 1773558000000,
+        "close": 71458.41,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:15:00.000Z",
+        "ts_ms": 1773558900000,
+        "close": 71612.56,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:30:00.000Z",
+        "ts_ms": 1773559800000,
+        "close": 71567.56,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:45:00.000Z",
+        "ts_ms": 1773560700000,
+        "close": 71446.96,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:00:00.000Z",
+        "ts_ms": 1773561600000,
+        "close": 71453.59,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:15:00.000Z",
+        "ts_ms": 1773562500000,
+        "close": 71594.53,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:30:00.000Z",
+        "ts_ms": 1773563400000,
+        "close": 71586.22,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:45:00.000Z",
+        "ts_ms": 1773564300000,
+        "close": 71573.1,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:00:00.000Z",
+        "ts_ms": 1773565200000,
+        "close": 71717.5,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:15:00.000Z",
+        "ts_ms": 1773566100000,
+        "close": 71828.13,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:30:00.000Z",
+        "ts_ms": 1773567000000,
+        "close": 71847.41,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:45:00.000Z",
+        "ts_ms": 1773567900000,
+        "close": 71758.59,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:00:00.000Z",
+        "ts_ms": 1773568800000,
+        "close": 71791.1,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:15:00.000Z",
+        "ts_ms": 1773569700000,
+        "close": 71806.66,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:30:00.000Z",
+        "ts_ms": 1773570600000,
+        "close": 71862.46,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:45:00.000Z",
+        "ts_ms": 1773571500000,
+        "close": 71830.64,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:00:00.000Z",
+        "ts_ms": 1773572400000,
+        "close": 71783.09,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:15:00.000Z",
+        "ts_ms": 1773573300000,
+        "close": 71700,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:30:00.000Z",
+        "ts_ms": 1773574200000,
+        "close": 71695.56,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:45:00.000Z",
+        "ts_ms": 1773575100000,
+        "close": 71754.99,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:00:00.000Z",
+        "ts_ms": 1773576000000,
+        "close": 71839.42,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:15:00.000Z",
+        "ts_ms": 1773576900000,
+        "close": 71702.74,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:30:00.000Z",
+        "ts_ms": 1773577800000,
+        "close": 71706.97,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:45:00.000Z",
+        "ts_ms": 1773578700000,
+        "close": 71567.28,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:00:00.000Z",
+        "ts_ms": 1773579600000,
+        "close": 71610.33,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:15:00.000Z",
+        "ts_ms": 1773580500000,
+        "close": 71442.49,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:30:00.000Z",
+        "ts_ms": 1773581400000,
+        "close": 71526.9,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:45:00.000Z",
+        "ts_ms": 1773582300000,
+        "close": 71449.89,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:00:00.000Z",
+        "ts_ms": 1773583200000,
+        "close": 71607.54,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:15:00.000Z",
+        "ts_ms": 1773584100000,
+        "close": 71579.35,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:30:00.000Z",
+        "ts_ms": 1773585000000,
+        "close": 71457.39,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:45:00.000Z",
+        "ts_ms": 1773585900000,
+        "close": 71484.38,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:00:00.000Z",
+        "ts_ms": 1773586800000,
+        "close": 71622.03,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:15:00.000Z",
+        "ts_ms": 1773587700000,
+        "close": 71546.93,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:30:00.000Z",
+        "ts_ms": 1773588600000,
+        "close": 71472.8,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:45:00.000Z",
+        "ts_ms": 1773589500000,
+        "close": 71486.52,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:00:00.000Z",
+        "ts_ms": 1773590400000,
+        "close": 71481.24,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:15:00.000Z",
+        "ts_ms": 1773591300000,
+        "close": 71559.98,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:30:00.000Z",
+        "ts_ms": 1773592200000,
+        "close": 71405.7,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:45:00.000Z",
+        "ts_ms": 1773593100000,
+        "close": 71450.02,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:00:00.000Z",
+        "ts_ms": 1773594000000,
+        "close": 71437.35,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:15:00.000Z",
+        "ts_ms": 1773594900000,
+        "close": 71482.12,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:30:00.000Z",
+        "ts_ms": 1773595800000,
+        "close": 71515.17,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:45:00.000Z",
+        "ts_ms": 1773596700000,
+        "close": 71521.37,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:00:00.000Z",
+        "ts_ms": 1773597600000,
+        "close": 71819.95,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:15:00.000Z",
+        "ts_ms": 1773598500000,
+        "close": 71719.15,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:30:00.000Z",
+        "ts_ms": 1773599400000,
+        "close": 71726.37,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:45:00.000Z",
+        "ts_ms": 1773600300000,
+        "close": 71692.01,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:00:00.000Z",
+        "ts_ms": 1773601200000,
+        "close": 71390.53,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 71363.54,
+              "status": "FILLED",
+              "timestampMs": 1773601206103,
+              "timestamp": "2026-03-15T19:00:06.103Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773601200000,
+              "markerTs": "2026-03-15T19:00:00.000Z"
+            }
+          ],
+          "value": 71363.54,
+          "close": 71390.53
+        }
+      },
+      {
+        "ts": "2026-03-15T19:15:00.000Z",
+        "ts_ms": 1773602100000,
+        "close": 71488.81,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:30:00.000Z",
+        "ts_ms": 1773603000000,
+        "close": 71525.33,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:45:00.000Z",
+        "ts_ms": 1773603900000,
+        "close": 71493.44,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:00:00.000Z",
+        "ts_ms": 1773604800000,
+        "close": 71549.94,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:15:00.000Z",
+        "ts_ms": 1773605700000,
+        "close": 71531.75,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:30:00.000Z",
+        "ts_ms": 1773606600000,
+        "close": 71485.6,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:45:00.000Z",
+        "ts_ms": 1773607500000,
+        "close": 71846.68,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 71855.61,
+              "status": "FILLED",
+              "timestampMs": 1773607505428,
+              "timestamp": "2026-03-15T20:45:05.428Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773607500000,
+              "markerTs": "2026-03-15T20:45:00.000Z"
+            }
+          ],
+          "value": 71855.61,
+          "close": 71846.68
+        }
+      },
+      {
+        "ts": "2026-03-15T21:00:00.000Z",
+        "ts_ms": 1773608400000,
+        "close": 71730.81,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:15:00.000Z",
+        "ts_ms": 1773609300000,
+        "close": 71646.15,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:30:00.000Z",
+        "ts_ms": 1773610200000,
+        "close": 71761.24,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:45:00.000Z",
+        "ts_ms": 1773611100000,
+        "close": 72105.63,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:00:00.000Z",
+        "ts_ms": 1773612000000,
+        "close": 72109.58,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:15:00.000Z",
+        "ts_ms": 1773612900000,
+        "close": 71796.79,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:30:00.000Z",
+        "ts_ms": 1773613800000,
+        "close": 71931.49,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:45:00.000Z",
+        "ts_ms": 1773614700000,
+        "close": 72391.41,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:00:00.000Z",
+        "ts_ms": 1773615600000,
+        "close": 72749.44,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:15:00.000Z",
+        "ts_ms": 1773616500000,
+        "close": 72991.99,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:30:00.000Z",
+        "ts_ms": 1773617400000,
+        "close": 72479.04,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:45:00.000Z",
+        "ts_ms": 1773618300000,
+        "close": 72701.07,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:00:00.000Z",
+        "ts_ms": 1773619200000,
+        "close": 72815.24,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:15:00.000Z",
+        "ts_ms": 1773620100000,
+        "close": 72714.59,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:30:00.000Z",
+        "ts_ms": 1773621000000,
+        "close": 72512.3,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:45:00.000Z",
+        "ts_ms": 1773621900000,
+        "close": 72515.54,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:00:00.000Z",
+        "ts_ms": 1773622800000,
+        "close": 72531.26,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:15:00.000Z",
+        "ts_ms": 1773623700000,
+        "close": 72317.19,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:30:00.000Z",
+        "ts_ms": 1773624600000,
+        "close": 72645.39,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:45:00.000Z",
+        "ts_ms": 1773625500000,
+        "close": 72590.46,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:00:00.000Z",
+        "ts_ms": 1773626400000,
+        "close": 72752.9,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:15:00.000Z",
+        "ts_ms": 1773627300000,
+        "close": 72694.37,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:30:00.000Z",
+        "ts_ms": 1773628200000,
+        "close": 72451.44,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 72440.01,
+              "status": "FILLED",
+              "timestampMs": 1773628205378,
+              "timestamp": "2026-03-16T02:30:05.378Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773628200000,
+              "markerTs": "2026-03-16T02:30:00.000Z"
+            }
+          ],
+          "value": 72440.01,
+          "close": 72451.44
+        }
+      },
+      {
+        "ts": "2026-03-16T02:45:00.000Z",
+        "ts_ms": 1773629100000,
+        "close": 72444.13,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:00:00.000Z",
+        "ts_ms": 1773630000000,
+        "close": 72514.69,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:15:00.000Z",
+        "ts_ms": 1773630900000,
+        "close": 72528.13,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:30:00.000Z",
+        "ts_ms": 1773631800000,
+        "close": 72857.64,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 72898.35,
+              "status": "FILLED",
+              "timestampMs": 1773631805369,
+              "timestamp": "2026-03-16T03:30:05.369Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773631800000,
+              "markerTs": "2026-03-16T03:30:00.000Z"
+            }
+          ],
+          "value": 72898.35,
+          "close": 72857.64
+        }
+      },
+      {
+        "ts": "2026-03-16T03:45:00.000Z",
+        "ts_ms": 1773632700000,
+        "close": 73769.99,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:00:00.000Z",
+        "ts_ms": 1773633600000,
+        "close": 73573.32,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:15:00.000Z",
+        "ts_ms": 1773634500000,
+        "close": 73695.95,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:30:00.000Z",
+        "ts_ms": 1773635400000,
+        "close": 73605.9,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:45:00.000Z",
+        "ts_ms": 1773636300000,
+        "close": 73632.81,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:00:00.000Z",
+        "ts_ms": 1773637200000,
+        "close": 73835.62,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:15:00.000Z",
+        "ts_ms": 1773638100000,
+        "close": 73866.52,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:30:00.000Z",
+        "ts_ms": 1773639000000,
+        "close": 73909.56,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:45:00.000Z",
+        "ts_ms": 1773639900000,
+        "close": 74045.37,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:00:00.000Z",
+        "ts_ms": 1773640800000,
+        "close": 74207.49,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:15:00.000Z",
+        "ts_ms": 1773641700000,
+        "close": 73715.13,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:30:00.000Z",
+        "ts_ms": 1773642600000,
+        "close": 73711,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:45:00.000Z",
+        "ts_ms": 1773643500000,
+        "close": 73826.98,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:00:00.000Z",
+        "ts_ms": 1773644400000,
+        "close": 73714.36,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:15:00.000Z",
+        "ts_ms": 1773645300000,
+        "close": 73852.84,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:30:00.000Z",
+        "ts_ms": 1773646200000,
+        "close": 73835.35,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:45:00.000Z",
+        "ts_ms": 1773647100000,
+        "close": 73484.86,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:00:00.000Z",
+        "ts_ms": 1773648000000,
+        "close": 73456.68,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:15:00.000Z",
+        "ts_ms": 1773648900000,
+        "close": 73514.27,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:30:00.000Z",
+        "ts_ms": 1773649800000,
+        "close": 73352.06,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:45:00.000Z",
+        "ts_ms": 1773650700000,
+        "close": 72906.56,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 72927.08,
+              "status": "FILLED",
+              "timestampMs": 1773650705374,
+              "timestamp": "2026-03-16T08:45:05.374Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773650700000,
+              "markerTs": "2026-03-16T08:45:00.000Z"
+            }
+          ],
+          "value": 72927.08,
+          "close": 72906.56
+        }
+      },
+      {
+        "ts": "2026-03-16T09:00:00.000Z",
+        "ts_ms": 1773651600000,
+        "close": 73135,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:15:00.000Z",
+        "ts_ms": 1773652500000,
+        "close": 73132.46,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:30:00.000Z",
+        "ts_ms": 1773653400000,
+        "close": 73278,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:45:00.000Z",
+        "ts_ms": 1773654300000,
+        "close": 73201.4,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:00:00.000Z",
+        "ts_ms": 1773655200000,
+        "close": 73260.92,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:15:00.000Z",
+        "ts_ms": 1773656100000,
+        "close": 73338.33,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:30:00.000Z",
+        "ts_ms": 1773657000000,
+        "close": 73453.71,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:45:00.000Z",
+        "ts_ms": 1773657900000,
+        "close": 73253.21,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:00:00.000Z",
+        "ts_ms": 1773658800000,
+        "close": 73783.42,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:15:00.000Z",
+        "ts_ms": 1773659700000,
+        "close": 73606.92,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:30:00.000Z",
+        "ts_ms": 1773660600000,
+        "close": 73556.24,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:45:00.000Z",
+        "ts_ms": 1773661500000,
+        "close": 73626.28,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:00:00.000Z",
+        "ts_ms": 1773662400000,
+        "close": 73552.77,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:15:00.000Z",
+        "ts_ms": 1773663300000,
+        "close": 73596.63,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:30:00.000Z",
+        "ts_ms": 1773664200000,
+        "close": 73878.04,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 73848.9,
+              "status": "FILLED",
+              "timestampMs": 1773664205359,
+              "timestamp": "2026-03-16T12:30:05.359Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773664200000,
+              "markerTs": "2026-03-16T12:30:00.000Z"
+            }
+          ],
+          "value": 73848.9,
+          "close": 73878.04
+        }
+      },
+      {
+        "ts": "2026-03-16T12:45:00.000Z",
+        "ts_ms": 1773665100000,
+        "close": 73807.63,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:00:00.000Z",
+        "ts_ms": 1773666000000,
+        "close": 73864.8,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:15:00.000Z",
+        "ts_ms": 1773666900000,
+        "close": 73967.86,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:30:00.000Z",
+        "ts_ms": 1773667800000,
+        "close": 73902.9,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:45:00.000Z",
+        "ts_ms": 1773668700000,
+        "close": 74079.66,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:00:00.000Z",
+        "ts_ms": 1773669600000,
+        "close": 74109.55,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:15:00.000Z",
+        "ts_ms": 1773670500000,
+        "close": 74298.61,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:30:00.000Z",
+        "ts_ms": 1773671400000,
+        "close": 73618.49,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 73575.75,
+              "status": "FILLED",
+              "timestampMs": 1773671405423,
+              "timestamp": "2026-03-16T14:30:05.423Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773671400000,
+              "markerTs": "2026-03-16T14:30:00.000Z"
+            }
+          ],
+          "value": 73575.75,
+          "close": 73618.49
+        }
+      },
+      {
+        "ts": "2026-03-16T14:45:00.000Z",
+        "ts_ms": 1773672300000,
+        "close": 73136.06,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:00:00.000Z",
+        "ts_ms": 1773673200000,
+        "close": 73565.54,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:15:00.000Z",
+        "ts_ms": 1773674100000,
+        "close": 73677.67,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:30:00.000Z",
+        "ts_ms": 1773675000000,
+        "close": 73841.21,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:45:00.000Z",
+        "ts_ms": 1773675900000,
+        "close": 73555.01,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:00:00.000Z",
+        "ts_ms": 1773676800000,
+        "close": 73274.76,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:15:00.000Z",
+        "ts_ms": 1773677700000,
+        "close": 73342.48,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:30:00.000Z",
+        "ts_ms": 1773678600000,
+        "close": 73413.67,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:45:00.000Z",
+        "ts_ms": 1773679500000,
+        "close": 73657.29,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:00:00.000Z",
+        "ts_ms": 1773680400000,
+        "close": 73760.63,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:15:00.000Z",
+        "ts_ms": 1773681300000,
+        "close": 73835.65,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:30:00.000Z",
+        "ts_ms": 1773682200000,
+        "close": 73683.26,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:45:00.000Z",
+        "ts_ms": 1773683100000,
+        "close": 73893.28,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:00:00.000Z",
+        "ts_ms": 1773684000000,
+        "close": 73943.18,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:15:00.000Z",
+        "ts_ms": 1773684900000,
+        "close": 74214.66,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:30:00.000Z",
+        "ts_ms": 1773685800000,
+        "close": 74248.86,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:45:00.000Z",
+        "ts_ms": 1773686700000,
+        "close": 74206.32,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:00:00.000Z",
+        "ts_ms": 1773687600000,
+        "close": 73913.6,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:15:00.000Z",
+        "ts_ms": 1773688500000,
+        "close": 74167.88,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:30:00.000Z",
+        "ts_ms": 1773689400000,
+        "close": 74110.13,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:45:00.000Z",
+        "ts_ms": 1773690300000,
+        "close": 74145.97,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:00:00.000Z",
+        "ts_ms": 1773691200000,
+        "close": 73963,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:15:00.000Z",
+        "ts_ms": 1773692100000,
+        "close": 73906.51,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:30:00.000Z",
+        "ts_ms": 1773693000000,
+        "close": 73977.99,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:45:00.000Z",
+        "ts_ms": 1773693900000,
+        "close": 74041.62,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:00:00.000Z",
+        "ts_ms": 1773694800000,
+        "close": 74236.9,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 74199.99,
+              "status": "FILLED",
+              "timestampMs": 1773694805458,
+              "timestamp": "2026-03-16T21:00:05.458Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773694800000,
+              "markerTs": "2026-03-16T21:00:00.000Z"
+            }
+          ],
+          "value": 74199.99,
+          "close": 74236.9
+        }
+      },
+      {
+        "ts": "2026-03-16T21:15:00.000Z",
+        "ts_ms": 1773695700000,
+        "close": 74367.93,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:30:00.000Z",
+        "ts_ms": 1773696600000,
+        "close": 74280.05,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:45:00.000Z",
+        "ts_ms": 1773697500000,
+        "close": 74436,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:00:00.000Z",
+        "ts_ms": 1773698400000,
+        "close": 74401.36,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:15:00.000Z",
+        "ts_ms": 1773699300000,
+        "close": 74874.6,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:30:00.000Z",
+        "ts_ms": 1773700200000,
+        "close": 74660.31,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:45:00.000Z",
+        "ts_ms": 1773701100000,
+        "close": 74764.81,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:00:00.000Z",
+        "ts_ms": 1773702000000,
+        "close": 74772.66,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:15:00.000Z",
+        "ts_ms": 1773702900000,
+        "close": 74392.5,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 74437.18,
+              "status": "FILLED",
+              "timestampMs": 1773702905420,
+              "timestamp": "2026-03-16T23:15:05.420Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773702900000,
+              "markerTs": "2026-03-16T23:15:00.000Z"
+            }
+          ],
+          "value": 74437.18,
+          "close": 74392.5
+        }
+      },
+      {
+        "ts": "2026-03-16T23:30:00.000Z",
+        "ts_ms": 1773703800000,
+        "close": 74612.39,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:45:00.000Z",
+        "ts_ms": 1773704700000,
+        "close": 74874.93,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:00:00.000Z",
+        "ts_ms": 1773705600000,
+        "close": 74884.67,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:15:00.000Z",
+        "ts_ms": 1773706500000,
+        "close": 75409.33,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:30:00.000Z",
+        "ts_ms": 1773707400000,
+        "close": 75080.2,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:45:00.000Z",
+        "ts_ms": 1773708300000,
+        "close": 74996.96,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:00:00.000Z",
+        "ts_ms": 1773709200000,
+        "close": 75318.48,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:15:00.000Z",
+        "ts_ms": 1773710100000,
+        "close": 75840.88,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:30:00.000Z",
+        "ts_ms": 1773711000000,
+        "close": 75933.8,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:45:00.000Z",
+        "ts_ms": 1773711900000,
+        "close": 75678.16,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T02:00:00.000Z",
+        "ts_ms": 1773712800000,
+        "close": 75623.91,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T02:15:00.000Z",
+        "ts_ms": 1773713700000,
+        "close": 75243.62,
         "marker": null
       }
     ],
@@ -2783,6 +5532,1968 @@
         "rsiUpper": 74.71042525521285,
         "rsiLower": 58.3177045564686,
         "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:00:00.000Z",
+        "ts_ms": 1773536400000,
+        "rsi": 56.23023175726469,
+        "rsiMean": 63.44238577270014,
+        "rsiUpper": 72.84745378544775,
+        "rsiLower": 54.03731775995253,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:15:00.000Z",
+        "ts_ms": 1773537300000,
+        "rsi": 54.01534073228536,
+        "rsiMean": 59.74275417093476,
+        "rsiUpper": 66.69822519514275,
+        "rsiLower": 52.787283146726764,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:30:00.000Z",
+        "ts_ms": 1773538200000,
+        "rsi": 53.001826665510656,
+        "rsiMean": 57.63119054875337,
+        "rsiUpper": 64.97555177871631,
+        "rsiLower": 50.286829318790446,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T01:45:00.000Z",
+        "ts_ms": 1773539100000,
+        "rsi": 52.92044115195366,
+        "rsiMean": 55.79377881186857,
+        "rsiUpper": 62.45704146992247,
+        "rsiLower": 49.13051615381467,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:00:00.000Z",
+        "ts_ms": 1773540000000,
+        "rsi": 56.09586955094942,
+        "rsiMean": 54.45261415442608,
+        "rsiUpper": 57.06163595932831,
+        "rsiLower": 51.84359234952385,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:15:00.000Z",
+        "ts_ms": 1773540900000,
+        "rsi": 69.40192639872878,
+        "rsiMean": 57.08702751209106,
+        "rsiUpper": 68.36070674123903,
+        "rsiLower": 45.8133482829431,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:30:00.000Z",
+        "ts_ms": 1773541800000,
+        "rsi": 66.87396191486116,
+        "rsiMean": 59.65882896650123,
+        "rsiUpper": 72.37190975657758,
+        "rsiLower": 46.945748176424885,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T02:45:00.000Z",
+        "ts_ms": 1773542700000,
+        "rsi": 71.46375798681274,
+        "rsiMean": 63.3513138117509,
+        "rsiUpper": 76.73175657061388,
+        "rsiLower": 49.970871052887915,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:00:00.000Z",
+        "ts_ms": 1773543600000,
+        "rsi": 72.29565405939243,
+        "rsiMean": 67.22645735535413,
+        "rsiUpper": 77.79620114388825,
+        "rsiLower": 56.65671356682,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:15:00.000Z",
+        "ts_ms": 1773544500000,
+        "rsi": 72.67138691462208,
+        "rsiMean": 70.54163577496742,
+        "rsiUpper": 74.42012950263238,
+        "rsiLower": 66.66314204730246,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:30:00.000Z",
+        "ts_ms": 1773545400000,
+        "rsi": 64.0930608853482,
+        "rsiMean": 69.4798241432494,
+        "rsiUpper": 75.60306198402347,
+        "rsiLower": 63.35658630247533,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T03:45:00.000Z",
+        "ts_ms": 1773546300000,
+        "rsi": 63.75371727822779,
+        "rsiMean": 68.85575051953143,
+        "rsiUpper": 76.1412623415171,
+        "rsiLower": 61.57023869754575,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:00:00.000Z",
+        "ts_ms": 1773547200000,
+        "rsi": 64.80558359431112,
+        "rsiMean": 67.52408043225334,
+        "rsiUpper": 74.84210745368883,
+        "rsiLower": 60.20605341081786,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:15:00.000Z",
+        "ts_ms": 1773548100000,
+        "rsi": 72.0470784908581,
+        "rsiMean": 67.47434365708087,
+        "rsiUpper": 74.68874777255115,
+        "rsiLower": 60.259939541610585,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:30:00.000Z",
+        "ts_ms": 1773549000000,
+        "rsi": 68.76580201041921,
+        "rsiMean": 66.69319346089551,
+        "rsiUpper": 72.49383816140606,
+        "rsiLower": 60.89254876038497,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T04:45:00.000Z",
+        "ts_ms": 1773549900000,
+        "rsi": 70.52498546169048,
+        "rsiMean": 67.97958741130674,
+        "rsiUpper": 73.76063836260826,
+        "rsiLower": 62.198536460005215,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:00:00.000Z",
+        "ts_ms": 1773550800000,
+        "rsi": 70.82401966089415,
+        "rsiMean": 69.3936587307955,
+        "rsiUpper": 73.93391943428225,
+        "rsiLower": 64.85339802730874,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:15:00.000Z",
+        "ts_ms": 1773551700000,
+        "rsi": 66.34207216600268,
+        "rsiMean": 69.70095135153736,
+        "rsiUpper": 73.2649364630139,
+        "rsiLower": 66.13696624006081,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:30:00.000Z",
+        "ts_ms": 1773552600000,
+        "rsi": 69.25953767418541,
+        "rsiMean": 69.14342731322796,
+        "rsiUpper": 72.0163448787196,
+        "rsiLower": 66.27050974773633,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T05:45:00.000Z",
+        "ts_ms": 1773553500000,
+        "rsi": 69.70999455501573,
+        "rsiMean": 69.33226136342896,
+        "rsiUpper": 72.20522052584893,
+        "rsiLower": 66.45930220100898,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:00:00.000Z",
+        "ts_ms": 1773554400000,
+        "rsi": 59.093856920216965,
+        "rsiMean": 67.0460051161485,
+        "rsiUpper": 74.68294107126337,
+        "rsiLower": 59.40906916103364,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:15:00.000Z",
+        "ts_ms": 1773555300000,
+        "rsi": 62.23228755907441,
+        "rsiMean": 65.32763279115747,
+        "rsiUpper": 72.71145662272988,
+        "rsiLower": 57.94380895958505,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:30:00.000Z",
+        "ts_ms": 1773556200000,
+        "rsi": 56.19078861124898,
+        "rsiMean": 63.29735307544286,
+        "rsiUpper": 73.02334308034662,
+        "rsiLower": 53.57136307053909,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T06:45:00.000Z",
+        "ts_ms": 1773557100000,
+        "rsi": 53.184409565853805,
+        "rsiMean": 60.08229570670276,
+        "rsiUpper": 70.29703438366788,
+        "rsiLower": 49.86755702973763,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:00:00.000Z",
+        "ts_ms": 1773558000000,
+        "rsi": 55.39259991218936,
+        "rsiMean": 57.21878775391948,
+        "rsiUpper": 62.8720367574317,
+        "rsiLower": 51.565538750407256,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:15:00.000Z",
+        "ts_ms": 1773558900000,
+        "rsi": 61.738612497089925,
+        "rsiMean": 57.74774098681847,
+        "rsiUpper": 64.22943743068458,
+        "rsiLower": 51.266044542952365,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:30:00.000Z",
+        "ts_ms": 1773559800000,
+        "rsi": 59.095578938957814,
+        "rsiMean": 57.1203931462839,
+        "rsiUpper": 62.49460886260605,
+        "rsiLower": 51.746177429961755,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T07:45:00.000Z",
+        "ts_ms": 1773560700000,
+        "rsi": 52.59689525556773,
+        "rsiMean": 56.401611597080546,
+        "rsiUpper": 62.71887448946387,
+        "rsiLower": 50.08434870469722,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:00:00.000Z",
+        "ts_ms": 1773561600000,
+        "rsi": 52.903521796337834,
+        "rsiMean": 56.34543570421689,
+        "rsiUpper": 62.75791146426383,
+        "rsiLower": 49.93295994416995,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:15:00.000Z",
+        "ts_ms": 1773562500000,
+        "rsi": 58.97819773730757,
+        "rsiMean": 57.06255946415588,
+        "rsiUpper": 63.647153467613585,
+        "rsiLower": 50.47796546069818,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:30:00.000Z",
+        "ts_ms": 1773563400000,
+        "rsi": 58.499087758635966,
+        "rsiMean": 56.4146504239997,
+        "rsiUpper": 61.81511578824,
+        "rsiLower": 51.014185059759406,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T08:45:00.000Z",
+        "ts_ms": 1773564300000,
+        "rsi": 57.70209786068792,
+        "rsiMean": 56.13595260732866,
+        "rsiUpper": 61.16884355655865,
+        "rsiLower": 51.103061658098675,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:00:00.000Z",
+        "ts_ms": 1773565200000,
+        "rsi": 63.58278989284159,
+        "rsiMean": 58.33314088333748,
+        "rsiUpper": 64.45747629254747,
+        "rsiLower": 52.20880547412748,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:15:00.000Z",
+        "ts_ms": 1773566100000,
+        "rsi": 67.33031814765192,
+        "rsiMean": 61.218511163593405,
+        "rsiUpper": 67.84309170579506,
+        "rsiLower": 54.59393062139175,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:30:00.000Z",
+        "ts_ms": 1773567000000,
+        "rsi": 67.94932327786293,
+        "rsiMean": 63.01274170745118,
+        "rsiUpper": 70.73022384414577,
+        "rsiLower": 55.29525957075658,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T09:45:00.000Z",
+        "ts_ms": 1773567900000,
+        "rsi": 62.11077698513283,
+        "rsiMean": 63.73508141650368,
+        "rsiUpper": 70.45776034124465,
+        "rsiLower": 57.01240249176271,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:00:00.000Z",
+        "ts_ms": 1773568800000,
+        "rsi": 63.35203022963497,
+        "rsiMean": 64.86507105545871,
+        "rsiUpper": 69.05639815045846,
+        "rsiLower": 60.673743960458964,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:15:00.000Z",
+        "ts_ms": 1773569700000,
+        "rsi": 63.96058509025221,
+        "rsiMean": 64.94062927714945,
+        "rsiUpper": 69.06535905616575,
+        "rsiLower": 60.81589949813316,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:30:00.000Z",
+        "ts_ms": 1773570600000,
+        "rsi": 66.13249735636109,
+        "rsiMean": 64.70106322601063,
+        "rsiUpper": 68.44905213007074,
+        "rsiLower": 60.953074321950524,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T10:45:00.000Z",
+        "ts_ms": 1773571500000,
+        "rsi": 63.77230541375828,
+        "rsiMean": 63.865656132250066,
+        "rsiUpper": 66.21253392983924,
+        "rsiLower": 61.518778334660894,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:00:00.000Z",
+        "ts_ms": 1773572400000,
+        "rsi": 60.30855679752956,
+        "rsiMean": 63.50521074205549,
+        "rsiUpper": 66.86533362667737,
+        "rsiLower": 60.14508785743361,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:15:00.000Z",
+        "ts_ms": 1773573300000,
+        "rsi": 54.715987072958306,
+        "rsiMean": 61.777997596954,
+        "rsiUpper": 68.96602991364709,
+        "rsiLower": 54.58996528026091,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:30:00.000Z",
+        "ts_ms": 1773574200000,
+        "rsi": 54.42554857559833,
+        "rsiMean": 59.870985376876455,
+        "rsiUpper": 68.34612380432509,
+        "rsiLower": 51.39584694942782,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T11:45:00.000Z",
+        "ts_ms": 1773575100000,
+        "rsi": 57.66483009637278,
+        "rsiMean": 58.17744747817991,
+        "rsiUpper": 64.52436024254304,
+        "rsiLower": 51.830534713816775,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:00:00.000Z",
+        "ts_ms": 1773576000000,
+        "rsi": 61.81698204136009,
+        "rsiMean": 57.78638120483275,
+        "rsiUpper": 63.08612544879588,
+        "rsiLower": 52.48663696086962,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:15:00.000Z",
+        "ts_ms": 1773576900000,
+        "rsi": 52.79046365030866,
+        "rsiMean": 56.282759793335764,
+        "rsiUpper": 62.011063359935264,
+        "rsiLower": 50.554456226736264,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:30:00.000Z",
+        "ts_ms": 1773577800000,
+        "rsi": 53.019104509704924,
+        "rsiMean": 55.94338312071777,
+        "rsiUpper": 62.087628260238986,
+        "rsiLower": 49.79913798119655,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T12:45:00.000Z",
+        "ts_ms": 1773578700000,
+        "rsi": 45.22888609789623,
+        "rsiMean": 54.10404874948789,
+        "rsiUpper": 64.08845474859484,
+        "rsiLower": 44.11964275038093,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:00:00.000Z",
+        "ts_ms": 1773579600000,
+        "rsi": 47.77561715241282,
+        "rsiMean": 52.12620367765699,
+        "rsiUpper": 62.36093298825958,
+        "rsiLower": 41.8914743670544,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:15:00.000Z",
+        "ts_ms": 1773580500000,
+        "rsi": 39.972023555166885,
+        "rsiMean": 47.75720677113853,
+        "rsiUpper": 56.576225327363844,
+        "rsiLower": 38.93818821491321,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:30:00.000Z",
+        "ts_ms": 1773581400000,
+        "rsi": 44.850797411718155,
+        "rsiMean": 46.169272556755615,
+        "rsiUpper": 53.828448947648575,
+        "rsiLower": 38.510096165862656,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T13:45:00.000Z",
+        "ts_ms": 1773582300000,
+        "rsi": 41.53414354114699,
+        "rsiMean": 43.872278910191795,
+        "rsiUpper": 48.880864000862175,
+        "rsiLower": 38.863693819521416,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:00:00.000Z",
+        "ts_ms": 1773583200000,
+        "rsi": 49.72961152467683,
+        "rsiMean": 44.772426028633745,
+        "rsiUpper": 51.36787059661837,
+        "rsiLower": 38.176981460649124,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:15:00.000Z",
+        "ts_ms": 1773584100000,
+        "rsi": 48.422524059629374,
+        "rsiMean": 44.90180849420122,
+        "rsiUpper": 51.70141859051797,
+        "rsiLower": 38.10219839788447,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:30:00.000Z",
+        "ts_ms": 1773585000000,
+        "rsi": 43.139617855745584,
+        "rsiMean": 45.535329117218495,
+        "rsiUpper": 51.12087086899513,
+        "rsiLower": 39.949787365441864,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T14:45:00.000Z",
+        "ts_ms": 1773585900000,
+        "rsi": 44.580596277324425,
+        "rsiMean": 45.48128965296608,
+        "rsiUpper": 51.091622436329004,
+        "rsiLower": 39.87095686960316,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:00:00.000Z",
+        "ts_ms": 1773586800000,
+        "rsi": 51.35189051053299,
+        "rsiMean": 47.44484119121693,
+        "rsiUpper": 53.03238347802489,
+        "rsiLower": 41.85729890440897,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:15:00.000Z",
+        "ts_ms": 1773587700000,
+        "rsi": 47.91231094519233,
+        "rsiMean": 47.08138125141488,
+        "rsiUpper": 52.33033940791297,
+        "rsiLower": 41.83242309491679,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:30:00.000Z",
+        "ts_ms": 1773588600000,
+        "rsi": 44.72764624331399,
+        "rsiMean": 46.342405780586695,
+        "rsiUpper": 51.65340459535649,
+        "rsiLower": 41.0314069658169,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T15:45:00.000Z",
+        "ts_ms": 1773589500000,
+        "rsi": 45.450338580156824,
+        "rsiMean": 46.80455065666612,
+        "rsiUpper": 51.4287548082785,
+        "rsiLower": 42.18034650505375,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:00:00.000Z",
+        "ts_ms": 1773590400000,
+        "rsi": 45.20537581877013,
+        "rsiMean": 46.92950704415233,
+        "rsiUpper": 51.377522492076594,
+        "rsiLower": 42.48149159622807,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:15:00.000Z",
+        "ts_ms": 1773591300000,
+        "rsi": 49.57047388156689,
+        "rsiMean": 46.57322370968006,
+        "rsiUpper": 49.92284102208956,
+        "rsiLower": 43.22360639727056,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:30:00.000Z",
+        "ts_ms": 1773592200000,
+        "rsi": 42.4370203269409,
+        "rsiMean": 45.47816545183789,
+        "rsiUpper": 49.63254350703095,
+        "rsiLower": 41.323787396644825,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T16:45:00.000Z",
+        "ts_ms": 1773593100000,
+        "rsi": 44.8904760871706,
+        "rsiMean": 45.51073176174884,
+        "rsiUpper": 49.64766526000315,
+        "rsiLower": 41.373798263494535,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:00:00.000Z",
+        "ts_ms": 1773594000000,
+        "rsi": 44.309057351844025,
+        "rsiMean": 45.28247574023407,
+        "rsiUpper": 49.51080655945394,
+        "rsiLower": 41.0541449210142,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:15:00.000Z",
+        "ts_ms": 1773594900000,
+        "rsi": 46.92495268837434,
+        "rsiMean": 45.62639158060928,
+        "rsiUpper": 50.01271458206375,
+        "rsiLower": 41.24006857915481,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:30:00.000Z",
+        "ts_ms": 1773595800000,
+        "rsi": 48.83556694303587,
+        "rsiMean": 45.47941032743587,
+        "rsiUpper": 49.44971487181937,
+        "rsiLower": 41.50910578305238,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T17:45:00.000Z",
+        "ts_ms": 1773596700000,
+        "rsi": 49.20497698252874,
+        "rsiMean": 46.83300226379153,
+        "rsiUpper": 50.4139353962634,
+        "rsiLower": 43.25206913131966,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:00:00.000Z",
+        "ts_ms": 1773597600000,
+        "rsi": 63.04339171889607,
+        "rsiMean": 50.46358657961345,
+        "rsiUpper": 62.20881312645999,
+        "rsiLower": 38.71836003276691,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:15:00.000Z",
+        "ts_ms": 1773598500000,
+        "rsi": 57.36177105655456,
+        "rsiMean": 53.07413026872572,
+        "rsiUpper": 64.12672551803998,
+        "rsiLower": 42.02153501941146,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:30:00.000Z",
+        "ts_ms": 1773599400000,
+        "rsi": 57.65613493080468,
+        "rsiMean": 55.22036745326203,
+        "rsiUpper": 65.03553397036974,
+        "rsiLower": 45.405200936154316,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T18:45:00.000Z",
+        "ts_ms": 1773600300000,
+        "rsi": 55.685842062748144,
+        "rsiMean": 56.5904229776865,
+        "rsiUpper": 64.58917672629681,
+        "rsiLower": 48.591669229076196,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:00:00.000Z",
+        "ts_ms": 1773601200000,
+        "rsi": 42.09359374773598,
+        "rsiMean": 55.16814639239764,
+        "rsiUpper": 67.74842313698329,
+        "rsiLower": 42.58786964781199,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 71363.54,
+              "status": "FILLED",
+              "timestampMs": 1773601206103,
+              "timestamp": "2026-03-15T19:00:06.103Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773601200000,
+              "markerTs": "2026-03-15T19:00:00.000Z"
+            }
+          ],
+          "value": 42.09359374773598,
+          "rsi": 42.09359374773598
+        }
+      },
+      {
+        "ts": "2026-03-15T19:15:00.000Z",
+        "ts_ms": 1773602100000,
+        "rsi": 46.66403363756591,
+        "rsiMean": 51.892274196496714,
+        "rsiUpper": 63.30141606182078,
+        "rsiLower": 40.48313233117265,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:30:00.000Z",
+        "ts_ms": 1773603000000,
+        "rsi": 48.29707361986421,
+        "rsiMean": 50.079334456587375,
+        "rsiUpper": 60.49614678522304,
+        "rsiLower": 39.66252212795171,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T19:45:00.000Z",
+        "ts_ms": 1773603900000,
+        "rsi": 46.9453809731886,
+        "rsiMean": 47.937183369939575,
+        "rsiUpper": 55.86222924498772,
+        "rsiLower": 40.012137494891434,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:00:00.000Z",
+        "ts_ms": 1773604800000,
+        "rsi": 49.63484606511133,
+        "rsiMean": 46.72698404257804,
+        "rsiUpper": 51.31192152333037,
+        "rsiLower": 42.14204656182571,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:15:00.000Z",
+        "ts_ms": 1773605700000,
+        "rsi": 48.7775484511659,
+        "rsiMean": 48.06377524737146,
+        "rsiUpper": 50.074988056153934,
+        "rsiLower": 46.052562438588986,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:30:00.000Z",
+        "ts_ms": 1773606600000,
+        "rsi": 46.579373434280896,
+        "rsiMean": 48.04684325561843,
+        "rsiUpper": 50.09678748606231,
+        "rsiLower": 45.99689902517454,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T20:45:00.000Z",
+        "ts_ms": 1773607500000,
+        "rsi": 61.28142828622532,
+        "rsiMean": 50.643714516256516,
+        "rsiUpper": 60.432071484882975,
+        "rsiLower": 40.85535754763006,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 71855.61,
+              "status": "FILLED",
+              "timestampMs": 1773607505428,
+              "timestamp": "2026-03-15T20:45:05.428Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773607500000,
+              "markerTs": "2026-03-15T20:45:00.000Z"
+            }
+          ],
+          "value": 61.28142828622532,
+          "rsi": 61.28142828622532
+        }
+      },
+      {
+        "ts": "2026-03-15T21:00:00.000Z",
+        "ts_ms": 1773608400000,
+        "rsi": 55.95920765327998,
+        "rsiMean": 52.44648011761681,
+        "rsiUpper": 62.17930116333516,
+        "rsiLower": 42.713659071898455,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:15:00.000Z",
+        "ts_ms": 1773609300000,
+        "rsi": 52.379733579793644,
+        "rsiMean": 52.99545774858713,
+        "rsiUpper": 62.40989366702232,
+        "rsiLower": 43.58102183015194,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:30:00.000Z",
+        "ts_ms": 1773610200000,
+        "rsi": 56.45735138267402,
+        "rsiMean": 54.53141854445168,
+        "rsiUpper": 63.31922527228872,
+        "rsiLower": 45.743611816614646,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T21:45:00.000Z",
+        "ts_ms": 1773611100000,
+        "rsi": 65.87402282341097,
+        "rsiMean": 58.39034878088503,
+        "rsiUpper": 66.83839727740772,
+        "rsiLower": 49.942300284362325,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:00:00.000Z",
+        "ts_ms": 1773612000000,
+        "rsi": 65.9649388311287,
+        "rsiMean": 59.327050914957944,
+        "rsiUpper": 69.34149703651302,
+        "rsiLower": 49.31260479340287,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:15:00.000Z",
+        "ts_ms": 1773612900000,
+        "rsi": 53.752683883508375,
+        "rsiMean": 58.88574615339828,
+        "rsiUpper": 69.48970576457701,
+        "rsiLower": 48.28178654221955,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:30:00.000Z",
+        "ts_ms": 1773613800000,
+        "rsi": 57.40943589883823,
+        "rsiMean": 59.89168669446415,
+        "rsiUpper": 69.01029319652241,
+        "rsiLower": 50.773080192405885,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T22:45:00.000Z",
+        "ts_ms": 1773614700000,
+        "rsi": 67.00304849280369,
+        "rsiMean": 62.00082619121914,
+        "rsiUpper": 71.68913447186713,
+        "rsiLower": 52.312517910571145,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:00:00.000Z",
+        "ts_ms": 1773615600000,
+        "rsi": 72.24437893221241,
+        "rsiMean": 63.27489740054,
+        "rsiUpper": 75.39421161627787,
+        "rsiLower": 51.15558318480212,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:15:00.000Z",
+        "ts_ms": 1773616500000,
+        "rsi": 75.12685058301655,
+        "rsiMean": 65.10727974333808,
+        "rsiUpper": 80.01813881101812,
+        "rsiLower": 50.19642067565805,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:30:00.000Z",
+        "ts_ms": 1773617400000,
+        "rsi": 60.756555722884436,
+        "rsiMean": 66.5080541570818,
+        "rsiUpper": 78.53708375310286,
+        "rsiLower": 54.47902456106074,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-15T23:45:00.000Z",
+        "ts_ms": 1773618300000,
+        "rsi": 63.96922084354455,
+        "rsiMean": 67.82001116985343,
+        "rsiUpper": 77.2885366667278,
+        "rsiLower": 58.35148567297907,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:00:00.000Z",
+        "ts_ms": 1773619200000,
+        "rsi": 65.53179980742044,
+        "rsiMean": 67.52576140025798,
+        "rsiUpper": 77.13475840551865,
+        "rsiLower": 57.91676439499731,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:15:00.000Z",
+        "ts_ms": 1773620100000,
+        "rsi": 62.940343505736294,
+        "rsiMean": 65.66495425469586,
+        "rsiUpper": 74.62659045998348,
+        "rsiLower": 56.70331804940824,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:30:00.000Z",
+        "ts_ms": 1773621000000,
+        "rsi": 57.977857709575815,
+        "rsiMean": 62.23515559798174,
+        "rsiUpper": 66.97589083971693,
+        "rsiLower": 57.49442035624656,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T00:45:00.000Z",
+        "ts_ms": 1773621900000,
+        "rsi": 58.034928437923234,
+        "rsiMean": 61.690830130154424,
+        "rsiUpper": 67.30597500874941,
+        "rsiLower": 56.075685251559435,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:00:00.000Z",
+        "ts_ms": 1773622800000,
+        "rsi": 58.330623750837255,
+        "rsiMean": 60.56311069133219,
+        "rsiUpper": 66.16330067431073,
+        "rsiLower": 54.96292070835364,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:15:00.000Z",
+        "ts_ms": 1773623700000,
+        "rsi": 52.867589396704105,
+        "rsiMean": 58.03026856978327,
+        "rsiUpper": 63.77083377796586,
+        "rsiLower": 52.28970336160067,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:30:00.000Z",
+        "ts_ms": 1773624600000,
+        "rsi": 59.17977998362756,
+        "rsiMean": 57.27815585172395,
+        "rsiUpper": 61.3222914120798,
+        "rsiLower": 53.234020291368104,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T01:45:00.000Z",
+        "ts_ms": 1773625500000,
+        "rsi": 57.78491981934558,
+        "rsiMean": 57.2395682729492,
+        "rsiUpper": 61.26441251557635,
+        "rsiLower": 53.214724030322046,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:00:00.000Z",
+        "ts_ms": 1773626400000,
+        "rsi": 60.73245590365672,
+        "rsiMean": 57.779073771373746,
+        "rsiUpper": 62.54899668395235,
+        "rsiLower": 53.00915085879514,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:15:00.000Z",
+        "ts_ms": 1773627300000,
+        "rsi": 59.13041835675417,
+        "rsiMean": 57.93903269350983,
+        "rsiUpper": 62.802721671226344,
+        "rsiLower": 53.075343715793316,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T02:30:00.000Z",
+        "ts_ms": 1773628200000,
+        "rsi": 52.89386735742083,
+        "rsiMean": 57.9442882896666,
+        "rsiUpper": 62.790226179750945,
+        "rsiLower": 53.09835039958226,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 72440.01,
+              "status": "FILLED",
+              "timestampMs": 1773628205378,
+              "timestamp": "2026-03-16T02:30:05.378Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773628200000,
+              "markerTs": "2026-03-16T02:30:00.000Z"
+            }
+          ],
+          "value": 52.89386735742083,
+          "rsi": 52.89386735742083
+        }
+      },
+      {
+        "ts": "2026-03-16T02:45:00.000Z",
+        "ts_ms": 1773629100000,
+        "rsi": 52.713699244000054,
+        "rsiMean": 56.65107212912884,
+        "rsiUpper": 62.550567984200654,
+        "rsiLower": 50.75157627405703,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:00:00.000Z",
+        "ts_ms": 1773630000000,
+        "rsi": 54.33074538067241,
+        "rsiMean": 55.960237235187606,
+        "rsiUpper": 61.953020748854236,
+        "rsiLower": 49.967453721520975,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:15:00.000Z",
+        "ts_ms": 1773630900000,
+        "rsi": 54.64887238856702,
+        "rsiMean": 54.743520520386014,
+        "rsiUpper": 58.923677534173486,
+        "rsiLower": 50.56336350659854,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T03:30:00.000Z",
+        "ts_ms": 1773631800000,
+        "rsi": 61.694117446030894,
+        "rsiMean": 55.256260341149165,
+        "rsiUpper": 61.21080728952367,
+        "rsiLower": 49.30171339277466,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 72898.35,
+              "status": "FILLED",
+              "timestampMs": 1773631805369,
+              "timestamp": "2026-03-16T03:30:05.369Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773631800000,
+              "markerTs": "2026-03-16T03:30:00.000Z"
+            }
+          ],
+          "value": 61.694117446030894,
+          "rsi": 61.694117446030894
+        }
+      },
+      {
+        "ts": "2026-03-16T03:45:00.000Z",
+        "ts_ms": 1773632700000,
+        "rsi": 73.82079879241277,
+        "rsiMean": 59.44164665317503,
+        "rsiUpper": 73.52751598294958,
+        "rsiLower": 45.355777323400474,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:00:00.000Z",
+        "ts_ms": 1773633600000,
+        "rsi": 68.76700055471784,
+        "rsiMean": 62.65230693475486,
+        "rsiUpper": 76.5098795292657,
+        "rsiLower": 48.79473434024401,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:15:00.000Z",
+        "ts_ms": 1773634500000,
+        "rsi": 70.13970351054746,
+        "rsiMean": 65.81409857778061,
+        "rsiUpper": 78.10624729172812,
+        "rsiLower": 53.5219498638331,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:30:00.000Z",
+        "ts_ms": 1773635400000,
+        "rsi": 67.78378448070157,
+        "rsiMean": 68.44108101022755,
+        "rsiUpper": 75.54533518790731,
+        "rsiLower": 61.336826832547786,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T04:45:00.000Z",
+        "ts_ms": 1773636300000,
+        "rsi": 68.12830591508464,
+        "rsiMean": 69.72791870702991,
+        "rsiUpper": 73.68652895211909,
+        "rsiLower": 65.76930846194074,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:00:00.000Z",
+        "ts_ms": 1773637200000,
+        "rsi": 70.67372328576894,
+        "rsiMean": 69.09850359964375,
+        "rsiUpper": 71.1262143505715,
+        "rsiLower": 67.070792848716,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:15:00.000Z",
+        "ts_ms": 1773638100000,
+        "rsi": 71.05304744365449,
+        "rsiMean": 69.55571297742756,
+        "rsiUpper": 71.97203770645373,
+        "rsiLower": 67.13938824840139,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:30:00.000Z",
+        "ts_ms": 1773639000000,
+        "rsi": 71.60399378496322,
+        "rsiMean": 69.84857103175597,
+        "rsiUpper": 72.68730335737092,
+        "rsiLower": 67.00983870614101,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T05:45:00.000Z",
+        "ts_ms": 1773639900000,
+        "rsi": 73.32899723645949,
+        "rsiMean": 70.95761358537531,
+        "rsiUpper": 73.98417868267697,
+        "rsiLower": 67.93104848807366,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:00:00.000Z",
+        "ts_ms": 1773640800000,
+        "rsi": 75.26098610390655,
+        "rsiMean": 72.38414962587484,
+        "rsiUpper": 75.44679126624993,
+        "rsiLower": 69.32150798549975,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:15:00.000Z",
+        "ts_ms": 1773641700000,
+        "rsi": 60.84562615150434,
+        "rsiMean": 70.41853019040175,
+        "rsiUpper": 79.43179097310903,
+        "rsiLower": 61.40526940769448,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:30:00.000Z",
+        "ts_ms": 1773642600000,
+        "rsi": 60.74053016354392,
+        "rsiMean": 68.35602672553715,
+        "rsiUpper": 79.66484373384942,
+        "rsiLower": 57.047209717224874,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T06:45:00.000Z",
+        "ts_ms": 1773643500000,
+        "rsi": 62.68950196146552,
+        "rsiMean": 66.57312835268802,
+        "rsiUpper": 78.04314515924028,
+        "rsiLower": 55.10311154613574,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:00:00.000Z",
+        "ts_ms": 1773644400000,
+        "rsi": 59.59569565866963,
+        "rsiMean": 63.82646802675218,
+        "rsiUpper": 74.27108376673792,
+        "rsiLower": 53.38185228676645,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:15:00.000Z",
+        "ts_ms": 1773645300000,
+        "rsi": 62.0741977611569,
+        "rsiMean": 61.18911034842946,
+        "rsiUpper": 63.14320591733137,
+        "rsiLower": 59.235014779527546,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:30:00.000Z",
+        "ts_ms": 1773646200000,
+        "rsi": 61.560566200614765,
+        "rsiMean": 61.33209835829193,
+        "rsiUpper": 63.27251186871972,
+        "rsiLower": 59.39168484786414,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T07:45:00.000Z",
+        "ts_ms": 1773647100000,
+        "rsi": 52.23322375250464,
+        "rsiMean": 59.63063707231605,
+        "rsiUpper": 66.54484990877614,
+        "rsiLower": 52.716424235855946,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:00:00.000Z",
+        "ts_ms": 1773648000000,
+        "rsi": 51.556842334831586,
+        "rsiMean": 57.40410514207558,
+        "rsiUpper": 65.64556980631343,
+        "rsiLower": 49.162640477837726,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:15:00.000Z",
+        "ts_ms": 1773648900000,
+        "rsi": 52.89918691732161,
+        "rsiMean": 56.06480339109079,
+        "rsiUpper": 64.5588228965159,
+        "rsiLower": 47.57078388566567,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:30:00.000Z",
+        "ts_ms": 1773649800000,
+        "rsi": 48.79765799431098,
+        "rsiMean": 53.40949543266713,
+        "rsiUpper": 61.163520754964104,
+        "rsiLower": 45.65547011037015,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T08:45:00.000Z",
+        "ts_ms": 1773650700000,
+        "rsi": 39.69467383727197,
+        "rsiMean": 49.03631695322685,
+        "rsiUpper": 57.810953442694355,
+        "rsiLower": 40.26168046375935,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 72927.08,
+              "status": "FILLED",
+              "timestampMs": 1773650705374,
+              "timestamp": "2026-03-16T08:45:05.374Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773650700000,
+              "markerTs": "2026-03-16T08:45:00.000Z"
+            }
+          ],
+          "value": 39.69467383727197,
+          "rsi": 39.69467383727197
+        }
+      },
+      {
+        "ts": "2026-03-16T09:00:00.000Z",
+        "ts_ms": 1773651600000,
+        "rsi": 45.32675360040771,
+        "rsiMean": 47.65502292178387,
+        "rsiUpper": 56.20527156394549,
+        "rsiLower": 39.10477427962225,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:15:00.000Z",
+        "ts_ms": 1773652500000,
+        "rsi": 45.276121191701314,
+        "rsiMean": 46.39887869235553,
+        "rsiUpper": 54.25993635519401,
+        "rsiLower": 38.537821029517055,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:30:00.000Z",
+        "ts_ms": 1773653400000,
+        "rsi": 48.80498566507996,
+        "rsiMean": 45.580038441573905,
+        "rsiUpper": 51.57959779632675,
+        "rsiLower": 39.58047908682106,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T09:45:00.000Z",
+        "ts_ms": 1773654300000,
+        "rsi": 47.084056244149046,
+        "rsiMean": 45.23731809215569,
+        "rsiUpper": 50.748323366011626,
+        "rsiLower": 39.72631281829975,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:00:00.000Z",
+        "ts_ms": 1773655200000,
+        "rsi": 48.600670587542815,
+        "rsiMean": 47.01851744519377,
+        "rsiUpper": 49.759839114846,
+        "rsiLower": 44.27719577554154,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:15:00.000Z",
+        "ts_ms": 1773656100000,
+        "rsi": 50.58435205259568,
+        "rsiMean": 48.070037137231715,
+        "rsiUpper": 51.282079048496676,
+        "rsiLower": 44.857995225966754,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:30:00.000Z",
+        "ts_ms": 1773657000000,
+        "rsi": 53.46701299786749,
+        "rsiMean": 49.70821550073573,
+        "rsiUpper": 53.63740281098815,
+        "rsiLower": 45.77902819048332,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T10:45:00.000Z",
+        "ts_ms": 1773657900000,
+        "rsi": 48.204587433489756,
+        "rsiMean": 49.588135854794174,
+        "rsiUpper": 53.628952903645484,
+        "rsiLower": 45.547318805942865,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:00:00.000Z",
+        "ts_ms": 1773658800000,
+        "rsi": 59.5442171615675,
+        "rsiMean": 52.080168040933,
+        "rsiUpper": 59.58855736219528,
+        "rsiLower": 44.571778719670725,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:15:00.000Z",
+        "ts_ms": 1773659700000,
+        "rsi": 55.21096100900691,
+        "rsiMean": 53.402226126894334,
+        "rsiUpper": 60.41786949079314,
+        "rsiLower": 46.38658276299553,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:30:00.000Z",
+        "ts_ms": 1773660600000,
+        "rsi": 53.995861550297626,
+        "rsiMean": 54.084528027458916,
+        "rsiUpper": 60.62623149115185,
+        "rsiLower": 47.54282456376598,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T11:45:00.000Z",
+        "ts_ms": 1773661500000,
+        "rsi": 55.45494533691676,
+        "rsiMean": 54.48211449582617,
+        "rsiUpper": 61.058708977620164,
+        "rsiLower": 47.90552001403217,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:00:00.000Z",
+        "ts_ms": 1773662400000,
+        "rsi": 53.53577982037824,
+        "rsiMean": 55.54835297440744,
+        "rsiUpper": 59.370984226903055,
+        "rsiLower": 51.72572172191183,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:15:00.000Z",
+        "ts_ms": 1773663300000,
+        "rsi": 54.546535132952535,
+        "rsiMean": 54.54881656805512,
+        "rsiUpper": 55.844694691873244,
+        "rsiLower": 53.252938444237,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T12:30:00.000Z",
+        "ts_ms": 1773664200000,
+        "rsi": 60.48584116384565,
+        "rsiMean": 55.60379259962521,
+        "rsiUpper": 60.145821891970016,
+        "rsiLower": 51.0617633072804,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 73848.9,
+              "status": "FILLED",
+              "timestampMs": 1773664205359,
+              "timestamp": "2026-03-16T12:30:05.359Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773664200000,
+              "markerTs": "2026-03-16T12:30:00.000Z"
+            }
+          ],
+          "value": 60.48584116384565,
+          "rsi": 60.48584116384565
+        }
+      },
+      {
+        "ts": "2026-03-16T12:45:00.000Z",
+        "ts_ms": 1773665100000,
+        "rsi": 58.428652689896076,
+        "rsiMean": 56.490350828084004,
+        "rsiUpper": 61.135671407428354,
+        "rsiLower": 51.845030248739654,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:00:00.000Z",
+        "ts_ms": 1773666000000,
+        "rsi": 59.62927239198565,
+        "rsiMean": 57.32521623955413,
+        "rsiUpper": 62.32628188264469,
+        "rsiLower": 52.32415059646357,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:15:00.000Z",
+        "ts_ms": 1773666900000,
+        "rsi": 61.77261961743735,
+        "rsiMean": 58.972584199824084,
+        "rsiUpper": 63.414403335258484,
+        "rsiLower": 54.53076506438968,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:30:00.000Z",
+        "ts_ms": 1773667800000,
+        "rsi": 59.62386586110623,
+        "rsiMean": 59.988050345985165,
+        "rsiUpper": 61.98037572505041,
+        "rsiLower": 57.99572496691992,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T13:45:00.000Z",
+        "ts_ms": 1773668700000,
+        "rsi": 63.35880023666325,
+        "rsiMean": 60.56264216070947,
+        "rsiUpper": 63.740948454630164,
+        "rsiLower": 57.38433586678878,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:00:00.000Z",
+        "ts_ms": 1773669600000,
+        "rsi": 63.96581540762836,
+        "rsiMean": 61.67007470466738,
+        "rsiUpper": 64.93840876083911,
+        "rsiLower": 58.40174064849565,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:15:00.000Z",
+        "ts_ms": 1773670500000,
+        "rsi": 67.61980829288649,
+        "rsiMean": 63.26818188535151,
+        "rsiUpper": 68.02708385563665,
+        "rsiLower": 58.50927991506638,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T14:30:00.000Z",
+        "ts_ms": 1773671400000,
+        "rsi": 48.54790399413116,
+        "rsiMean": 60.62323875986148,
+        "rsiUpper": 72.41071179734197,
+        "rsiLower": 48.83576572238098,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 73575.75,
+              "status": "FILLED",
+              "timestampMs": 1773671405423,
+              "timestamp": "2026-03-16T14:30:05.423Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773671400000,
+              "markerTs": "2026-03-16T14:30:00.000Z"
+            }
+          ],
+          "value": 48.54790399413116,
+          "rsi": 48.54790399413116
+        }
+      },
+      {
+        "ts": "2026-03-16T14:45:00.000Z",
+        "ts_ms": 1773672300000,
+        "rsi": 39.942213928052304,
+        "rsiMean": 56.68690837234764,
+        "rsiUpper": 75.79835043832301,
+        "rsiLower": 37.575466306372256,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:00:00.000Z",
+        "ts_ms": 1773673200000,
+        "rsi": 48.66614829024526,
+        "rsiMean": 53.74837798229515,
+        "rsiUpper": 72.45966604806488,
+        "rsiLower": 35.03708991652543,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:15:00.000Z",
+        "ts_ms": 1773674100000,
+        "rsi": 50.68045541771761,
+        "rsiMean": 51.091305983584945,
+        "rsiUpper": 67.39125215723703,
+        "rsiLower": 34.79135980993286,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:30:00.000Z",
+        "ts_ms": 1773675000000,
+        "rsi": 53.54366809455524,
+        "rsiMean": 48.27607794309111,
+        "rsiUpper": 56.454017798039786,
+        "rsiLower": 40.098138088142434,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T15:45:00.000Z",
+        "ts_ms": 1773675900000,
+        "rsi": 48.26310617762896,
+        "rsiMean": 48.219118379974745,
+        "rsiUpper": 56.39349402260043,
+        "rsiLower": 40.04474273734906,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:00:00.000Z",
+        "ts_ms": 1773676800000,
+        "rsi": 43.71658779612881,
+        "rsiMean": 48.973993153955085,
+        "rsiUpper": 54.78073748994769,
+        "rsiLower": 43.16724881796248,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:15:00.000Z",
+        "ts_ms": 1773677700000,
+        "rsi": 45.063322597519665,
+        "rsiMean": 48.253428015405895,
+        "rsiUpper": 54.72526725366352,
+        "rsiLower": 41.78158877714827,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:30:00.000Z",
+        "ts_ms": 1773678600000,
+        "rsi": 46.51223731364574,
+        "rsiMean": 47.419784394551264,
+        "rsiUpper": 53.566375212504504,
+        "rsiLower": 41.273193576598025,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T16:45:00.000Z",
+        "ts_ms": 1773679500000,
+        "rsi": 51.25060038142821,
+        "rsiMean": 46.96117085191178,
+        "rsiUpper": 51.68423707206432,
+        "rsiLower": 42.23810463175924,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:00:00.000Z",
+        "ts_ms": 1773680400000,
+        "rsi": 53.146671206017004,
+        "rsiMean": 47.937883857760575,
+        "rsiUpper": 54.488522212669274,
+        "rsiLower": 41.387245502851876,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:15:00.000Z",
+        "ts_ms": 1773681300000,
+        "rsi": 54.529314253203616,
+        "rsiMean": 50.10042914947148,
+        "rsiUpper": 56.76116228690631,
+        "rsiLower": 43.43969601203665,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:30:00.000Z",
+        "ts_ms": 1773682200000,
+        "rsi": 51.22260953673273,
+        "rsiMean": 51.33228653750599,
+        "rsiUpper": 56.21321176584294,
+        "rsiLower": 46.451361309169044,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T17:45:00.000Z",
+        "ts_ms": 1773683100000,
+        "rsi": 55.2502003571023,
+        "rsiMean": 53.07987914642823,
+        "rsiUpper": 56.04975136240821,
+        "rsiLower": 50.11000693044826,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:00:00.000Z",
+        "ts_ms": 1773684000000,
+        "rsi": 56.17609678928809,
+        "rsiMean": 54.06497842811766,
+        "rsiUpper": 57.18262089060459,
+        "rsiLower": 50.947335965630735,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:15:00.000Z",
+        "ts_ms": 1773684900000,
+        "rsi": 60.914275725212065,
+        "rsiMean": 55.6184993321051,
+        "rsiUpper": 61.25350436149696,
+        "rsiLower": 49.98349430271325,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:30:00.000Z",
+        "ts_ms": 1773685800000,
+        "rsi": 61.47930053195817,
+        "rsiMean": 57.00849658798063,
+        "rsiUpper": 63.8628900940551,
+        "rsiLower": 50.15410308190616,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T18:45:00.000Z",
+        "ts_ms": 1773686700000,
+        "rsi": 60.31140272296163,
+        "rsiMean": 58.826255225393346,
+        "rsiUpper": 63.479570319790156,
+        "rsiLower": 54.17294013099654,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:00:00.000Z",
+        "ts_ms": 1773687600000,
+        "rsi": 52.86894818392248,
+        "rsiMean": 58.350004790736406,
+        "rsiUpper": 64.31900219274937,
+        "rsiLower": 52.381007388723454,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:15:00.000Z",
+        "ts_ms": 1773688500000,
+        "rsi": 57.7467219974226,
+        "rsiMean": 58.66412983239011,
+        "rsiUpper": 64.3634891389855,
+        "rsiLower": 52.96477052579472,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:30:00.000Z",
+        "ts_ms": 1773689400000,
+        "rsi": 56.321081637225646,
+        "rsiMean": 57.745491014725395,
+        "rsiUpper": 63.224996721339984,
+        "rsiLower": 52.26598530811081,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T19:45:00.000Z",
+        "ts_ms": 1773690300000,
+        "rsi": 57.03008426241028,
+        "rsiMean": 56.85564776074877,
+        "rsiUpper": 61.18660024242064,
+        "rsiLower": 52.524695279076894,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:00:00.000Z",
+        "ts_ms": 1773691200000,
+        "rsi": 52.35755632193207,
+        "rsiMean": 55.264878480445915,
+        "rsiUpper": 59.25617852128359,
+        "rsiLower": 51.273578439608244,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:15:00.000Z",
+        "ts_ms": 1773692100000,
+        "rsi": 50.96910309195282,
+        "rsiMean": 54.88490946204699,
+        "rsiUpper": 59.75326160894044,
+        "rsiLower": 50.01655731515354,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:30:00.000Z",
+        "ts_ms": 1773693000000,
+        "rsi": 52.6791273982018,
+        "rsiMean": 53.871390542152156,
+        "rsiUpper": 58.13969045712771,
+        "rsiLower": 49.6030906271766,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T20:45:00.000Z",
+        "ts_ms": 1773693900000,
+        "rsi": 54.210089033007755,
+        "rsiMean": 53.44919202129091,
+        "rsiUpper": 57.16759842500856,
+        "rsiLower": 49.73078561757326,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:00:00.000Z",
+        "ts_ms": 1773694800000,
+        "rsi": 58.633348882310564,
+        "rsiMean": 53.76984494528642,
+        "rsiUpper": 58.52374440143087,
+        "rsiLower": 49.01594548914198,
+        "marker": {
+          "side": "SELL",
+          "label": "SELL",
+          "fills": [
+            {
+              "side": "SELL",
+              "quantity": 0.0002,
+              "price": 74199.99,
+              "status": "FILLED",
+              "timestampMs": 1773694805458,
+              "timestamp": "2026-03-16T21:00:05.458Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773694800000,
+              "markerTs": "2026-03-16T21:00:00.000Z"
+            }
+          ],
+          "value": 58.633348882310564,
+          "rsi": 58.633348882310564
+        }
+      },
+      {
+        "ts": "2026-03-16T21:15:00.000Z",
+        "ts_ms": 1773695700000,
+        "rsi": 61.33243729403606,
+        "rsiMean": 55.56482113979283,
+        "rsiUpper": 62.48789401005953,
+        "rsiLower": 48.64174826952614,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:30:00.000Z",
+        "ts_ms": 1773696600000,
+        "rsi": 58.57210376474112,
+        "rsiMean": 57.085421274426174,
+        "rsiUpper": 62.796070478371384,
+        "rsiLower": 51.374772070480965,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T21:45:00.000Z",
+        "ts_ms": 1773697500000,
+        "rsi": 61.85313388012258,
+        "rsiMean": 58.92022257088945,
+        "rsiUpper": 63.804136388627725,
+        "rsiLower": 54.036308753151175,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:00:00.000Z",
+        "ts_ms": 1773698400000,
+        "rsi": 60.703113618100474,
+        "rsiMean": 60.21882748796221,
+        "rsiUpper": 62.683060840953424,
+        "rsiLower": 57.75459413497099,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:15:00.000Z",
+        "ts_ms": 1773699300000,
+        "rsi": 69.14374972946132,
+        "rsiMean": 62.32090765744675,
+        "rsiUpper": 68.78177180719317,
+        "rsiLower": 55.86004350770034,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:30:00.000Z",
+        "ts_ms": 1773700200000,
+        "rsi": 62.588124517185605,
+        "rsiMean": 62.572045102071115,
+        "rsiUpper": 68.97138454620172,
+        "rsiLower": 56.17270565794051,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T22:45:00.000Z",
+        "ts_ms": 1773701100000,
+        "rsi": 64.3625854676669,
+        "rsiMean": 63.730141442680704,
+        "rsiUpper": 69.05141137223468,
+        "rsiLower": 58.408871513126726,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:00:00.000Z",
+        "ts_ms": 1773702000000,
+        "rsi": 64.49880456351384,
+        "rsiMean": 64.25927557936112,
+        "rsiUpper": 69.30988239702482,
+        "rsiLower": 59.2086687616974,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:15:00.000Z",
+        "ts_ms": 1773702900000,
+        "rsi": 53.77819516276892,
+        "rsiMean": 62.874291888257936,
+        "rsiUpper": 71.94532856008313,
+        "rsiLower": 53.803255216432746,
+        "marker": {
+          "side": "BUY",
+          "label": "BUY",
+          "fills": [
+            {
+              "side": "BUY",
+              "quantity": 0.0002,
+              "price": 74437.18,
+              "status": "FILLED",
+              "timestampMs": 1773702905420,
+              "timestamp": "2026-03-16T23:15:05.420Z",
+              "symbol": "BTCUSDT",
+              "orderType": "MARKET",
+              "exchange": "binance",
+              "markerTsMs": 1773702900000,
+              "markerTs": "2026-03-16T23:15:00.000Z"
+            }
+          ],
+          "value": 53.77819516276892,
+          "rsi": 53.77819516276892
+        }
+      },
+      {
+        "ts": "2026-03-16T23:30:00.000Z",
+        "ts_ms": 1773703800000,
+        "rsi": 58.114820765930766,
+        "rsiMean": 60.66850609549012,
+        "rsiUpper": 68.13362659562603,
+        "rsiLower": 53.20338559535421,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-16T23:45:00.000Z",
+        "ts_ms": 1773704700000,
+        "rsi": 62.62376873053768,
+        "rsiMean": 60.675634938151646,
+        "rsiUpper": 68.14673655008258,
+        "rsiLower": 53.20453332622071,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:00:00.000Z",
+        "ts_ms": 1773705600000,
+        "rsi": 62.78383309157589,
+        "rsiMean": 60.35988446291776,
+        "rsiUpper": 67.4001768375612,
+        "rsiLower": 53.31959208827433,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:15:00.000Z",
+        "ts_ms": 1773706500000,
+        "rsi": 70.18960796400792,
+        "rsiMean": 61.49804514301591,
+        "rsiUpper": 71.34080524910638,
+        "rsiLower": 51.655285036925434,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:30:00.000Z",
+        "ts_ms": 1773707400000,
+        "rsi": 61.8718519194176,
+        "rsiMean": 63.11677649437021,
+        "rsiUpper": 70.17811254526404,
+        "rsiLower": 56.05544044347638,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T00:45:00.000Z",
+        "ts_ms": 1773708300000,
+        "rsi": 59.937302448574314,
+        "rsiMean": 63.481272830902114,
+        "rsiUpper": 69.78761887615183,
+        "rsiLower": 57.17492678565241,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:00:00.000Z",
+        "ts_ms": 1773709200000,
+        "rsi": 64.54820138630316,
+        "rsiMean": 63.86615936205252,
+        "rsiUpper": 70.15513332889238,
+        "rsiLower": 57.577185395212666,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:15:00.000Z",
+        "ts_ms": 1773710100000,
+        "rsi": 70.49087189204033,
+        "rsiMean": 65.40756712214952,
+        "rsiUpper": 73.12331238175499,
+        "rsiLower": 57.691821862544046,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:30:00.000Z",
+        "ts_ms": 1773711000000,
+        "rsi": 71.40891839164757,
+        "rsiMean": 65.6514292076668,
+        "rsiUpper": 73.8891562154137,
+        "rsiLower": 57.41370219991988,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T01:45:00.000Z",
+        "ts_ms": 1773711900000,
+        "rsi": 65.38231151446328,
+        "rsiMean": 66.35352112667736,
+        "rsiUpper": 73.90687545420003,
+        "rsiLower": 58.800166799154695,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T02:00:00.000Z",
+        "ts_ms": 1773712800000,
+        "rsi": 64.14511241439985,
+        "rsiMean": 67.19508311984649,
+        "rsiUpper": 72.78454405378316,
+        "rsiLower": 61.60562218590981,
+        "marker": null
+      },
+      {
+        "ts": "2026-03-17T02:15:00.000Z",
+        "ts_ms": 1773713700000,
+        "rsi": 56.12734149893364,
+        "rsiMean": 65.51091114235743,
+        "rsiUpper": 75.35412426456196,
+        "rsiLower": 55.66769802015289,
+        "marker": null
       }
     ],
     "adx": [
@@ -3435,9 +8146,999 @@
         "ts": "2026-03-15T00:45:00.000Z",
         "ts_ms": 1773535500000,
         "adx": 31.523113255671177
+      },
+      {
+        "ts": "2026-03-15T01:00:00.000Z",
+        "ts_ms": 1773536400000,
+        "adx": 29.86569025822641
+      },
+      {
+        "ts": "2026-03-15T01:15:00.000Z",
+        "ts_ms": 1773537300000,
+        "adx": 17.440703407162562
+      },
+      {
+        "ts": "2026-03-15T01:30:00.000Z",
+        "ts_ms": 1773538200000,
+        "adx": 17.254088073951184
+      },
+      {
+        "ts": "2026-03-15T01:45:00.000Z",
+        "ts_ms": 1773539100000,
+        "adx": 11.738838762980492
+      },
+      {
+        "ts": "2026-03-15T02:00:00.000Z",
+        "ts_ms": 1773540000000,
+        "adx": 21.71324196060396
+      },
+      {
+        "ts": "2026-03-15T02:15:00.000Z",
+        "ts_ms": 1773540900000,
+        "adx": 47.917213875511024
+      },
+      {
+        "ts": "2026-03-15T02:30:00.000Z",
+        "ts_ms": 1773541800000,
+        "adx": 47.91721387551095
+      },
+      {
+        "ts": "2026-03-15T02:45:00.000Z",
+        "ts_ms": 1773542700000,
+        "adx": 52.1205911449689
+      },
+      {
+        "ts": "2026-03-15T03:00:00.000Z",
+        "ts_ms": 1773543600000,
+        "adx": 61.34221332827548
+      },
+      {
+        "ts": "2026-03-15T03:15:00.000Z",
+        "ts_ms": 1773544500000,
+        "adx": 61.342213328275385
+      },
+      {
+        "ts": "2026-03-15T03:30:00.000Z",
+        "ts_ms": 1773545400000,
+        "adx": 46.79034900241789
+      },
+      {
+        "ts": "2026-03-15T03:45:00.000Z",
+        "ts_ms": 1773546300000,
+        "adx": 36.78756618895305
+      },
+      {
+        "ts": "2026-03-15T04:00:00.000Z",
+        "ts_ms": 1773547200000,
+        "adx": 36.78756618895302
+      },
+      {
+        "ts": "2026-03-15T04:15:00.000Z",
+        "ts_ms": 1773548100000,
+        "adx": 51.86152434716972
+      },
+      {
+        "ts": "2026-03-15T04:30:00.000Z",
+        "ts_ms": 1773549000000,
+        "adx": 52.50660472875589
+      },
+      {
+        "ts": "2026-03-15T04:45:00.000Z",
+        "ts_ms": 1773549900000,
+        "adx": 45.86167367244449
+      },
+      {
+        "ts": "2026-03-15T05:00:00.000Z",
+        "ts_ms": 1773550800000,
+        "adx": 38.064834442795664
+      },
+      {
+        "ts": "2026-03-15T05:15:00.000Z",
+        "ts_ms": 1773551700000,
+        "adx": 38.06483444279563
+      },
+      {
+        "ts": "2026-03-15T05:30:00.000Z",
+        "ts_ms": 1773552600000,
+        "adx": 48.88082081604528
+      },
+      {
+        "ts": "2026-03-15T05:45:00.000Z",
+        "ts_ms": 1773553500000,
+        "adx": 48.8808208160452
+      },
+      {
+        "ts": "2026-03-15T06:00:00.000Z",
+        "ts_ms": 1773554400000,
+        "adx": 35.67637805600389
+      },
+      {
+        "ts": "2026-03-15T06:15:00.000Z",
+        "ts_ms": 1773555300000,
+        "adx": 35.67637805600385
+      },
+      {
+        "ts": "2026-03-15T06:30:00.000Z",
+        "ts_ms": 1773556200000,
+        "adx": 31.316149348249294
+      },
+      {
+        "ts": "2026-03-15T06:45:00.000Z",
+        "ts_ms": 1773557100000,
+        "adx": 20.316964206611065
+      },
+      {
+        "ts": "2026-03-15T07:00:00.000Z",
+        "ts_ms": 1773558000000,
+        "adx": 21.163473294218917
+      },
+      {
+        "ts": "2026-03-15T07:15:00.000Z",
+        "ts_ms": 1773558900000,
+        "adx": 35.40497928315126
+      },
+      {
+        "ts": "2026-03-15T07:30:00.000Z",
+        "ts_ms": 1773559800000,
+        "adx": 35.4125448104114
+      },
+      {
+        "ts": "2026-03-15T07:45:00.000Z",
+        "ts_ms": 1773560700000,
+        "adx": 19.147789105988934
+      },
+      {
+        "ts": "2026-03-15T08:00:00.000Z",
+        "ts_ms": 1773561600000,
+        "adx": 14.77433591296233
+      },
+      {
+        "ts": "2026-03-15T08:15:00.000Z",
+        "ts_ms": 1773562500000,
+        "adx": 28.110474174237027
+      },
+      {
+        "ts": "2026-03-15T08:30:00.000Z",
+        "ts_ms": 1773563400000,
+        "adx": 35.35452570912651
+      },
+      {
+        "ts": "2026-03-15T08:45:00.000Z",
+        "ts_ms": 1773564300000,
+        "adx": 28.84275432181275
+      },
+      {
+        "ts": "2026-03-15T09:00:00.000Z",
+        "ts_ms": 1773565200000,
+        "adx": 37.72235421889153
+      },
+      {
+        "ts": "2026-03-15T09:15:00.000Z",
+        "ts_ms": 1773566100000,
+        "adx": 47.31263600970145
+      },
+      {
+        "ts": "2026-03-15T09:30:00.000Z",
+        "ts_ms": 1773567000000,
+        "adx": 48.23840521172889
+      },
+      {
+        "ts": "2026-03-15T09:45:00.000Z",
+        "ts_ms": 1773567900000,
+        "adx": 40.39797667668289
+      },
+      {
+        "ts": "2026-03-15T10:00:00.000Z",
+        "ts_ms": 1773568800000,
+        "adx": 36.98508318295891
+      },
+      {
+        "ts": "2026-03-15T10:15:00.000Z",
+        "ts_ms": 1773569700000,
+        "adx": 37.09217443944956
+      },
+      {
+        "ts": "2026-03-15T10:30:00.000Z",
+        "ts_ms": 1773570600000,
+        "adx": 41.82917886965598
+      },
+      {
+        "ts": "2026-03-15T10:45:00.000Z",
+        "ts_ms": 1773571500000,
+        "adx": 41.26783801243545
+      },
+      {
+        "ts": "2026-03-15T11:00:00.000Z",
+        "ts_ms": 1773572400000,
+        "adx": 39.506178465641334
+      },
+      {
+        "ts": "2026-03-15T11:15:00.000Z",
+        "ts_ms": 1773573300000,
+        "adx": 24.20160768824981
+      },
+      {
+        "ts": "2026-03-15T11:30:00.000Z",
+        "ts_ms": 1773574200000,
+        "adx": 26.44943984886397
+      },
+      {
+        "ts": "2026-03-15T11:45:00.000Z",
+        "ts_ms": 1773575100000,
+        "adx": 25.92329706153567
+      },
+      {
+        "ts": "2026-03-15T12:00:00.000Z",
+        "ts_ms": 1773576000000,
+        "adx": 36.221625684758465
+      },
+      {
+        "ts": "2026-03-15T12:15:00.000Z",
+        "ts_ms": 1773576900000,
+        "adx": 30.53864492539177
+      },
+      {
+        "ts": "2026-03-15T12:30:00.000Z",
+        "ts_ms": 1773577800000,
+        "adx": 25.14480059902469
+      },
+      {
+        "ts": "2026-03-15T12:45:00.000Z",
+        "ts_ms": 1773578700000,
+        "adx": 10.407376206632604
+      },
+      {
+        "ts": "2026-03-15T13:00:00.000Z",
+        "ts_ms": 1773579600000,
+        "adx": 10.407376206632597
+      },
+      {
+        "ts": "2026-03-15T13:15:00.000Z",
+        "ts_ms": 1773580500000,
+        "adx": 20.859465339902965
+      },
+      {
+        "ts": "2026-03-15T13:30:00.000Z",
+        "ts_ms": 1773581400000,
+        "adx": 21.048298655174964
+      },
+      {
+        "ts": "2026-03-15T13:45:00.000Z",
+        "ts_ms": 1773582300000,
+        "adx": 17.250313177103127
+      },
+      {
+        "ts": "2026-03-15T14:00:00.000Z",
+        "ts_ms": 1773583200000,
+        "adx": 11.416624539043392
+      },
+      {
+        "ts": "2026-03-15T14:15:00.000Z",
+        "ts_ms": 1773584100000,
+        "adx": 11.21368303804449
+      },
+      {
+        "ts": "2026-03-15T14:30:00.000Z",
+        "ts_ms": 1773585000000,
+        "adx": 23.226039892363616
+      },
+      {
+        "ts": "2026-03-15T14:45:00.000Z",
+        "ts_ms": 1773585900000,
+        "adx": 28.630882891929023
+      },
+      {
+        "ts": "2026-03-15T15:00:00.000Z",
+        "ts_ms": 1773586800000,
+        "adx": 9.372745555635666
+      },
+      {
+        "ts": "2026-03-15T15:15:00.000Z",
+        "ts_ms": 1773587700000,
+        "adx": 9.37274555563566
+      },
+      {
+        "ts": "2026-03-15T15:30:00.000Z",
+        "ts_ms": 1773588600000,
+        "adx": 13.40121084061369
+      },
+      {
+        "ts": "2026-03-15T15:45:00.000Z",
+        "ts_ms": 1773589500000,
+        "adx": 18.187878924382403
+      },
+      {
+        "ts": "2026-03-15T16:00:00.000Z",
+        "ts_ms": 1773590400000,
+        "adx": 18.187878924382396
+      },
+      {
+        "ts": "2026-03-15T16:15:00.000Z",
+        "ts_ms": 1773591300000,
+        "adx": 8.467331731120249
+      },
+      {
+        "ts": "2026-03-15T16:30:00.000Z",
+        "ts_ms": 1773592200000,
+        "adx": 21.914165674518816
+      },
+      {
+        "ts": "2026-03-15T16:45:00.000Z",
+        "ts_ms": 1773593100000,
+        "adx": 21.914165674518756
+      },
+      {
+        "ts": "2026-03-15T17:00:00.000Z",
+        "ts_ms": 1773594000000,
+        "adx": 21.91416567451872
+      },
+      {
+        "ts": "2026-03-15T17:15:00.000Z",
+        "ts_ms": 1773594900000,
+        "adx": 14.439894803753955
+      },
+      {
+        "ts": "2026-03-15T17:30:00.000Z",
+        "ts_ms": 1773595800000,
+        "adx": 9.832175174016024
+      },
+      {
+        "ts": "2026-03-15T17:45:00.000Z",
+        "ts_ms": 1773596700000,
+        "adx": 9.537180152188087
+      },
+      {
+        "ts": "2026-03-15T18:00:00.000Z",
+        "ts_ms": 1773597600000,
+        "adx": 34.823332670959836
+      },
+      {
+        "ts": "2026-03-15T18:15:00.000Z",
+        "ts_ms": 1773598500000,
+        "adx": 34.823332670959765
+      },
+      {
+        "ts": "2026-03-15T18:30:00.000Z",
+        "ts_ms": 1773599400000,
+        "adx": 32.529304149979986
+      },
+      {
+        "ts": "2026-03-15T18:45:00.000Z",
+        "ts_ms": 1773600300000,
+        "adx": 35.96562642555201
+      },
+      {
+        "ts": "2026-03-15T19:00:00.000Z",
+        "ts_ms": 1773601200000,
+        "adx": 4.447240782092026
+      },
+      {
+        "ts": "2026-03-15T19:15:00.000Z",
+        "ts_ms": 1773602100000,
+        "adx": 4.4472407820920115
+      },
+      {
+        "ts": "2026-03-15T19:30:00.000Z",
+        "ts_ms": 1773603000000,
+        "adx": 2.7901204037461604
+      },
+      {
+        "ts": "2026-03-15T19:45:00.000Z",
+        "ts_ms": 1773603900000,
+        "adx": 0.7475189950042969
+      },
+      {
+        "ts": "2026-03-15T20:00:00.000Z",
+        "ts_ms": 1773604800000,
+        "adx": 0.7475189950042946
+      },
+      {
+        "ts": "2026-03-15T20:15:00.000Z",
+        "ts_ms": 1773605700000,
+        "adx": 0.7475189950042999
+      },
+      {
+        "ts": "2026-03-15T20:30:00.000Z",
+        "ts_ms": 1773606600000,
+        "adx": 7.084463068731235
+      },
+      {
+        "ts": "2026-03-15T20:45:00.000Z",
+        "ts_ms": 1773607500000,
+        "adx": 24.563281877088716
+      },
+      {
+        "ts": "2026-03-15T21:00:00.000Z",
+        "ts_ms": 1773608400000,
+        "adx": 24.563281877088684
+      },
+      {
+        "ts": "2026-03-15T21:15:00.000Z",
+        "ts_ms": 1773609300000,
+        "adx": 14.187456678581405
+      },
+      {
+        "ts": "2026-03-15T21:30:00.000Z",
+        "ts_ms": 1773610200000,
+        "adx": 18.542098650266258
+      },
+      {
+        "ts": "2026-03-15T21:45:00.000Z",
+        "ts_ms": 1773611100000,
+        "adx": 41.875934647108735
+      },
+      {
+        "ts": "2026-03-15T22:00:00.000Z",
+        "ts_ms": 1773612000000,
+        "adx": 41.88159440381766
+      },
+      {
+        "ts": "2026-03-15T22:15:00.000Z",
+        "ts_ms": 1773612900000,
+        "adx": 18.12430378113168
+      },
+      {
+        "ts": "2026-03-15T22:30:00.000Z",
+        "ts_ms": 1773613800000,
+        "adx": 14.334572419320645
+      },
+      {
+        "ts": "2026-03-15T22:45:00.000Z",
+        "ts_ms": 1773614700000,
+        "adx": 38.75248550189798
+      },
+      {
+        "ts": "2026-03-15T23:00:00.000Z",
+        "ts_ms": 1773615600000,
+        "adx": 54.21409447856084
+      },
+      {
+        "ts": "2026-03-15T23:15:00.000Z",
+        "ts_ms": 1773616500000,
+        "adx": 56.592070202358656
+      },
+      {
+        "ts": "2026-03-15T23:30:00.000Z",
+        "ts_ms": 1773617400000,
+        "adx": 38.893260205479535
+      },
+      {
+        "ts": "2026-03-15T23:45:00.000Z",
+        "ts_ms": 1773618300000,
+        "adx": 35.61088318956488
+      },
+      {
+        "ts": "2026-03-16T00:00:00.000Z",
+        "ts_ms": 1773619200000,
+        "adx": 37.89587286842615
+      },
+      {
+        "ts": "2026-03-16T00:15:00.000Z",
+        "ts_ms": 1773620100000,
+        "adx": 43.13086271219956
+      },
+      {
+        "ts": "2026-03-16T00:30:00.000Z",
+        "ts_ms": 1773621000000,
+        "adx": 29.60529102858127
+      },
+      {
+        "ts": "2026-03-16T00:45:00.000Z",
+        "ts_ms": 1773621900000,
+        "adx": 26.592544555198856
+      },
+      {
+        "ts": "2026-03-16T01:00:00.000Z",
+        "ts_ms": 1773622800000,
+        "adx": 26.592544555198828
+      },
+      {
+        "ts": "2026-03-16T01:15:00.000Z",
+        "ts_ms": 1773623700000,
+        "adx": 11.91997790693533
+      },
+      {
+        "ts": "2026-03-16T01:30:00.000Z",
+        "ts_ms": 1773624600000,
+        "adx": 14.907176650611303
+      },
+      {
+        "ts": "2026-03-16T01:45:00.000Z",
+        "ts_ms": 1773625500000,
+        "adx": 14.907176650611284
+      },
+      {
+        "ts": "2026-03-16T02:00:00.000Z",
+        "ts_ms": 1773626400000,
+        "adx": 23.42393484431127
+      },
+      {
+        "ts": "2026-03-16T02:15:00.000Z",
+        "ts_ms": 1773627300000,
+        "adx": 23.423934844311244
+      },
+      {
+        "ts": "2026-03-16T02:30:00.000Z",
+        "ts_ms": 1773628200000,
+        "adx": 5.50686144166718
+      },
+      {
+        "ts": "2026-03-16T02:45:00.000Z",
+        "ts_ms": 1773629100000,
+        "adx": 4.46646812534019
+      },
+      {
+        "ts": "2026-03-16T03:00:00.000Z",
+        "ts_ms": 1773630000000,
+        "adx": 10.189427191819727
+      },
+      {
+        "ts": "2026-03-16T03:15:00.000Z",
+        "ts_ms": 1773630900000,
+        "adx": 10.189427191819716
+      },
+      {
+        "ts": "2026-03-16T03:30:00.000Z",
+        "ts_ms": 1773631800000,
+        "adx": 24.627192343160008
+      },
+      {
+        "ts": "2026-03-16T03:45:00.000Z",
+        "ts_ms": 1773632700000,
+        "adx": 59.147929005676744
+      },
+      {
+        "ts": "2026-03-16T04:00:00.000Z",
+        "ts_ms": 1773633600000,
+        "adx": 59.14792900567668
+      },
+      {
+        "ts": "2026-03-16T04:15:00.000Z",
+        "ts_ms": 1773634500000,
+        "adx": 59.14792900567664
+      },
+      {
+        "ts": "2026-03-16T04:30:00.000Z",
+        "ts_ms": 1773635400000,
+        "adx": 62.88841833207894
+      },
+      {
+        "ts": "2026-03-16T04:45:00.000Z",
+        "ts_ms": 1773636300000,
+        "adx": 62.888418332078885
+      },
+      {
+        "ts": "2026-03-16T05:00:00.000Z",
+        "ts_ms": 1773637200000,
+        "adx": 70.5384855810451
+      },
+      {
+        "ts": "2026-03-16T05:15:00.000Z",
+        "ts_ms": 1773638100000,
+        "adx": 70.53848558104502
+      },
+      {
+        "ts": "2026-03-16T05:30:00.000Z",
+        "ts_ms": 1773639000000,
+        "adx": 70.53848558104497
+      },
+      {
+        "ts": "2026-03-16T05:45:00.000Z",
+        "ts_ms": 1773639900000,
+        "adx": 71.98250478063815
+      },
+      {
+        "ts": "2026-03-16T06:00:00.000Z",
+        "ts_ms": 1773640800000,
+        "adx": 73.78685179253827
+      },
+      {
+        "ts": "2026-03-16T06:15:00.000Z",
+        "ts_ms": 1773641700000,
+        "adx": 48.9884486510949
+      },
+      {
+        "ts": "2026-03-16T06:30:00.000Z",
+        "ts_ms": 1773642600000,
+        "adx": 48.98844865109489
+      },
+      {
+        "ts": "2026-03-16T06:45:00.000Z",
+        "ts_ms": 1773643500000,
+        "adx": 49.55502758893934
+      },
+      {
+        "ts": "2026-03-16T07:00:00.000Z",
+        "ts_ms": 1773644400000,
+        "adx": 49.55502758893931
+      },
+      {
+        "ts": "2026-03-16T07:15:00.000Z",
+        "ts_ms": 1773645300000,
+        "adx": 51.47434730259414
+      },
+      {
+        "ts": "2026-03-16T07:30:00.000Z",
+        "ts_ms": 1773646200000,
+        "adx": 51.474347302594104
+      },
+      {
+        "ts": "2026-03-16T07:45:00.000Z",
+        "ts_ms": 1773647100000,
+        "adx": 33.733149657294994
+      },
+      {
+        "ts": "2026-03-16T08:00:00.000Z",
+        "ts_ms": 1773648000000,
+        "adx": 29.069761253502552
+      },
+      {
+        "ts": "2026-03-16T08:15:00.000Z",
+        "ts_ms": 1773648900000,
+        "adx": 37.36412752401205
+      },
+      {
+        "ts": "2026-03-16T08:30:00.000Z",
+        "ts_ms": 1773649800000,
+        "adx": 30.411952429880873
+      },
+      {
+        "ts": "2026-03-16T08:45:00.000Z",
+        "ts_ms": 1773650700000,
+        "adx": 5.204174343425697
+      },
+      {
+        "ts": "2026-03-16T09:00:00.000Z",
+        "ts_ms": 1773651600000,
+        "adx": 5.050154638547248
+      },
+      {
+        "ts": "2026-03-16T09:15:00.000Z",
+        "ts_ms": 1773652500000,
+        "adx": 6.983782550535706
+      },
+      {
+        "ts": "2026-03-16T09:30:00.000Z",
+        "ts_ms": 1773653400000,
+        "adx": 9.326602447007275
+      },
+      {
+        "ts": "2026-03-16T09:45:00.000Z",
+        "ts_ms": 1773654300000,
+        "adx": 9.326602447007264
+      },
+      {
+        "ts": "2026-03-16T10:00:00.000Z",
+        "ts_ms": 1773655200000,
+        "adx": 12.075134014868043
+      },
+      {
+        "ts": "2026-03-16T10:15:00.000Z",
+        "ts_ms": 1773656100000,
+        "adx": 18.91059734367946
+      },
+      {
+        "ts": "2026-03-16T10:30:00.000Z",
+        "ts_ms": 1773657000000,
+        "adx": 20.198503133762415
+      },
+      {
+        "ts": "2026-03-16T10:45:00.000Z",
+        "ts_ms": 1773657900000,
+        "adx": 13.186129820456994
+      },
+      {
+        "ts": "2026-03-16T11:00:00.000Z",
+        "ts_ms": 1773658800000,
+        "adx": 28.448569665595652
+      },
+      {
+        "ts": "2026-03-16T11:15:00.000Z",
+        "ts_ms": 1773659700000,
+        "adx": 30.652365659394327
+      },
+      {
+        "ts": "2026-03-16T11:30:00.000Z",
+        "ts_ms": 1773660600000,
+        "adx": 25.798098796996037
+      },
+      {
+        "ts": "2026-03-16T11:45:00.000Z",
+        "ts_ms": 1773661500000,
+        "adx": 24.231514004834093
+      },
+      {
+        "ts": "2026-03-16T12:00:00.000Z",
+        "ts_ms": 1773662400000,
+        "adx": 25.14925995657525
+      },
+      {
+        "ts": "2026-03-16T12:15:00.000Z",
+        "ts_ms": 1773663300000,
+        "adx": 31.94088832851184
+      },
+      {
+        "ts": "2026-03-16T12:30:00.000Z",
+        "ts_ms": 1773664200000,
+        "adx": 35.297040263635324
+      },
+      {
+        "ts": "2026-03-16T12:45:00.000Z",
+        "ts_ms": 1773665100000,
+        "adx": 41.46388234004096
+      },
+      {
+        "ts": "2026-03-16T13:00:00.000Z",
+        "ts_ms": 1773666000000,
+        "adx": 37.395633967668154
+      },
+      {
+        "ts": "2026-03-16T13:15:00.000Z",
+        "ts_ms": 1773666900000,
+        "adx": 42.69179726353441
+      },
+      {
+        "ts": "2026-03-16T13:30:00.000Z",
+        "ts_ms": 1773667800000,
+        "adx": 37.59813161610891
+      },
+      {
+        "ts": "2026-03-16T13:45:00.000Z",
+        "ts_ms": 1773668700000,
+        "adx": 54.897642385326506
+      },
+      {
+        "ts": "2026-03-16T14:00:00.000Z",
+        "ts_ms": 1773669600000,
+        "adx": 54.89764238532634
+      },
+      {
+        "ts": "2026-03-16T14:15:00.000Z",
+        "ts_ms": 1773670500000,
+        "adx": 56.18477293608437
+      },
+      {
+        "ts": "2026-03-16T14:30:00.000Z",
+        "ts_ms": 1773671400000,
+        "adx": 26.848528385934113
+      },
+      {
+        "ts": "2026-03-16T14:45:00.000Z",
+        "ts_ms": 1773672300000,
+        "adx": 5.79807820597063
+      },
+      {
+        "ts": "2026-03-16T15:00:00.000Z",
+        "ts_ms": 1773673200000,
+        "adx": 5.798078205970623
+      },
+      {
+        "ts": "2026-03-16T15:15:00.000Z",
+        "ts_ms": 1773674100000,
+        "adx": 3.568784201183084
+      },
+      {
+        "ts": "2026-03-16T15:30:00.000Z",
+        "ts_ms": 1773675000000,
+        "adx": 8.75960456285804
+      },
+      {
+        "ts": "2026-03-16T15:45:00.000Z",
+        "ts_ms": 1773675900000,
+        "adx": 13.859492933369546
+      },
+      {
+        "ts": "2026-03-16T16:00:00.000Z",
+        "ts_ms": 1773676800000,
+        "adx": 1.6047326597293643
+      },
+      {
+        "ts": "2026-03-16T16:15:00.000Z",
+        "ts_ms": 1773677700000,
+        "adx": 2.7601276702482314
+      },
+      {
+        "ts": "2026-03-16T16:30:00.000Z",
+        "ts_ms": 1773678600000,
+        "adx": 2.760127670248237
+      },
+      {
+        "ts": "2026-03-16T16:45:00.000Z",
+        "ts_ms": 1773679500000,
+        "adx": 5.93980938438056
+      },
+      {
+        "ts": "2026-03-16T17:00:00.000Z",
+        "ts_ms": 1773680400000,
+        "adx": 15.98517905005038
+      },
+      {
+        "ts": "2026-03-16T17:15:00.000Z",
+        "ts_ms": 1773681300000,
+        "adx": 17.957234580668672
+      },
+      {
+        "ts": "2026-03-16T17:30:00.000Z",
+        "ts_ms": 1773682200000,
+        "adx": 16.92429406879043
+      },
+      {
+        "ts": "2026-03-16T17:45:00.000Z",
+        "ts_ms": 1773683100000,
+        "adx": 20.390468772790868
+      },
+      {
+        "ts": "2026-03-16T18:00:00.000Z",
+        "ts_ms": 1773684000000,
+        "adx": 24.750956620927777
+      },
+      {
+        "ts": "2026-03-16T18:15:00.000Z",
+        "ts_ms": 1773684900000,
+        "adx": 35.09084825848668
+      },
+      {
+        "ts": "2026-03-16T18:30:00.000Z",
+        "ts_ms": 1773685800000,
+        "adx": 35.09084825848665
+      },
+      {
+        "ts": "2026-03-16T18:45:00.000Z",
+        "ts_ms": 1773686700000,
+        "adx": 28.205653883310173
+      },
+      {
+        "ts": "2026-03-16T19:00:00.000Z",
+        "ts_ms": 1773687600000,
+        "adx": 17.30996904268711
+      },
+      {
+        "ts": "2026-03-16T19:15:00.000Z",
+        "ts_ms": 1773688500000,
+        "adx": 26.566352185430148
+      },
+      {
+        "ts": "2026-03-16T19:30:00.000Z",
+        "ts_ms": 1773689400000,
+        "adx": 26.56635218543011
+      },
+      {
+        "ts": "2026-03-16T19:45:00.000Z",
+        "ts_ms": 1773690300000,
+        "adx": 26.56635218543007
+      },
+      {
+        "ts": "2026-03-16T20:00:00.000Z",
+        "ts_ms": 1773691200000,
+        "adx": 8.23233772188739
+      },
+      {
+        "ts": "2026-03-16T20:15:00.000Z",
+        "ts_ms": 1773692100000,
+        "adx": 8.232337721887392
+      },
+      {
+        "ts": "2026-03-16T20:30:00.000Z",
+        "ts_ms": 1773693000000,
+        "adx": 13.046808274878838
+      },
+      {
+        "ts": "2026-03-16T20:45:00.000Z",
+        "ts_ms": 1773693900000,
+        "adx": 15.456820218875468
+      },
+      {
+        "ts": "2026-03-16T21:00:00.000Z",
+        "ts_ms": 1773694800000,
+        "adx": 22.930275775473064
+      },
+      {
+        "ts": "2026-03-16T21:15:00.000Z",
+        "ts_ms": 1773695700000,
+        "adx": 34.43251320064558
+      },
+      {
+        "ts": "2026-03-16T21:30:00.000Z",
+        "ts_ms": 1773696600000,
+        "adx": 34.43251320064552
+      },
+      {
+        "ts": "2026-03-16T21:45:00.000Z",
+        "ts_ms": 1773697500000,
+        "adx": 46.22795838540079
+      },
+      {
+        "ts": "2026-03-16T22:00:00.000Z",
+        "ts_ms": 1773698400000,
+        "adx": 46.22795838540071
+      },
+      {
+        "ts": "2026-03-16T22:15:00.000Z",
+        "ts_ms": 1773699300000,
+        "adx": 54.492526195637524
+      },
+      {
+        "ts": "2026-03-16T22:30:00.000Z",
+        "ts_ms": 1773700200000,
+        "adx": 54.49252619563742
+      },
+      {
+        "ts": "2026-03-16T22:45:00.000Z",
+        "ts_ms": 1773701100000,
+        "adx": 54.49252619563737
+      },
+      {
+        "ts": "2026-03-16T23:00:00.000Z",
+        "ts_ms": 1773702000000,
+        "adx": 57.16274237409519
+      },
+      {
+        "ts": "2026-03-16T23:15:00.000Z",
+        "ts_ms": 1773702900000,
+        "adx": 20.77655728376525
+      },
+      {
+        "ts": "2026-03-16T23:30:00.000Z",
+        "ts_ms": 1773703800000,
+        "adx": 20.776557283765232
+      },
+      {
+        "ts": "2026-03-16T23:45:00.000Z",
+        "ts_ms": 1773704700000,
+        "adx": 32.549560954622535
+      },
+      {
+        "ts": "2026-03-17T00:00:00.000Z",
+        "ts_ms": 1773705600000,
+        "adx": 32.892611950246234
+      },
+      {
+        "ts": "2026-03-17T00:15:00.000Z",
+        "ts_ms": 1773706500000,
+        "adx": 49.67893412797421
+      },
+      {
+        "ts": "2026-03-17T00:30:00.000Z",
+        "ts_ms": 1773707400000,
+        "adx": 51.06483758746669
+      },
+      {
+        "ts": "2026-03-17T00:45:00.000Z",
+        "ts_ms": 1773708300000,
+        "adx": 51.06483758746659
+      },
+      {
+        "ts": "2026-03-17T01:00:00.000Z",
+        "ts_ms": 1773709200000,
+        "adx": 52.98722703424501
+      },
+      {
+        "ts": "2026-03-17T01:15:00.000Z",
+        "ts_ms": 1773710100000,
+        "adx": 65.80575152147212
+      },
+      {
+        "ts": "2026-03-17T01:30:00.000Z",
+        "ts_ms": 1773711000000,
+        "adx": 65.85925654018496
+      },
+      {
+        "ts": "2026-03-17T01:45:00.000Z",
+        "ts_ms": 1773711900000,
+        "adx": 58.25809064801527
+      },
+      {
+        "ts": "2026-03-17T02:00:00.000Z",
+        "ts_ms": 1773712800000,
+        "adx": 54.47310884012702
+      },
+      {
+        "ts": "2026-03-17T02:15:00.000Z",
+        "ts_ms": 1773713700000,
+        "adx": 31.98355690573965
       }
     ]
   },
   "live_note": "Portfolio state is exchange-synced at startup and reconciled during live runtime.",
-  "explanatory_note": "The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. A flat state or no fills in this window is acceptable when entry conditions have not been satisfied yet."
+  "explanatory_note": "The strategy is currently running live and the displayed charts reflect a recent observation window from the active runtime trace. The most recent real BUY fill is visible in context without turning the page into a performance claim."
 }

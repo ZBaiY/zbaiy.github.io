@@ -176,8 +176,8 @@ function getLiveChartConfig(charts) {
       xLabel: 'Time',
       lines: [{ key: 'adx', label: 'ADX', color: '#34d399', strokeWidth: 2.6 }],
       guides: [
-        { label: '20', value: 20 },
         { label: '25', value: 25 },
+        { label: '30', value: 30 },
       ],
       series: charts.adx || [],
       formatTick: (value) => formatCompactNumber(value, 0),
@@ -300,7 +300,7 @@ function MonitoringChart({ chart, windowLabel }) {
   const scaleX = (index) => padding + (index / Math.max(series.length - 1, 1)) * plotWidth;
   const markerPoints = series
     .map((point, index) => ({ point, index }))
-    .filter(({ point }) => point.marker && chart.markerKey && typeof point[chart.markerKey] === 'number');
+    .filter(({ point }) => point.marker && chart.markerKey && typeof (point.marker?.value ?? point[chart.markerKey]) === 'number');
 
   return (
     <section className="strategy-panel live-chart-panel">
@@ -358,24 +358,27 @@ function MonitoringChart({ chart, windowLabel }) {
                 strokeLinejoin="round"
               />
             ))}
-            {markerPoints.map(({ point, index }) => (
-              <g key={`${chart.key}-marker-${point.ts_ms || index}`}>
-                <circle
-                  cx={scaleX(index)}
-                  cy={scaleY(point[chart.markerKey])}
-                  r="6"
-                  className={`live-event-marker live-event-marker-${String(point.marker?.side || '').toLowerCase()}`}
-                />
-                <text
-                  x={scaleX(index)}
-                  y={scaleY(point[chart.markerKey]) - 12}
-                  textAnchor="middle"
-                  className={`live-event-marker-label live-event-marker-label-${String(point.marker?.side || '').toLowerCase()}`}
-                >
-                  {point.marker?.label || point.marker?.side || 'FILL'}
-                </text>
-              </g>
-            ))}
+            {markerPoints.map(({ point, index }) => {
+              const markerYValue = point.marker?.value ?? point[chart.markerKey];
+              return (
+                <g key={`${chart.key}-marker-${point.ts_ms || index}`}>
+                  <circle
+                    cx={scaleX(index)}
+                    cy={scaleY(markerYValue)}
+                    r="6"
+                    className={`live-event-marker live-event-marker-${String(point.marker?.side || '').toLowerCase()}`}
+                  />
+                  <text
+                    x={scaleX(index)}
+                    y={scaleY(markerYValue) - 12}
+                    textAnchor="middle"
+                    className={`live-event-marker-label live-event-marker-label-${String(point.marker?.side || '').toLowerCase()}`}
+                  >
+                    {point.marker?.label || point.marker?.side || 'FILL'}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
           <div className="strategy-chart-x-label" aria-hidden="true">{chart.xLabel}</div>
         </div>
@@ -562,8 +565,8 @@ function LiveDeployment() {
       value: latestAdx ? `ADX ${formatCompactNumber(latestAdx.adx, 1)}` : 'ADX unavailable',
       secondary: 'Regime strength at the latest observed live step.',
       meta: [
-        { label: 'Guide 20', value: 'Regime threshold' },
-        { label: 'Guide 25', value: 'Higher-strength threshold' },
+        { label: 'Guide 25', value: 'Trend-strength threshold' },
+        { label: 'Guide 30', value: 'Stronger regime confirmation' },
       ],
     },
     {
@@ -583,12 +586,14 @@ function LiveDeployment() {
   ];
   const environmentItems = [
     { label: 'Strategy', value: environment.strategy || 'Dynamic RSI + ADX' },
+    { label: 'Decision Model', value: environment.decisionModel || 'Unavailable' },
     { label: 'Venue', value: environment.venue || 'Binance (Mainnet)' },
     { label: 'Market', value: environment.market || 'Spot' },
     { label: 'Symbol', value: environment.symbol || 'BTCUSDT' },
     { label: 'Interval', value: environment.interval || '15m' },
     { label: 'Mode', value: environment.mode || 'REALTIME' },
     { label: 'Engine Status', value: environment.engineStatus || 'RUNNING' },
+    { label: 'Run ID', value: environment.runLabel || 'Unavailable' },
     { label: 'Last Update', value: formatTimestamp(runtime.lastUpdateTs) },
   ];
   const executionItems = [
@@ -597,7 +602,7 @@ function LiveDeployment() {
     { label: 'Step Size', value: execution.stepSizeLabel || '0.00001 BTC' },
     { label: 'Execution Permit', value: execution.executionPermit || 'full' },
   ];
-  const environmentSummary = `${environment.strategy || 'Dynamic RSI + ADX'} • ${environment.venue || 'Binance (Mainnet)'} • ${environment.symbol || 'BTCUSDT'} • ${environment.interval || '15m'}`;
+  const environmentSummary = `${environment.strategy || 'Dynamic RSI + ADX'} • ${environment.decisionModel || 'Decision model unavailable'} • ${environment.runLabel || 'Run unavailable'}`;
   const executionSummary = `${execution.executionModel || 'Fractional spot execution'} • Min notional ${execution.minNotionalLabel || '5 USDT'} • Step ${execution.stepSizeLabel || '0.00001 BTC'}`;
 
   useEffect(() => {

@@ -5,6 +5,7 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const OUTPUT_PATH = path.resolve(__dirname, '..', 'public', 'data', 'live', 'live_deployment_v1.json');
 const EVIDENCE_ROOT = path.resolve(__dirname, '..', 'public', 'data', 'live', 'evidence');
 const STRATEGY_LABEL = 'Dynamic RSI + ADX';
+const PINNED_RUN_ID = '20260313T161132Z';
 const RSI_VARIANCE_FACTOR = 1.8;
 
 function readJsonLines(filePath) {
@@ -49,6 +50,25 @@ function findLatestRunDir(rootDir) {
   return null;
 }
 
+function resolveRunDir(rootDir, runId) {
+  if (!runId) {
+    return findLatestRunDir(rootDir);
+  }
+
+  const runDir = path.join(rootDir, runId, 'logs');
+  const tracePath = path.join(runDir, 'trace.jsonl');
+  const defaultPath = path.join(runDir, 'default.jsonl');
+  if (!fs.existsSync(tracePath) || !fs.existsSync(defaultPath)) {
+    throw new Error(`Pinned live runtime artifacts were not found for run ${runId}.`);
+  }
+
+  return {
+    runId,
+    tracePath,
+    defaultPath,
+  };
+}
+
 function classifyPortfolioState(positionQty, minLot) {
   if (Math.abs(positionQty || 0) < Math.max(minLot || 0, 1e-12)) {
     return 'Flat';
@@ -81,7 +101,7 @@ function normalizeFill(fill, step) {
   };
 }
 
-function buildStepMarker(step, valueKey, fallbackValue) {
+function buildStepMarker(step, valueKey, fallbackValue, markerValue = fallbackValue) {
   const fills = (step.fills || [])
     .map((fill) => normalizeFill(fill, step))
     .filter(Boolean);
@@ -92,13 +112,13 @@ function buildStepMarker(step, valueKey, fallbackValue) {
     side: latestStepFill.side,
     label: fills.map((fill) => fill.side).join('/'),
     fills,
-    value: fallbackValue,
+    value: markerValue,
     [valueKey]: fallbackValue,
   };
 }
 
 function main() {
-  const latestRun = findLatestRunDir(ROOT);
+  const latestRun = resolveRunDir(ROOT, PINNED_RUN_ID);
   if (!latestRun) {
     throw new Error('No live runtime trace artifacts were found at the repository root.');
   }
@@ -226,7 +246,12 @@ function main() {
         marker: buildStepMarker(
           step,
           'close',
-          Number((((step.market_snapshots || {}).ohlcv || {}).BTCUSDT || {}).numeric?.close || 0)
+          Number((((step.market_snapshots || {}).ohlcv || {}).BTCUSDT || {}).numeric?.close || 0),
+          Number(
+            (step.fills || []).length
+              ? (step.fills || [])[step.fills.length - 1]?.fill_price
+              : (((step.market_snapshots || {}).ohlcv || {}).BTCUSDT || {}).numeric?.close || 0
+          )
         ),
       })),
       rsi: steps.map((step) => {
